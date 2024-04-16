@@ -20,39 +20,9 @@
 <title>첫번째 페이지</title>
 </head>
 <style>
-div#app {
-	text-align: center;
-}
-
-body, button {
-	font-family: "Gaegu", sans-serif;
-}
-
-table {
-	border-collapse: collapse;
-	width: 80%;
+.boardViewTable {
+	width: 60%;
 	margin: 10px auto;
-}
-
-th, td {
-	border-top: none;
-	border-bottom: 1px solid #ddd;
-	border-right: none;
-	padding: 8px;
-	text-align: center;
-	font-size: 14px;
-	font-family: "Orbit", sans-serif;
-	font-weight: 400;
-	cursor: default;
-}
-
-tr:hover {
-	background-color: #f5f5f5;
-}
-
-tr {
-	border: top 1px solid black;
-	border-bottom: 1px solid black;
 }
 
 button {
@@ -64,68 +34,69 @@ button {
 	border: none;
 	border-radius: 4px;
 	transition: background-color 0.3s;
-	
 }
 
 button:hover {
 	background-color: #45a049;
 }
 
-li {
-	display: inline-block;
-}
-
-td {
-	height: 70px;
-}
-
 a {
 	text-decoration: none;
 }
+
 .buttons {
-    text-align: center;
-    margin: 30px;
-    font-family: "Orbit", sans-serif;    
+	text-align: center;
+	margin: 30px;
 }
 
+.titleBox, .contentsBox {
+	width: 800px;
+	height: 120px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.titleBox {
+	border-bottom: none;
+}
+
+.title {
+	font-size: 22px;
+}
+
+.contents {
+	font-size: 22px;
+}
+
+.writerDateHits {
+	font-size: 12px;
+	color: #ccc;
+}
 </style>
 <body>
 	<%@ include file="layout/header.jsp"%>
 	<div id="app">
-		<table style="width: 60%;">
-			<tr>
-				<th width="20%">제목</th>
-				<td width="80%">{{info.title}}</td>
-			</tr>
-			<tr>
-				<th>작성자</th>
-				<td>{{info.nickName}}</td>
-			</tr>
-			<tr>
-				<th>작성날짜</th>
-				<td>{{info.cDateTime}}</td>
-			</tr>
-			<tr>
-				<th>수정날짜</th>
-				<td>{{info.uDateTime}}</td>
-			</tr>
-			<tr>
-				<th>조회수</th>
-				<td>{{info.hits}}</td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td>
+		<div class="boardViewTable">
+			<div class="titleBox">
+				<div class="title">{{info.title}}</div>
+				<div class="writerDateHits">
+					작성자 : {{info.nickName}}
+					<div>작성날짜 : {{info.cDateTime}} 조회수 : {{info.hits}}</div>
+				</div>
+			</div>
+			<div class="contentsBox">
+				<div>
 					<template v-if="kind == '2'">
 						<template v-for="item in fileList">
 							<template v-if="item.kind == 2">
 								<img :src="item.path" alt="">
 							</template>
 						</template>
-					</template> <span v-html="info.contents"> {{info.contents}} </span>
-				</td>
-			</tr>
-		</table>
+					</template>
+					<span v-html="info.contents"> {{info.contents}} </span>
+				</div>
+			</div>
+		</div>
 		<div class="buttons" v-if="info.userId == userId || userType == 'A'">
 			<button @click="fnDelete">삭제</button>
 			<button @click="fnEdit">수정</button>
@@ -203,7 +174,7 @@ a {
 					kind : self.kind
 				});
 			}
-		
+
 		},
 		created : function() {
 			var self = this;
