@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2> 찜 목록</h2>
+                        <h2> 찜 목록asdsasd</h2>
                         <div class="breadcrumb__option">
                             <a href="javascript:;" @click="fnHome">Home</a>
                             <span>찜목록</span>
