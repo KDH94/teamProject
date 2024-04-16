@@ -106,7 +106,7 @@
 	
 	.required-input {
 		text-align: right;
-		font-size: 10px;
+		font-size: 12px;
 	}
 	
 	.join-button {
@@ -209,7 +209,7 @@
                     <div class="join-divide margin-bottom-10px"></div>
 					<input type="text" class="join-input" v-model="addrDetail2" placeholder="참고항목" readonly>
 					<div style="margin-bottom: 10px;"></div>
-					<div style="padding-left: 110px; font-size: 10px;">※ 현재 주소는 집 주소로 기본 저장되며, 후에 마이페이지에서 수정이 가능합니다.</div>
+					<div style="padding-left: 110px; font-size: 12px;">※ 현재 주소는 집 주소로 기본 저장되며, 후에 마이페이지에서 수정이 가능합니다.</div>
                 </li>
                 <li>
                     <div class="join-divide">핸드폰 번호<span class="required-star">*</span></div>
