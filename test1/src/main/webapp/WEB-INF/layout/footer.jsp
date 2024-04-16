@@ -9,7 +9,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>푸터</title>
+<style type="text/css">
+@font-face {
+	font-family: 'KOTRA_GOTHIC';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/KOTRA_GOTHIC.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
+* {
+	font-family: 'KOTRA_GOTHIC';
+}
+</style>
 </head>
 <body>
 	<!-- Footer Section Begin -->
@@ -23,9 +36,22 @@
 								alt="메인 로고" style="width: 150px;"></a>
 						</div>
 						<ul>
-							<li style="font-weight: bold;">고객 전화 문의</li>
-							<li>1644-1107</li>
+							<li style="font-weight: bold;">에코마켓 고객센터<span
+								style="margin-left: 5px;">1644-1107</span></li>
 							<li>월-금 오전 10시 - 오후 10시</li>
+							<li>
+								<div class="footer__widget">
+									<div class="footer__widget__social">
+										<a href="https://www.facebook.com/"><i
+											class="fa fa-facebook"></i></a> <a
+											href="https://www.instagram.com/"><i
+											class="fa fa-instagram"></i></a> <a href="https://twitter.com/"><i
+											class="fa fa-twitter"></i></a> <a
+											href="https://www.pinterest.co.kr/"><i
+											class="fa fa-pinterest"></i></a>
+									</div>
+								</div>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -45,24 +71,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-12">
-					<div class="footer__widget">
-						<h6>뉴스레터 구독해주세요</h6>
-						<p>최신 상점과 특별 제안에 대한 이메일 업데이트를 받으세요.</p>
-						<form action="javascript:;">
-							<input type="text" placeholder="이메일을 입력해주세요">
-							<button type="submit" class="site-btn">구독하기</button>
-						</form>
-						<div class="footer__widget__social">
-							<a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-							<a href="https://www.instagram.com/"><i
-								class="fa fa-instagram"></i></a> <a href="https://twitter.com/"><i
-								class="fa fa-twitter"></i></a> <a
-								href="https://www.pinterest.co.kr/"><i
-								class="fa fa-pinterest"></i></a>
-						</div>
-					</div>
-				</div>
+				<div class="col-lg-4 col-md-12"></div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
@@ -80,9 +89,13 @@
 							<img src="img/payment-item.png" alt="">
 						</div>
 					</div>
+						<div>
+							<img src="img/">
+						</div>
 				</div>
 			</div>
 		</div>
+	</footer>
 </body>
 <script type="text/javascript">
 	
