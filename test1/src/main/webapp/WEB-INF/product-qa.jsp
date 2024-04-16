@@ -148,6 +148,7 @@
 		                success: function(data) {
 		                	if(data.result == "success"){
 		                		alert("문의가 등록됐습니다.");
+		                		window.close();
 		                	} else{
 		                		alert("오류가 발생했습니다 다시 등록해주세요.");
 		                	} 

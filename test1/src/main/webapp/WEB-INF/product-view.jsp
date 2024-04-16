@@ -198,6 +198,9 @@
         margin-bottom: 200px;
         color: #333;
     }
+    
+    .product-reviews h4{
+    }
 
     .review-item {
         display: block;
@@ -211,6 +214,11 @@
         flex: 3; 
         text-align: left;
         border-bottom: 1px solid #d4d4d4;
+    }
+    
+   	.review-name {
+       
+        text-align: left;
     }
     
     
@@ -304,9 +312,12 @@
     }
     .product-details img{
     	width: 800px;
-    	height: 750px;
+    	height: auto;
     }
-    
+    .star-rating {
+	    font-family: 'Font Awesome 5 Free';
+	    font-weight: 900;
+	} 
 </style>
 <body>
 <!-- Header Section -->
@@ -390,7 +401,10 @@
 	                <div class="review-item" v-for="item in review">
 	                    <div class="review-content">
 	                        <!-- 작성자가 남긴 리뷰 -->
-	                        <p style="color: black;">{{item.hideName}}</p>
+	                        <div class="review-name" style="display: flex; align-items: center;">
+						        <p style="color: black; margin-right: 10px;">{{ item.hideName }}</p>
+						        <p class="star-rating" style="color: goldenrod; margin-left: 10px;">{{ createStars(item.score) }}</p>
+						    </div>
 	                        <p style="font-size: 15px;">{{item.rContents}}</p>
 	                        <P style="font-size: 14px;">{{item.uDateTimeNew}}</P>
 	                    </div>
@@ -661,6 +675,18 @@ var app = new Vue({
         DiscountPrice: function(price, sRate) {
             const disPrice = price * ((100 - sRate) / 100);
             return disPrice.toLocaleString('ko-KR');
+        },
+        
+        createStars(score) {
+            let stars = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < score) {
+                    stars += '★'; // 채워진 별
+                } else {
+                    stars += '☆'; // 비어있는 별
+                }
+            }
+            return stars;
         }
         
     }
