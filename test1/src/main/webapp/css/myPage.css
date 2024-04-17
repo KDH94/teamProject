@@ -55,7 +55,7 @@ button:hover {
 
 .user-Area{
     height: 300px; 
-    border-top: 1px solid rgb(83, 83, 83);
+    border-top: 1px solid rgb(120, 120, 120);;
     border-bottom: none;
     /* overflow-y: scroll;  */
     padding: 10px;
@@ -68,7 +68,18 @@ button:hover {
 }
 
 .user-Area li {
-    margin-bottom: 10px; /* 각 항목 사이의 간격 설정 */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+    font-size:15px;
+}
+
+.user-Area li span {
+    margin-right: 10px; 
+    display: inline-block; 
+    min-width: 120px;
+    font-weight:bold;
+    font-size:15px;
 }
 
 .point-Area {
@@ -112,10 +123,32 @@ button:hover {
     height: auto; 
    /*  overflow-y: scroll; */
     padding: 10px;
+    margin-top : 17px;
+    border-top : 1px solid rgb(120, 120, 120);
+}
+
+.default-addr-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%; 
+}
+
+.basicAddr {
+    color: blue; 
+    font-weight: bold;
+    font-size:14px; 
+}
+
+.addressName {
+    text-align: right;
+    font-style: italic;
+    color: black;
+    font-size:15px; 
 }
 
 .addr-InfoStyle {
-    border: 1px solid #ccc; 
+    border-bottom: 1px solid #ccc;  
     padding-left: 10px; 
     padding-right:10px; 
     padding-bottom: 10px; 
@@ -123,10 +156,26 @@ button:hover {
     margin: 0px auto;
 }
 
+.addrName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    margin-top: 5px;
+    margin-bottom: 5px; 
+    font-size: 14px;
+    color: rgb(150, 150, 150);
+    
+}
+
 .addr-addArea {
     height: 45px; 
     padding: 10px; display: flex; 
     justify-content: space-between;
+}
+
+.significant{
+	font-size: 15px;
 }
 
 .recipe-Area {

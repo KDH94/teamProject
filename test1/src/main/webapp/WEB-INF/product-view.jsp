@@ -104,26 +104,25 @@
 
     .product-description {
         max-width: 1200px; 
-        margin: 20px auto; /* 상단 컨테이너와의 간격을 주기 위해 마진 사용 */
+        margin: 20px auto;
         padding: 15px; 
-        background-color: #ffffff; /* 배경색 설정 */
-        border: 1px solid #fafafa; /* 경계선 설정 */
+        background-color: #ffffff; 
+        border: 1px solid #fafafa;
         border-radius: 8px; 
-        text-align: center;
-        
+        text-align: center;       
     }
 
     .product-description img {
-        display: block; /* 이미지를 블록 요소로 만듦 */
-        margin: 0 auto; /* 상하 마진을 0으로, 좌우 마진을 자동으로 설정하여 중앙 정렬 */
-        max-width: 100%; /* 이미지가 컨테이너를 벗어나지 않도록 최대 너비 설정 */
-        height: auto; /* 이미지 비율 유지 */
+        display: block;
+        margin: 0 auto; 
+        max-width: 100%; 
+        height: auto; 
     }
 
     .product-description h2 {
-        margin: 0 0 20px; /* 제목 아래 여백 */
-        color: #333; /* 제목 색상 */
-        font-size: 24px; /* 제목 폰트 크기 */
+        margin: 0 0 20px; 
+        color: #333; 
+        font-size: 24px; 
     }
 
     .product-description p {
@@ -143,17 +142,16 @@
     }
 
     .description-tabs {
-        text-align: center;
-        margin-bottom: 20px;
-        display: flex; /* Flex 컨테이너로 설정 */
-        justify-content: center; /* 가운데 정렬 */
-        gap: 0; /* 버튼 사이의 간격 제거 */
-        
-        position: sticky;
-	    top: 0; 
-	    background-color: #fff; 
-	    z-index: 1000; 
-	 
+      	text-align: center;
+        margin-top: 100px;
+        display: flex; 
+        justify-content: center; 
+          
+	    position: sticky;
+	    top: 50px;
+	    background-color: #fff;
+	    z-index: 1000;
+	    width: 100%;
     }
 
     .tab-button {
