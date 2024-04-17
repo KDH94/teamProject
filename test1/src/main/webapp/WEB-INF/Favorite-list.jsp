@@ -66,12 +66,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                            	<td>찜목록에 아무런 상품이 담겨있지 않아요</td>
-                            	<td></td>
-                            	<td></td>
-                            	<td></td>
-                            	<td></td>
+                            <tr v-if="list.length ==0">
+                            	<td colspan="5">찜목록에 아무런 상품이 담겨있지 않아요</td>
+                            	
                             </tr>
                             </tbody>
                             <tbody v-if="list.length >=1">

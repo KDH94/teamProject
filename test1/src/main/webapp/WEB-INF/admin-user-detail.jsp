@@ -10,15 +10,51 @@
 </head>
 <style>
  #app {
-            text-align: center; /* 가운데 정렬 */
-            border: 2px solid #ccc; /* 박스 모양 */
-            padding: 20px; /* 내부 여백 */
-            width: 400px; /* 가로 너비 */
-            margin: 0 auto; /* 화면 중앙에 정렬 */
-        }
-        #app div {
-            margin-bottom: 10px; /* 각 요소 아래 여백 */
-        }
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 400px;
+    margin: 0 auto;
+}
+
+/* 각 항목의 스타일 */
+#app > div {
+    margin-bottom: 10px;
+}
+
+/* 버튼 스타일 */
+#app button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#app button:hover {
+    background-color: #0056b3;
+}
+
+/* 셀렉트 박스 스타일 */
+#app select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 선택된 옵션의 스타일 */
+#app select option:checked {
+    font-weight: bold;
+}
+
+/* 숨겨진 버튼 스타일 */
+#app button.v-if {
+    display: none;
+}
 </style>
 <body>
 	<div id="app">

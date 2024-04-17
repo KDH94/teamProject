@@ -45,6 +45,47 @@
 	background-color: rgb(247, 187, 7);
 	color: #fff;
 	text-align: center;
+	height: 20px;
+}
+.myContents tr:hover {
+    background-color: #ccc; /* 회색정도의 어두운 색감 */
+}
+.myContents button,
+.myContents a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    color: #fff; /* 버튼 텍스트 색상 */
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.myContents button:hover,
+.myContents a:hover {
+    background-color: #999; /* 마우스를 올렸을 때 버튼 배경색 변경 */
+}
+.myContents select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 선택된 옵션의 스타일 */
+.myContents select option:checked {
+    font-weight: bold;
+}
+.select-tab{
+background-color: #999;
+}
+.tab{
+ background-color: #ccc;
+}
+
+
+.pagingBtn{
+	margin-top: 15px; 
 }
 </style>
 <body>
@@ -62,7 +103,7 @@
 			<form @submit.prevent="handleFormSubmit"
 				class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 				<div class="input-group">
-					<input @keyup.enter="fnMoveUserDetail" class="form-control"
+					<input @keyup.enter="fnMoveUserDetailHeader" class="form-control"
 						type="text" placeholder="유저 아이디로 검색..." aria-label="유저 아이디로 검색..."
 						aria-describedby="btnNavbarSearch" v-model="keywordId" autofocus />
 					<button class="btn btn-primary" id="btnNavbarSearch" type="button"
@@ -220,7 +261,7 @@
 				<main>
 					<div class="container-fluid px-4">
 
-<div class="card mb-4">
+					<div class="card mb-4">
 							<div class="card-header">
 								<i class="fas fa-table me-1"></i> 가입 유저 리스트
 							</div>
@@ -231,30 +272,29 @@
 								<option value="10">10개</option>
 								<option value="20">20개</option>
 								<option value="30">30개</option>
-							</select> <select v-model="keywordType">
+							</select> <select v-model="keywordType" @click="searchType(keywordType)">
 								<option value="id">아이디</option>
 								<option value="name">닉네임</option>
-							</select> <input type="text" v-model="keyword" @keyup="fnList()">
-							<button @click="fnList()">검색</button>
+							</select> <input type="text" v-model="keyword" @keyup="fnList()" :placeholder="placeType">
+							
 							<table>
-
 								<tr>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>생년 월 일</th>
-									<th>성별</th>
-									<th>이메일</th>
-									<th>닉네임</th>
-									<th>휴대폰번호</th>
-									<th>로그인 실패</th>
-									<th>유저 등급</th>
-									<th>유저 타입</th>
-									<th>총 결제금액</th>
-									<th>포인트</th>
-									<th>상세보기</th>
+									<th width="8%">아이디</th>
+									<th width="6%">이름</th>
+									<th width="7%">생년 월 일</th>
+									<th width="5%">성별</th>
+									<th width="10%">이메일</th>
+									<th width="10%">닉네임</th>
+									<th width="15%">휴대폰번호</th>
+									<th width="9%">로그인 실패</th>
+									<th width="4%">유저 등급</th>
+									<th width="8%">유저 타입</th>
+									<th width="10%">총 결제금액</th>
+									<th width="10%">포인트</th>
+									<th width="5%">상세보기</th>
 								</tr>
 								<tr v-if="list.length ==0">
-									<td colspan="11">검색결과 없슴</td>
+									<td colspan="13">검색결과가 없습니다.</td>
 								</tr>
 								<tr v-for="item in list" v-if="list.length !=0">
 									<td>{{item.userId}}</td>
@@ -273,23 +313,26 @@
 
 									<td>{{item.totalPay.toLocaleString('ko-KR')}}원</td>
 									<td>{{item.point.toLocaleString('ko-KR')}}포인트</td>
-									<td><button @click="fnMoveUserDetail(item.userId)">상세보기</button></td>
+									<td><button @click="fnMoveUserDetail(item.userId)"><i class="bi bi-three-dots"></i></button></td>
 								</tr>
 
 
 
 							</table>
-							<a href="javascript:;" @click="fnPageMove(1)">◀</a>
-							<template v-for="n in pageCount">
+						
+							<div class="pagingBtn">
+							<a href="javascript:;" @click="fnPageMove(1)" class="tab">◀</a>
+							<template v-for="n in pageCount" >
 
 								<a href="javascript:;" @click="fnPageList(n)"
-									style="color: red;"
-									:class="selectPage == n ? 'select-tab' : 'tab'" v-if>
+								:class="selectPage == n ? 'select-tab' : 'tab'"
+									>
 									({{n}}) </a>
 
 							</template>
-							<a href="javascript:;" @click="fnPageMove(2)"> ▶</a> <a
-								href="javascript:;" @click="fnPageMove(3)"> ≥</a>
+							<a href="javascript:;" @click="fnPageMove(2)" class="tab"> ▶</a> <a
+								href="javascript:;" @click="fnPageMove(3)" class="tab"> ≥</a>
+								</div>
 							</div></div>
 						</div>
 					</div>
@@ -315,10 +358,22 @@
 			order : "DESC",
 			keywordType : "id",
 			keywordId : "",
-			userId : "${userId}"
+			placeType : "",
+			userId : "${userId}",
+			
 		},
 		methods : {
-
+			
+			searchType : function(type){
+				var self=this;
+				self.selectType = type;
+				if(self.selectType == "id"){
+					self.placeType = "아이디로 검색";
+				}
+				if(self.selectType =="name"){
+					self.placeType = "닉네임으로 검색";
+				}
+			},
 			fnList : function() {
 				var self = this;
 
@@ -382,7 +437,7 @@
 				});
 
 			},
-			fnMoveUserDetail : function() {
+			fnMoveUserDetailHeader : function() {
 				var self = this;
 				var url = "adminUserDetail.do?userId=" + self.keywordId;
 
@@ -564,6 +619,7 @@
 		created : function() {
 			var self = this;
 			self.fnList();
+			self.searchType('id');
 
 		}
 	});
