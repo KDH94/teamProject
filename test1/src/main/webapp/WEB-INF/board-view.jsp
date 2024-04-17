@@ -55,19 +55,20 @@ a {
     padding: 20px;
     background-color: #f0f0f0;
     border-radius: 8px 8px 0 0; /* 상단만 둥글게 */
+    
 }
 
 .contentsBox {
     width: 100%;
-    height: 
+    height: auto;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 0 0 8px 8px; /* 하단만 둥글게 */
     border: 1px solid #ddd; /* 테두리 추가 */
     margin-top: -1px; /* 제목과 내용 사이 간격 조정 */
+    min-height: 300px;
+    text-align: center;
 }
-
-
 
 .title {
 	font-size: 22px;
@@ -111,7 +112,6 @@ a {
 			<button @click="fnEdit">수정</button>
 			<button @click="fnList(kind)">목록으로 가기</button>
 		</div>
-
 	</div>
 	<%@ include file="layout/footer.jsp"%>
 </body>
