@@ -333,13 +333,16 @@
                 <div class="swiper">
 					<div class="swiper-wrapper" >
 						<div class="swiper-slide" style="border-radius: 10px;">
-							<img src="img/banner/banner-1.jpg">
+							<img src="img/hero/banner-0.png">
 						</div>
 						<div class="swiper-slide" style="border-radius: 10px;" >
-							<img src="img/banner/banner-2.jpg">
+							<img src="img/hero/banner-1.png">
 						</div>
 						<div class="swiper-slide" style="border-radius: 10px;" >
-							<img src="/img/hero/banner.jpg">
+							<img src="/img/hero/banner-2.png">
+						</div>
+						<div class="swiper-slide" style="border-radius: 10px;" >
+							<img src="/img/hero/banner-3.png">
 						</div>
 					</div>
 				</div>
@@ -634,13 +637,16 @@
                     setTimeout(() => {
                     	switch (activeIndex) {
 	                        case 0:
-	                            document.querySelector('.hero').style.backgroundColor = 'rgb(184 217 212)';
+	                            document.querySelector('.hero').style.backgroundColor = 'rgb(250 197 19)';
 	                            break;
 	                        case 1:
-	                            document.querySelector('.hero').style.backgroundColor = 'rgb(229 221 202)';
+	                            document.querySelector('.hero').style.backgroundColor = 'rgb(176 225 24)';
 	                            break;
 	                        case 2:
-	                            document.querySelector('.hero').style.backgroundColor = 'rgb(237 229 229)';
+	                            document.querySelector('.hero').style.backgroundColor = 'rgb(204 234 229)';
+	                            break;
+	                        case 3:
+	                            document.querySelector('.hero').style.backgroundColor = 'rgb(243 230 198)';
 	                            break;
                     	}
                     }, 150);
