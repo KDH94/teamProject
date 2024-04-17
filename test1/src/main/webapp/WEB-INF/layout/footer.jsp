@@ -70,9 +70,9 @@
 						<div style="font-size: 18px; font-weight: bold;">사이트 정보</div>
 						<ul>
 							<li><a href="/Terms-Conditions.do" target="_blank"
-								onclick="window.open('/Terms-Conditions.do', 'TermsPopup', 'width=500, height=900'); return false;">이용약관</a></li>
+								onclick="window.open('/Terms-Conditions.do', 'TermsPopup', 'width=526, height=1004'); return false;">이용약관</a></li>
 							<li><a href="/Privacy-Policy.do" target="_blank"
-								onclick="window.open('/Privacy-Policy.do', 'TermsPopup', 'width=500, height=900'); return false;">개인정보처리방침</a></li>
+								onclick="window.open('/Privacy-Policy.do', 'TermsPopup', 'width=526, height=1004'); return false;">개인정보처리방침</a></li>
 							<li><a href="javascript:;">이용안내</a></li>
 							<li><a href="javascript:;">회사정보</a></li>
 							<li><a href="javascript:;">사업자등록번호</a></li>
