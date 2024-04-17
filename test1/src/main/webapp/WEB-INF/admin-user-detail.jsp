@@ -132,7 +132,7 @@
 	    data: {
 	    	userId :"${map.userId}",
 	    	userInfo : {},
-	    	popupFlg : "${map.popupFlg}"
+	    	popupFlg : "yes"
 	    	
 	    }
 	    , methods: {

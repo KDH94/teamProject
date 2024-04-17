@@ -635,12 +635,15 @@
                     	switch (activeIndex) {
 	                        case 0:
 	                            document.querySelector('.hero').style.backgroundColor = 'rgb(184 217 212)';
+	                            
 	                            break;
 	                        case 1:
 	                            document.querySelector('.hero').style.backgroundColor = 'rgb(229 221 202)';
+	                            
 	                            break;
 	                        case 2:
 	                            document.querySelector('.hero').style.backgroundColor = 'rgb(237 229 229)';
+	                            
 	                            break;
                     	}
                     }, 150);
