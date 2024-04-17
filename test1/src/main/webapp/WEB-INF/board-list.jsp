@@ -80,8 +80,16 @@
 	display: inline-block;
 	margin-right: 10px;
 	font-size: 30px;
+	transition: font-size 0.3s;
 }
 
+.temp ul:hover {
+	font-size: 40px;
+}
+
+.temp ul:active {
+	font-size: 35px;
+}
 
 .temp td {
 	height: 70px;
@@ -93,12 +101,12 @@
 
 .pagination {
 	display: flex;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 }
 
 .pagination a {
-    margin: 0 5px; /* 페이지 링크 간격 조절 */
+	margin: 0 5px; /* 페이지 링크 간격 조절 */
 }
 
 .page-num {
@@ -184,8 +192,7 @@
 				<select v-model="keywordType">
 					<option value="title">제목</option>
 					<option value="user">작성자</option>
-				</select> 
-				검색: <input type="text" v-model="keyword"
+				</select> 검색: <input type="text" v-model="keyword"
 					@keyup.enter="fnList(kind)">
 				<button @click="fnList(kind)">검색</button>
 			</div>
@@ -403,6 +410,9 @@
         },
         created: function() {
         	var self = this;
+        	 if (!self.keywordType) {
+        	        self.keywordType = "title";
+        	    }
             self.fnList(self.kind);
             self.fnFileList();
         },
