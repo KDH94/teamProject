@@ -11,9 +11,6 @@
 	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Gaegu&family=IBM+Plex+Sans+KR&family=Orbit&family=Sunflower:wght@300&display=swap"
-	rel="stylesheet">
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -156,18 +153,6 @@
 	margin: 0 100px;
 }
 
-/* .accordion_body {
-		display: none;
-	}
-	
-	.accordion_container.active .accordion_body {
-		display: block;
-	}
-	
-	.accordion_body ul {
-		list-style-type: none;
-		padding: 0;
-	} */
 .point {
 	font-size: 20px;
 }
@@ -194,39 +179,6 @@
 						class="tab-button">{{item.name}}
 					</ul>
 				</li>
-				<!--<ul class="horizontal-list">
-	 				<li class="review_event_item">
-						<div class="item_icon">
-							<i class="fas fa-clipboard" style="font-size: 50px;"></i>
-						</div>
-						<p class="large_txt" style="font-family: 'Orbit', sans-serif;">일반
-							리뷰</p>
-						<div class="point_txt">
-							<span class="point">500P 적립</span>
-						</div>
-					</li> 
-					<li class="review_event_item">
-						<div class="item_icon">
-							<i class="fas fa-camera-retro" style="font-size: 50px;"></i>
-						</div>
-						<p class="large_txt" style="font-family: 'Orbit', sans-serif;">포토
-							리뷰</p>
-						<div class="point_txt">
-							<span class="point">1000P 적립</span>
-
-						</div>
-					</li>
-					<li class="review_event_item">
-						<div class="item_icon">
-							<i class="fas fa-thumbs-up" style="font-size: 50px;"></i>
-						</div>
-						<p class="large_txt" style="font-family: 'Orbit', sans-serif;">베스트
-							리뷰어</p>
-						<div class="point_txt">
-							<span class="point">5000P 적립</span>
-						</div>
-					</li>
-				</ul>-->
 			</div>
 			<div>
 				<select v-model="keywordType">
