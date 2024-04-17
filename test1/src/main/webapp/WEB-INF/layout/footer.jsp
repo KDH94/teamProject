@@ -8,6 +8,7 @@
 <meta name="keywords" content="Ogani, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="js/jquery.js"></script>
 <title>푸터</title>
 <style type="text/css">
 @font-face {
@@ -21,6 +22,15 @@
 
 * {
 	font-family: 'KOTRA_GOTHIC';
+}
+
+.upArrow {
+	width: 50px;
+	position: fixed;
+	bottom: 30px;
+	right: 60px;
+	cursor: pointer;
+	display: none;
 }
 </style>
 </head>
@@ -90,7 +100,7 @@
 								<!-- <script>document.write(new Date().getFullYear());</script> -->
 								<%=new java.util.Date().toLocaleString().substring(0, 4)%>
 								All rights reserved | <i class="fa fa-heart" aria-hidden="true"></i>
-								by <a href="javascript:;">에코 마켓</a>
+								by <a href="javascript:;">에코마켓</a>
 							</p>
 						</div>
 						<div class="footer__copyright__payment">
@@ -101,9 +111,23 @@
 				</div>
 			</div>
 		</div>
+		<div><img src="img/logo/upArrow.png" alt="to up scroll" class="upArrow" id="scrollToTop"></div>
 	</footer>
 </body>
 <script type="text/javascript">
-	
+$(document).ready(function() {
+    $(window).scroll(function() {
+        if ($(this).scrollTop() === 0) {
+            $('.upArrow').fadeOut('fast');
+        } else {
+            $('.upArrow').fadeIn('fast');
+        }
+    });
+
+    $('#scrollToTop').click(function() {
+        $('html, body').css('scroll-behavior', 'auto');
+        $('html, body').animate({scrollTop: 0}, 'slow');
+    });
+});
 </script>
 </html>
