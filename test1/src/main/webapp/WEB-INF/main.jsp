@@ -317,29 +317,20 @@
 	<div id="appMain">
 	    <!-- Hero Section Begin -->
 	    <section class="hero" id="HeaderAllTab">
-	    	<div class="hero__search">
-               <div class="hero__search__form">
-                   <form action="javascript:;">
-                       <div class="hero__search__categories">
-                           전체 검색
-                           <span class="arrow_carrot-right"></span>
-                       </div>
-                       <input type="text" placeholder="검색할 상품명을 입력해 주세요" v-model="keyword" @keyup.enter="fnSearchList('')">
-                       <button type="submit" class="site-btn" @click="fnSearchList('')">검색</button>
-                   </form>
-               </div>
-               <div class="hero__search__phone">
-                   <div class="hero__search__phone__icon">
-                       <i class="fa fa-phone"></i>
-                   </div>
-                   <div class="hero__search__phone__text">
-                       <h5>+1111-0000</h5>
-                       <span>고객센터</span>
-                   </div>
-               </div>
-            </div>
+		    <div class="hero__search">
+	           <div class="hero__search__form">
+	               <form action="javascript:;">
+	                   <div class="hero__search__categories">
+	                       전체 검색
+	                       <span class="arrow_carrot-right"></span>
+	                   </div>
+	                   <input type="text" placeholder="검색할 상품명을 입력해 주세요" v-model="keyword" @keyup.enter="fnSearchList('')">
+	                   <button type="submit" class="site-btn" @click="fnSearchList('')">검색</button>
+	               </form>
+	           </div>
+	        </div>
 	        <div class="container">
-                   <div class="swiper">
+                <div class="swiper">
 					<div class="swiper-wrapper" >
 						<div class="swiper-slide" style="border-radius: 10px;">
 							<img src="img/banner/banner-1.jpg">
