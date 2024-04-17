@@ -237,71 +237,7 @@
 					</li>
 				</ul>
 
-				<!--		<div class="accordion_container">
-					<div class="accordion_header">
-						<a href="javascript:;" @click="fnReview()" style="width: 250px;">리뷰 가이드 보기</a>					
-					</div>
-	 				<div class="accordion_body">
-						<div id="r_policy_dt" style="overflow: hidden; display: block;">
-							<div class="caution_box">
-								<span class="ding"><i class="fas fa-star"
-									style="font-size: 15px;"></i></span> <span class="ttl large_txt">꼭
-									알아두세요<i class="fas fa-star" style="font-size: 15px;"></i>
-								</span>
-								<div class="lst_type dot">
-									<ul class="dot_style">
-										<li class="normal_txt">리뷰 작성은 에코 마켓 회원, 실 구매자만 가능합니다.
-											(네이버페이 구매 비회원은 리뷰작성가능)</li>
-										<li class="normal_txt">배송완료 후 30일 이내 작성된 리뷰만 포인트 지급이 되는점
-											유의해주세요.</li>
-										<li class="normal_txt">본인이 작성하지 않은 리뷰(타 사이트 포함)의 무단전제 또는
-											운영취지에 어긋나는 게시물은 별도의 통보 없이 삭제 됩니다.</li>
-										<li class="normal_txt">리뷰는 내용의 충실성, 등록된 이미지에 대한 평가를 통해
-											운영자가 승인한 게시물에 대해서만 게시 및 포인트가 적립됩니다.</li>
-										<li class="normal_txt">게시물이 타인의 저작권 및 초상권을 침해할 경우 이와 관련된
-											법적 책임은 게시물을 작성한 회원님에게 있습니다.</li>
-										<li class="normal_txt">작성 리뷰는 별도의 공지 없이 에코 마켓의 마케팅 채널에 활용될
-											수 있습니다.</li>
-									</ul>
-								</div>
-							</div>
-							<div class="caution_box">
-								<span class="ding">X</span> <span class="ttl large_txt">공개가
-									보류될 수 있는 리뷰</span>
-								<div class="lst_type dot">
-									<ul class="dot_style">
-										<li class="normal_txt">실제 사용에 대해서는 알 수 없는 상품 사진만 올린 경우
-											(택배샷포함)</li>
-										<li class="normal_txt">제품에 대한 리뷰내용이 아닐 시 (배송, 택배박스, 파손, 누락
-											등)</li>
-										<li class="normal_txt">타 블로그에 포스팅한 리뷰에 대해서 이미지와 텍스트를 이미지로
-											합쳐서 캡쳐한 걸 업로드시</li>
-										<li class="normal_txt">이미지가 보이지 않거나 해상도가 현저히 떨어지는 경우 (엑박이
-											존재하는 경우, 네이버 블로그에서 복사 &amp; 붙여넣기 한 경우)</li>
-									</ul>
-								</div>
-							</div>
-							<div class="caution_box">
-								<span class="ding">√</span> <span class="ttl large_txt">예시를
-									통해 적립금 지급 방법을 확인해보세요!</span>
-								<div class="lst_type dot">
-									<ul class="dot_style">
-										<li class="normal_txt">[포토 후기]</li>
-										<li class="normal_txt">음식을 요리하는 과정을 담고 있는 사진 또는 음식이 담긴 사진과
-											함께 리뷰 등록 → <b>1,000원 적립</b>
-										</li>
-										<li class="normal_txt">샐러드와 같은 야채 제품이라면 야채의 싱싱함을 표현할 수 있는
-											장면을 사진과 함께 리뷰 등록 → <b>1,000원 적립</b>
-										</li>
-										<li class="normal_txt">직접 요리해서 드시는 사진이나 실생활에서 식사하는 사진과 함께
-											리뷰 등록 → <b>1,000원 적립</b>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div> 
-				</div> -->
+				
 			</div>
 			<div>
 				<select v-model="keywordType">
@@ -358,7 +294,7 @@
 							</div>
 							<h5>
 								<a @click="fnView(item.boardNo, kind)" href="javascript:;"
-									style="font-size: 35px; color: #2C9D59; font-family: 'Orbit', sans-serif;">
+									style="font-size: 35px; color: #2C9D59;">
 									{{truncateText(item.title, 10)}}</a>
 							</h5>
 							<p>

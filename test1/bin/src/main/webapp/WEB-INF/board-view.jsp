@@ -20,29 +20,20 @@
 <title>첫번째 페이지</title>
 </head>
 <style>
-div#app {
-	text-align: center;
-}
-
-body, button {
-	font-family: "Gaegu", sans-serif;
-}
-
-table {
+.boardViewTable {
 	border-collapse: collapse;
-	width: 80%;
+	width: 60%;
 	margin: 10px auto;
 }
 
 th, td {
-	border-top: none;
-	border-bottom: 1px solid #ddd;
+	/* border-top: none;
+	border-bottom: 1px solid #ddd; */
 	border-right: none;
 	padding: 8px;
 	text-align: center;
 	font-size: 14px;
-	font-family: "Orbit", sans-serif;
-	font-weight: 400;
+	font-weight: 400px;
 	cursor: default;
 }
 
@@ -50,10 +41,10 @@ tr:hover {
 	background-color: #f5f5f5;
 }
 
-tr {
+/* tr {
 	border: top 1px solid black;
 	border-bottom: 1px solid black;
-}
+} */
 
 button {
 	padding: 10px 20px;
@@ -85,14 +76,13 @@ a {
 .buttons {
     text-align: center;
     margin: 30px;
-    font-family: "Orbit", sans-serif;    
 }
 
 </style>
 <body>
 	<%@ include file="layout/header.jsp"%>
 	<div id="app">
-		<table style="width: 60%;">
+		<table class="boardViewTable">
 			<tr>
 				<th width="20%">제목</th>
 				<td width="80%">{{info.title}}</td>
@@ -104,10 +94,6 @@ a {
 			<tr>
 				<th>작성날짜</th>
 				<td>{{info.cDateTime}}</td>
-			</tr>
-			<tr>
-				<th>수정날짜</th>
-				<td>{{info.uDateTime}}</td>
 			</tr>
 			<tr>
 				<th>조회수</th>
@@ -122,7 +108,8 @@ a {
 								<img :src="item.path" alt="">
 							</template>
 						</template>
-					</template> <span v-html="info.contents"> {{info.contents}} </span>
+					</template> 
+					<span v-html="info.contents"> {{info.contents}} </span>
 				</td>
 			</tr>
 		</table>
