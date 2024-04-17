@@ -19,18 +19,12 @@
 button {
     margin-top: 10px;
     padding: 10px 20px;
-    
     cursor: pointer;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     transition: background-color 0.3s;
-}
-
-body {
-    font-family: "Orbit", sans-serif;
-    
 }
 
 li, ul {
