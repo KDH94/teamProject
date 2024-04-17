@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2> 찜 목록asdsasd</h2>
+                        <h2> 찜 목록</h2>
                         <div class="breadcrumb__option">
                             <a href="javascript:;" @click="fnHome">Home</a>
                             <span>찜목록</span>
@@ -55,20 +55,30 @@
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
+                        
                             <thead>
                                 <tr>
                                     <th class="shoping__product">제품</th>
-                                    <th>가격</th>
-                                    <th>적립금</th>
-                                    <th>총 금액</th>
-                                    <th></th>
+                                    <th width="15%">가격</th>
+                                    <th width="10%">적립금</th>
+                                    <th width="10%">총 금액</th>
+                                    <th width="5%"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <tr>
+                            	<td>찜목록에 아무런 상품이 담겨있지 않아요</td>
+                            	<td></td>
+                            	<td></td>
+                            	<td></td>
+                            	<td></td>
+                            </tr>
+                            </tbody>
+                            <tbody v-if="list.length >=1">
                                 <tr v-for="(item, index) in list">
                                     <td class="shoping__cart__item">
                                         <img :src="item.filePath + item.fileName" alt="" style="width: 150px; height: 150px;">
-                                        <a href="#">{{item.itemName}}</a>
+                                        <a href="#" @click="fnMoveProductView(item.itemNo)">{{item.itemName}}</a>
                                         <h5></h5>
                                     </td>
                                     <td class="shoping__cart__price">
@@ -82,13 +92,12 @@
                                     <td class="shoping__cart__total">
                                     <template v-if="item.sRate == 0">
                                     {{(item.price*item.selectcnt).toLocaleString('ko-KR')}}원
+                                    
                                     </template>
                                     <template v-if="item.sRate > 0">
                                     <p style="background-color: red; border-radius: 5px; color:white; width: 80px; height: 20px; padding: 0px; font-size: 15px; display: inline-block; margin-bottom: 0;">{{item.sRate}}%할인</p>
                                        <del>{{(item.price*item.selectcnt).toLocaleString('ko-KR')}}원</del>  {{(item.price*(100-item.sRate)/100*item.selectcnt).toLocaleString('ko-KR')}}원
                                     </template>
-                                    
-                                        
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close" @click="fnDelete(item.cartNo)"></span>
@@ -121,7 +130,7 @@
 	
 </div>
 	<!-- Js Plugins -->
-    <script src="../js/jquery-3.3.1.min.js"></script>
+    
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/jquery.nice-select.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
@@ -168,6 +177,10 @@ var app = new Vue({
                 }
             });
         },
+        fnMoveProductView :function(itemNo){
+        	var self = this;
+        	$.pageChange("/productView.do", {itemNo : itemNo , userId : self.userId});
+        },
         fnDelete :function(cartNo){
         	var self = this;
             var nparmap = {
@@ -185,7 +198,7 @@ var app = new Vue({
             });
         },
         fnProductList: function() {
-        	$.pageChange("/productList.do", {});
+        	$.pageChange("/productList.do", {userId : this.userId});
         	},
         fnHome: function() {
         	location.href="main.do";

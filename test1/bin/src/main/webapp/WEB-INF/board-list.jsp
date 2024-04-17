@@ -5,19 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/bootstrap-min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap"
-	rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Gaegu&family=IBM+Plex+Sans+KR&family=Orbit&family=Sunflower:wght@300&display=swap"
-	rel="stylesheet">
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <title>게시판 목록 페이지</title>
+
 <style>
 .temp div {
 	text-align: center;
@@ -36,7 +32,6 @@
 	padding: 8px;
 	text-align: center;
 	font-size: 14px;
-	font-family: "Orbit", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	cursor: default;
@@ -84,8 +79,16 @@
 	display: inline-block;
 	margin-right: 10px;
 	font-size: 30px;
+	transition: font-size 0.3s;
 }
 
+.temp ul:hover {
+	font-size: 40px;
+}
+
+.temp ul:active {
+	font-size: 35px;
+}
 
 .temp td {
 	height: 70px;
@@ -97,12 +100,12 @@
 
 .pagination {
 	display: flex;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 }
 
 .pagination a {
-    margin: 0 5px; /* 페이지 링크 간격 조절 */
+	margin: 0 5px; /* 페이지 링크 간격 조절 */
 }
 
 .page-num {
@@ -114,7 +117,6 @@
 	float: right;
 	margin-right: 190px;
 	font-size: 20px;
-	font-family: "Orbit", sans-serif;
 }
 
 .clear-both {
@@ -158,31 +160,13 @@
 	margin: 0 100px;
 }
 
-/* .accordion_body {
-		display: none;
-	}
-	
-	.accordion_container.active .accordion_body {
-		display: block;
-	}
-	
-	.accordion_body ul {
-		list-style-type: none;
-		padding: 0;
-	} */
 .point {
 	font-size: 20px;
-	font-family: "Orbit", sans-serif;
 }
 
 .select-tab {
 	color: green;
 	font-weight: bold;
-	font-family: "Orbit", sans-serif;
-}
-
-.keyword {
-	font-family: "Orbit", sans-serif;
 }
 
 .horizontal-list {
@@ -202,54 +186,15 @@
 						class="tab-button">{{item.name}}
 					</ul>
 				</li>
-				<ul class="horizontal-list">
-					<li class="review_event_item">
-						<div class="item_icon">
-							<i class="fas fa-clipboard" style="font-size: 50px;"></i>
-						</div>
-						<p class="large_txt" style="font-family: 'Orbit', sans-serif;">일반
-							리뷰</p>
-						<div class="point_txt">
-							<span class="point">500P 적립</span>
-						</div>
-					</li>
-					<li class="review_event_item">
-						<div class="item_icon">
-							<i class="fas fa-camera-retro" style="font-size: 50px;"></i>
-						</div>
-						<p class="large_txt" style="font-family: 'Orbit', sans-serif;">포토
-							리뷰</p>
-						<div class="point_txt">
-							<span class="point">1000P 적립</span>
-
-						</div>
-					</li>
-					<li class="review_event_item">
-						<div class="item_icon">
-							<i class="fas fa-thumbs-up" style="font-size: 50px;"></i>
-						</div>
-						<p class="large_txt" style="font-family: 'Orbit', sans-serif;">베스트
-							리뷰어</p>
-						<div class="point_txt">
-							<span class="point">5000P 적립</span>
-
-						</div>
-					</li>
-				</ul>
-
-				
 			</div>
 			<div>
 				<select v-model="keywordType">
 					<option value="title">제목</option>
 					<option value="user">작성자</option>
-				</select> 
-				검색: <input type="text" v-model="keyword"
+				</select> 검색: <input type="text" v-model="keyword"
 					@keyup.enter="fnList(kind)">
 				<button @click="fnList(kind)">검색</button>
 			</div>
-
-
 			<table v-if="kind==1">
 				<tr>
 					<th>번호</th>
@@ -294,7 +239,7 @@
 							</div>
 							<h5>
 								<a @click="fnView(item.boardNo, kind)" href="javascript:;"
-									style="font-size: 35px; color: #2C9D59;">
+									style="font-size: 35px; color: #2C9D59; font-family: 'Orbit', sans-serif;">
 									{{truncateText(item.title, 10)}}</a>
 							</h5>
 							<p>
@@ -464,6 +409,9 @@
         },
         created: function() {
         	var self = this;
+        	 if (!self.keywordType) {
+        	        self.keywordType = "title";
+        	    }
             self.fnList(self.kind);
             self.fnFileList();
         },

@@ -106,7 +106,7 @@
 	
 	.required-input {
 		text-align: right;
-		font-size: 10px;
+		font-size: 12px;
 	}
 	
 	.join-button {
@@ -125,6 +125,7 @@
 	
 	.text-center {
 		text-align: center;
+		margin-top: 20px;
 	}
 	
 	.margin-bottom-10px {
@@ -192,9 +193,9 @@
                 <li>
                     <div class="join-divide">성별<span class="required-star">*</span></div>
                     <span>
-                        <input type="radio" name="gender" value="남성" v-model="user.gender">남
-                        <input type="radio" name="gender" value="여성" v-model="user.gender">여
-                        <input type="radio" name="gender" value="기타" v-model="user.gender">기타
+                        <input type="radio" name="gender" value="남성" v-model="user.gender"> 남
+                        <input type="radio" name="gender" value="여성" v-model="user.gender"> 여
+                        <input type="radio" name="gender" value="기타" v-model="user.gender"> 기타
                     </span>
                 </li>
                 <li>
@@ -209,7 +210,7 @@
                     <div class="join-divide margin-bottom-10px"></div>
 					<input type="text" class="join-input" v-model="addrDetail2" placeholder="참고항목" readonly>
 					<div style="margin-bottom: 10px;"></div>
-					<div style="padding-left: 110px; font-size: 10px;">※ 현재 주소는 집 주소로 기본 저장되며, 후에 마이페이지에서 수정이 가능합니다.</div>
+					<div style="padding-left: 110px; font-size: 12px;">※ 현재 주소는 집 주소로 기본 저장되며, 후에 마이페이지에서 수정이 가능합니다.</div>
                 </li>
                 <li>
                     <div class="join-divide">핸드폰 번호<span class="required-star">*</span></div>
@@ -246,19 +247,19 @@
                 <div class="under-line"></div>
                 <li>
                     <div class="join-divide">이용약관 동의<span class="required-star">*</span></div>
-                    <div><label for="check_all"><input type="checkbox" id="check_all" v-model="allChecked" @change="checkAll">전체 동의합니다.</label></div>
+                    <div><label for="check_all"><input type="checkbox" id="check_all" v-model="allChecked" @change="checkAll"> 전체 동의합니다.</label></div>
                     <div class="join-divide">　</div>
                     <div style="padding-left: 125px; font-size: 10px;">선택항목에 동의하지 않더라도 회원가입은 가능합니다.</div>
 			        <div v-for="(item, index) in agreementItems" :key="index">
 			          	<div class="join-divide" style="color: white;">·</div>
 						<label :for="'check' + (index + 1)">
-			            	<input type="checkbox" :id="'check' + (index + 1)" v-model="checkedItems" :value="item.id" @change="updateAllChecked">{{item.label}}
+			            	<input type="checkbox" :id="'check' + (index + 1)" v-model="checkedItems" :value="item.id" @change="updateAllChecked"> {{item.label}}
 						</label>
 			        </div>
 			        <div>
 			        <div class="join-divide" style="color: white;">·</div>
 			          <label for="check4">
-			            <input type="checkbox" id="check4" v-model="isEventYn">이벤트 수신 동의 (선택)
+			            <input type="checkbox" id="check4" v-model="isEventYn"> 이벤트 수신 동의 (선택)
 			          </label>
                     </div>
                 </li>
