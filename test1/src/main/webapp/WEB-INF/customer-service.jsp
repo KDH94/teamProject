@@ -70,9 +70,9 @@
 		color: #6d6d6d;
 	}
 
-	.align-right {
-		color: #6d6d6d;
-		font-size: 20px;
+	.bi {
+		font-size: 14px;
+		margin-top: 3px;
 	}
 	
 	.menu-item-selected, .menu-item:hover {
@@ -205,9 +205,9 @@
 	<div id="app">
 	    <div class="customer-container">
 	        <div class="menu-area">
-				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'faq' }" @click="updateContent('faq')">자주하는 질문 <span class="align-right">></span></div>
-				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'history' }" @click="updateContent('history')">문의 내역 <span class="align-right">></span></div>
-				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'inquiry' }" @click="updateContent('inquiry')">1:1 문의하기 <span class="align-right">></span></div>				
+				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'faq' }" @click="updateContent('faq')">자주하는 질문 <i class="bi bi-chevron-right"></i></div>
+				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'history' }" @click="updateContent('history')">문의 내역 <i class="bi bi-chevron-right"></i></div>
+				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'inquiry' }" @click="updateContent('inquiry')">1:1 문의하기<i class="bi bi-chevron-right"></i></div>				
 	        </div>
 			<div class="content-area">
 				<div v-if="selectedMenu === 'faq'">

@@ -2,9 +2,9 @@
     display: flex;
     width: 1400px; 
     height: 800px; 
-    border: 1px solid rgb(255, 255, 255); 
     overflow: hidden; 
     margin: 0 auto;
+   
 }
 
 
@@ -28,7 +28,6 @@ button:hover {
     overflow: hidden; 
     width: 600px; 
     float: left;
-    border: 1px solid rgb(255, 255, 255);
 }
 .info-User{
     width: 500px;

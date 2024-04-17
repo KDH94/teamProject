@@ -315,7 +315,11 @@
     .star-rating {
 	    font-family: 'Font Awesome 5 Free';
 	    font-weight: 900;
-	} 
+	}
+	.bi{
+		font-size: 17px;
+		margin: 10px;
+	}
 </style>
 <body>
 <!-- Header Section -->
@@ -454,10 +458,10 @@
 								</tr>
 								<tr v-if="qaOnOff === index">
 									<td colspan="5" class="qa-contents">
-										<img src="img/question.png" style="width: 30px"> 
+										<i class="bi bi-question-circle" style="color: #76c477"></i> 
 											{{item.qaContents }}
 										<div v-if="item.comment" style="margin-top: 20px;">
-											<img src="img/answer.png" style="width: 30px"> 
+											<i class="bi bi-chat-right-dots" style="color: #4caf50;"></i> 
 											{{ item.comment }}
 										</div>
 									</td>

@@ -17,7 +17,7 @@
     }
 </style>
 </head>
-<body style="background-color:white;">
+<body>
 <!-- Header Section -->
 <%@ include file="layout/header.jsp" %>
 <div id="app">
