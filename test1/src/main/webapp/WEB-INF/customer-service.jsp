@@ -319,7 +319,7 @@
 			
 			
 			selectedMenu: 'faq',
-			selectedMenuItem: null, // 선택된 메뉴 아이템을 저장하기 위한 속성 추가	        
+			selectedMenuItem: 'faq', // 선택된 메뉴 아이템을 저장하기 위한 속성 추가	        
 			faqs : [ 
 				{ id: 1, category: '주문/결제', title: '결제(환불)는 어떻게 하나요?', detail: '▶ 결제(환불)는 다음과 같이 진행해주시면 됩니다. ~~', showDetail: false },
 	            { id: 2, category: '배송', title: '주문한 상품은 언제 배송되나요?', detail: '▶ 주문일로부터 약 1~2일이 소요됩니다', showDetail: false },
@@ -424,6 +424,15 @@
 			        this.currentPage = 1; // 자주하는 질문의 페이지 번호를 1로 초기화
 			    } else if (menu === 'history') {
 			        this.currentPage2 = 1; // 문의 내역의 페이지 번호를 1로 초기화
+			    } else if (menu === 'inquiry') {
+			    	if(this.userId == "") {
+		            	if(confirm("로그인 후 이용 가능합니다. 로그인하시겠습니까?")) {
+			            	location.href = "/user-login.do";
+		            	} else {
+		            		this.selectedMenu = 'faq';
+		            		this.selectedMenuItem = null;
+		            	}
+					}
 			    }
 			},
 			/* 질문 토글에 기능  */

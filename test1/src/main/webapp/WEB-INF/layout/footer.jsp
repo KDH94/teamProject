@@ -29,40 +29,40 @@
 	<footer class="footer spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="col-lg-4 col-md-6 col-sm-6"
+					style="border-right: 1px solid #ccc;">
 					<div class="footer__about">
-						<div class="footer__about__logo">
-							<a href="/main.do"><img src="img/logo/mainLogo.png"
-								alt="메인 로고" style="width: 150px;"></a>
-						</div>
 						<ul>
-							<li style="font-weight: bold;">에코마켓 고객센터<span
-								style="margin-left: 5px;">1644-1107</span></li>
-							<li>월-금 오전 10시 - 오후 10시</li>
+							<li style="font-weight: bold; font-size: 18px;">에코마켓 고객센터<span
+								style="margin-left: 5px; color: rgb(44, 157, 89);">1644-1107</span></li>
+							<li>화-목요일 11:00 ~ 18:00 (점심시간 12:00 ~ 13:00)</li>
+							<li>월·금요일 09:00 ~ 18:00 (점심시간 12:00 ~ 13:00)</li>
+							<li>토·일·공휴일 휴무</li>
 							<li>
 								<div class="footer__widget">
 									<div class="footer__widget__social">
-										<a href="https://www.facebook.com/"><i
-											class="fa fa-facebook"></i></a> <a
-											href="https://www.instagram.com/"><i
-											class="fa fa-instagram"></i></a> <a href="https://twitter.com/"><i
-											class="fa fa-twitter"></i></a> <a
-											href="https://www.pinterest.co.kr/"><i
-											class="fa fa-pinterest"></i></a>
+										<div style="margin-top: 50px;">
+											<a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+											<a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a>
+											<a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+											<a href="https://www.pinterest.co.kr/"><i class="fa fa-pinterest"></i></a>
+										</div>
 									</div>
 								</div>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-					<div class="footer__widget">
-						<h6>사이트 정보</h6>
+				<div class="col-lg-3 col-md-6 col-sm-6 offset-lg-1"
+					style="border-right: 1px solid #ccc;">
+					<div class="footer__widget"
+						style="margin-right: auto; margin-left: auto;">
+						<div style="font-size: 18px; font-weight: bold;">사이트 정보</div>
 						<ul>
 							<li><a href="/Terms-Conditions.do" target="_blank"
-								onclick="window.open('/Terms-Conditions.do', 'TermsPopup', 'width=500,height=900'); return false;">이용약관</a></li>
+								onclick="window.open('/Terms-Conditions.do', 'TermsPopup', 'width=500, height=900'); return false;">이용약관</a></li>
 							<li><a href="/Privacy-Policy.do" target="_blank"
-								onclick="window.open('/Privacy-Policy.do', 'TermsPopup', 'width=500,height=900'); return false;">개인정보처리방침</a></li>
+								onclick="window.open('/Privacy-Policy.do', 'TermsPopup', 'width=500, height=900'); return false;">개인정보처리방침</a></li>
 							<li><a href="javascript:;">이용안내</a></li>
 							<li><a href="javascript:;">회사정보</a></li>
 							<li><a href="javascript:;">사업자등록번호</a></li>
@@ -71,7 +71,15 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-12"></div>
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div style="margin-left: 20px;">
+						<div class="footer__about__logo">
+							<a href="/main.do"><img src="img/logo/mainLogo.png" alt="메인 로고" style="width: 150px;"></a>
+						</div>
+						<p>상호명: ㈜에코마켓 | 대표: 김임시 | <br>사업자등록번호: 123-45-67890 | <br>소재지: 인천광역시 부평구 경원대로 1366, 7층(상록스테이션탸워)</p>
+						<p>통신판매업 신고번호: 2024-테스트부-0101 | 제휴 및 납품 문의: admin@ecomarket.co.kr</p>
+					</div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
@@ -89,9 +97,7 @@
 							<img src="img/payment-item.png" alt="">
 						</div>
 					</div>
-						<div>
-							<img src="img/">
-						</div>
+					<div></div>
 				</div>
 			</div>
 		</div>
