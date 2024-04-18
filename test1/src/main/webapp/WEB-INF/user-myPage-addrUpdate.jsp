@@ -174,7 +174,7 @@
 					 error: function(xhr, status, error) {
 		                    // 에러 발생 시 처리
 		                    // 에러 페이지로 리다이렉션
-		                    window.opener.location.href = "/error-page"; // 에러 페이지의 URL로 리다이렉션
+		                    location.href = "/error-page"; // 에러 페이지의 URL로 리다이렉션
 		                }
 				});
 			},

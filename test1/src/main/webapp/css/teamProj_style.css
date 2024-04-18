@@ -300,6 +300,11 @@
 	margin-left: 20px; /* 검색 버튼과의 간격 조절 */
 }
 
+.main-product-title {
+	font-size: 24px;
+	font-weight: bold;
+}
+
 .cat-simple {
 	transition: background-color 0.3s;
 }
