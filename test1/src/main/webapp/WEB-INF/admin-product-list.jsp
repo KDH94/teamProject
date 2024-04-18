@@ -227,9 +227,8 @@
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordionPages">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="javascript:;" @click="fnMoveBoardList(1)">공지게시판 이동</a>
-											 <a class="nav-link" href="javascript:;" @click="fnMoveBoardList(2)">레시피게시판 이동</a>
-
+											<a class="nav-link" href="#">공지사항 등록</a> <a class="nav-link"
+												href="#">문의글 관리</a> <a class="nav-link" href="#"></a>
 
 										</nav>
 
@@ -247,7 +246,7 @@
 								</a>
 							</div>
 							<div class="sb-sidenav-menu-heading">차트분석</div>
-							<a class="nav-link" href="/AdminProductChart.do">
+							<a class="nav-link" href="tables.html">
 								<div class="sb-nav-link-icon">
 									<i class="fas fa-chart-area"></i>
 								</div> 월 매출 차트
@@ -284,18 +283,21 @@
 								<li @click="fnList('All')" v-if="code == 'All'"
 									style="background-color: #d4d4d4;">전체</li>
 								<li @click="fnList('All')" v-if="code != 'All'">전체</li>
-								<li @click="fnList('org')" v-if="code == 'org'"
-									style="background-color: #d4d4d4;">유기농</li>
-								<li @click="fnList('org')" v-if="code != 'org'">유기농</li>
-								<li @click="fnList('vegan')" v-if="code == 'vegan'"
-									style="background-color: #d4d4d4;">비건</li>
-								<li @click="fnList('vegan')" v-if="code != 'vegan'">비건</li>
 								<li @click="fnList('gluten')" v-if="code == 'gluten'"
 									style="background-color: #d4d4d4;">글루텐프리</li>
 								<li @click="fnList('gluten')" v-if="code != 'gluten'">글루텐프리</li>
 								<li @click="fnList('local')" v-if="code == 'local'"
 									style="background-color: #d4d4d4;">로컬푸드</li>
 								<li @click="fnList('local')" v-if="code != 'local'">로컬푸드</li>
+								<li @click="fnList('vegan')" v-if="code == 'vegan'"
+									style="background-color: #d4d4d4;">비건</li>
+								<li @click="fnList('vegan')" v-if="code != 'vegan'">비건</li>
+								<li @click="fnList('org')" v-if="code == 'org'"
+									style="background-color: #d4d4d4;">유기농</li>
+								<li @click="fnList('org')" v-if="code != 'org'">유기농</li>
+								
+								
+								
 							</ul>
 							<ul class="navselect">
 
@@ -328,7 +330,7 @@
 									</template>
 									</template>
 									<p style="border-bottom: 1px solid; box-sizing: border-box;">
-										<a href="javascript:;" @click="fnMoveProductView(item.itemNo)" class="nav-link" >{{item.itemName}}</a>
+										<a href="javascript:;" @click="fnDetailView(item.itemNo)" class="nav-link" >{{item.itemName}}</a>
 									</p>
 									<p class="price" v-if="item.sRate!=0">
 										<del>₩{{item.price}}</del>
@@ -387,15 +389,6 @@
 					}
 				});
 			},
-			
-			fnMoveBoardList : function(code){
-				var self = this;
-			$.pageChange("/boardList.do", {
-				code : code});
-		}, fnMoveProductView :function(itemNo){
-        	var self = this;
-        	$.pageChange("/productView.do", {itemNo : itemNo , userId : self.userId});
-        },
 			handleAddProduct : function(code){
 				var self = this;
 				 // 팝업 창을 열고자 하는 페이지 URL
