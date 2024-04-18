@@ -580,29 +580,30 @@
 		    	if(self.userId == ""){
 		    		alert("로그인 후 이용 가능합니다.");
 		    		location.href = "/user-login.do";
+		    	} else {
+		            var nparmap = {
+		            		itemNo: itemNo,
+		            		userId: userId
+		            };
+		            $.ajax({
+		                url:"FavoriteAdd.dox",
+		                dataType:"json",
+		                type: "POST",
+		                data: nparmap,
+		                success: function(data) {
+		                	console.log(data);
+		                	if(data.result == "insert") {
+		                		alert("찜 목록에 담았습니다.");
+		                		appHeader.fnLogin();
+		                	} else if(data.result == "remove") {
+		                		alert("찜 목록에서 뺐습니다.");
+		                		appHeader.fnLogin();
+		                	} else {
+		                		alert("예기치 못한 오류가 발생했습니다. 다시 시도해 주세요.");
+		                	}
+		                }
+		            });
 		    	}
-	            var nparmap = {
-	            		itemNo: itemNo,
-	            		userId: userId
-	            };
-	            $.ajax({
-	                url:"FavoriteAdd.dox",
-	                dataType:"json",
-	                type: "POST",
-	                data: nparmap,
-	                success: function(data) {
-	                	console.log(data);
-	                	if(data.result == "insert") {
-	                		alert("찜 목록에 담았습니다.");
-	                		appHeader.fnLogin();
-	                	} else if(data.result == "remove") {
-	                		alert("찜 목록에서 뺐습니다.");
-	                		appHeader.fnLogin();
-	                	} else {
-	                		alert("예기치 못한 오류가 발생했습니다. 다시 시도해 주세요.");
-	                	}
-	                }
-	            });
 			},
 	        fnDetailView: function(itemNo, userId) {
 				var self = this;
