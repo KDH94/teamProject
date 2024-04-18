@@ -49,16 +49,15 @@
 /* 제품 카테고리 및 정렬 옵션 스타일 */
 .control-wrapper {
     display: flex;
-    /* flex-direction: column; */ /* 아래로 정렬되도록 설정 */
-    justify-content: center; /* 가로 방향 가운데 정렬 */
-    align-items: center; /* 세로 방향 가운데 정렬 */
+    justify-content: center; 
+    align-items: center;
     width: 100%;
-    margin-top: 20px; /* 위쪽 마진 추가 */
-    margin-bottom: 20px; /* 아래쪽 마진 추가 */
-    background-color: #f8f9fa; /* 배경색 추가 */
-    padding: 15px; /* 내부 여백 추가 */
-    border-radius: 40px; /* 모서리를 둥글게 만듦 */
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    background-color: #f8f9fa; 
+    padding: 15px;
+    border-radius: 40px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -71,38 +70,38 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    margin-right: 5px; /* 버튼 사이 간격 설정 */
-    background-color: #ffffff; /* 배경색 지정 */
-    border: 1px solid #dee2e6; /* 테두리 추가 및 색상 변경 */
-    border-radius: 100%; /* 모서리를 둥글게 만듦 */
-    transition: background-color 0.3s, border-color 0.3s, margin-right 0.3s; /* 호버 효과를 위한 전환 설정 */
+    margin-right: 5px; 
+    background-color: #ffffff; 
+    border: 1px solid #dee2e6;
+    border-radius: 100%; 
+    transition: background-color 0.3s, border-color 0.3s, margin-right 0.3s; 
 }
 
 .buttons-container.active {
-    background-color: #f1f1f1; /* 눌린 요소에 백그라운드 색상 추가 */
-    border-color: #6c757d; /* 테두리 색상 변경 */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* 강조 효과를 위한 그림자 추가 */
+    background-color: #f1f1f1; 
+    border-color: #6c757d; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
 }
 
 
 .buttons-container:hover {
-    background-color: #e9ecef; /* 호버 시 배경색 변경 */
+    background-color: #e9ecef; 
 }
 
 .order-container select {
     padding: 8px;
-    border: 1px solid #adb5bd; /* 테두리 설정 */
-    border-radius: 5px; /* 모서리를 둥글게 만듦 */
-    transition: border-color 0.3s; /* 호버 효과를 위한 전환 설정 */
+    border: 1px solid #adb5bd;
+    border-radius: 5px; 
+    transition: border-color 0.3s; 
 }
 
 .order-container select:hover {
-    border-color: #868e96; /* 호버 시 테두리 색상 변경 */
+    border-color: #868e96; 
 }
 
 .product-item:focus {
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    background-color: #f0f0f0; /* 이미지 영역에 강조를 위한 배경색 */
+    background-color: #f0f0f0; 
 }
 
 .product-item img {
@@ -110,12 +109,12 @@
     height: auto;
     object-fit: cover;
     aspect-ratio: 1 / 1;
-    transition: transform 0.2s ease-in-out, filter 0.2s ease; /* filter 속성 추가 */
+    transition: transform 0.2s ease-in-out, filter 0.2s ease; 
 }
 
 .product-item:focus img {
     transform: scale(1.05);
-    filter: brightness(90%); /* 포커스 시 이미지 밝기 감소 */
+    filter: brightness(90%); 
 }
 .order-options {
     float : right;
@@ -143,19 +142,19 @@
 
 /* 상품 정보 영역 스타일 */
 .product-info {
-    padding: 15px; /* 내부 여백 추가 */
+    padding: 15px;
     text-align: center;
-    margin-top: auto; /* 항상 하단에 위치 */
-    background-color: #f9f9f9; /* 배경색 */
-    border: 1px solid #ddd; /* 테두리 추가 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    margin-top: auto; 
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     min-height : 142px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
 .product-name {
-    margin: 10px 0; /* 이름과 가격 사이의 간격 조정 */
+    margin: 10px 0; 
     font-weight: bold;
     font-size: 16px;
 }
@@ -301,7 +300,6 @@
 					<a :class="[selected == 'gluten' ? 'button-selected' : 'buttons-container']" @click="fnList('gluten')"><img src="img/categories/cat-3.png"></a>
 					<a :class="[selected == 'local' ? 'button-selected' : 'buttons-container']" @click="fnList('local')"><img src="img/categories/cat-4.png"></a>
 			    </div>
-			    <!-- 정렬 옵션 드롭다운 -->
 			</div>
 		</div>
 		<div class="prodcut-container">
