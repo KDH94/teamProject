@@ -103,8 +103,7 @@
 					<button @click="requestPay" class="site-btn">
 						<img src="../img/logo/kakaoPay.png" alt="카카오페이"> 카카오페이
 					</button>
-					<button id="naverPayBtn" class="site-btn">네이버페이</button>
-
+					<button type="button" id="naverPayBtn" class="site-btn">네이버페이</button>
 					<button onclick="requestPay()" class="site-btn">휴대폰 결제</button>
 					<button onclick="requestPay()" class="site-btn">가상계좌 결제</button>
 				</div>
@@ -433,6 +432,7 @@
           "mode" : "development", // development or production
           "payType" : "normal",
           "clientId": "qTHPO27WBZ6jdZDBxpvc"
+             
     });
 
     //직접 만드신 네이버페이 결제버튼에 click Event를 할당하세요

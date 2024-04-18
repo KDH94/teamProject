@@ -68,10 +68,11 @@ main {
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    background-color: #68d180;
 }
 .myContents button:hover,
 .myContents a:hover {
-    background-color: #999; /* 마우스를 올렸을 때 버튼 배경색 변경 */
+    background-color: #3e993e; /* 마우스를 올렸을 때 버튼 배경색 변경 */
 }
 .myContents select {
     padding: 6px;
@@ -267,7 +268,6 @@ background-color: #999;
 			<div id="layoutSidenav_content">
 				<main>
 					<div class="container-fluid px-4">
-
 					<div class="card mb-4">
 							<div class="card-header">
 								<i class="fas fa-table me-1"></i> 가입 유저 리스트
