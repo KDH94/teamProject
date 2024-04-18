@@ -39,44 +39,23 @@
 	font-weight: bold;
 }
 
-.checkout__input__checkbox {
-  display: none; /* 모달 초기에는 숨김 */
-  position: fixed; /* 뷰포트를 기준으로 고정 */
-  z-index: 1; /* 모달을 다른 요소들 위에 표시 */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto; /* 모달이 넘칠 경우 스크롤 가능하도록 설정 */
-  background-color: rgba(0,0,0,0.5); /* 배경 어둡게 */
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 9998;
 }
-.modal.show {
-  display: block;
-}
-
-
-/* 모달 콘텐츠 스타일 */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 모달이 화면 중앙에 위치하도록 설정 */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
+	background-color: white;
+	width: 50%;
+	margin: 10% auto;
+	padding: 20px;
+	border-radius: 5px;
 
-/* 닫기 버튼 스타일 */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
 }
 </style>
 <body>
@@ -102,30 +81,30 @@
 		<!-- Checkout Section Begin -->
 		<section class="checkout spad">
 
-			<div class="checkout__form">
-				<div class="container">
-					<div class="checkout__order" style="display: inline-block;">
+			<div class="checkout__form"></div>
+			<div class="container">
+				<div class="checkout__order" style="display: inline-block;">
 
-						<h4>배송지</h4>
-						<div class="postUserName">
-							{{selectAddr.name}}<span style="color: red;">({{selectAddr.addrName}})</span>
-						</div>
-						<div>
-							{{selectAddr.phone}}
-						</div>
-						<div>
-							<span>{{selectAddr.addr}} / {{selectAddr.addrDetail}}</span>
-						</div>
-						<button @click="openModal">모달 열기</button>
-  <div v-if="modalOpen" class="modal" @click.self="closeModal">
-    <div class="modal-content">
-      <span class="close" @click="closeModal">&times;</span>
-      <p>모달 내용이 여기에 들어갑니다.</p>
-    </div>
-  </div>
-
-
+					<h4>배송지</h4>
+					<div class="postUserName">
+						{{selectAddr.name}}<span style="color: red;">({{selectAddr.addrName}})</span>
 					</div>
+					<div>{{selectAddr.phone}}</div>
+					<div>
+						<span>{{selectAddr.addr}} / {{selectAddr.addrDetail}}</span>
+					</div>
+					<button @click="toggleModal">모달 열기</button>
+					<div class="modal"
+						:style="{ display: modalVisible ? 'block' : 'none' }" @click="toggleModal">
+						
+						<div class="modal-content" @click="">
+							<span @click="toggleModal" style="float: right; cursor: pointer;">&times;</span>
+							<p>여기에 모달 내용을 넣으세요.</p>
+						</div>
+						
+						
+					</div>
+					
 				</div>
 			</div>
 		</section>
@@ -210,7 +189,7 @@
 			paymentNoRatePrice : 0,
 			paymentRatePrice : 0,
 			addrList : [],
-			modalOpen: false,
+			modalVisible : false,
 			selectAddr : {}
 
 		},
@@ -234,13 +213,10 @@
 					}
 				});
 			},
-			openModal : function() {
-			      this.modalOpen = true;
-			      console.log(this.modalOpen);
-			    },
-			    closeModal : function() {
-			      this.modalOpen = false;
-			    },
+			toggleModal : function() {
+				this.modalVisible = !this.modalVisible;
+				console.log(this.modalVisible);
+			},
 
 			fnCartList : function() {
 				var self = this;
