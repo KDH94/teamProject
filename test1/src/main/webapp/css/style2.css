@@ -245,6 +245,7 @@
 .header__top__left {
 	
 	position: relative;
+	margin-left : 20px;
 }
 
 .header__top__left ul li {
