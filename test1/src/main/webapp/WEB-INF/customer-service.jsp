@@ -159,7 +159,6 @@
 	.input-group {
 		font-size: 17px;
 		font-weight: bold;
-		margin-bottom: 20px;
 	}
 
 	input[type="text"] {
@@ -198,6 +197,63 @@
 	    margin-bottom: 100px;
 
 	}   
+	
+	/* 문의하기 섹션 스타일링 */
+.content-area.inquiry {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.content-area.inquiry h4 {
+    font-size: 25px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.content-area.inquiry p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.input-group input[type="text"],
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.button-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #45a049;
+}
+	
+	
 </style>
 <body>
 <!-- Header Section -->
