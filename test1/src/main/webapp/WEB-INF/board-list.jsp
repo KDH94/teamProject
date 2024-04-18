@@ -401,6 +401,9 @@
 				var self = this;
 				self.kind = kind;
 				var limit = 0;
+				if(self.kind == ""){
+					self.kind = 1;
+				}
 				if(self.kind == 1){
 					limit = 10;
 				} else {
@@ -409,7 +412,7 @@
 				var nparmap = {
 						keyword : self.keyword,
 						keywordType : self.keywordType,
-						kind : kind,
+						kind : self.kind,
 						startNum : 1,
 						lastNum : 10,
 						type : self.type,
@@ -423,7 +426,7 @@
 					type : "POST",
 					data : nparmap,
 					success : function(data) {
-						console.log(data);
+						console.log("data ==> ", data);
 						self.list = data.list;
 						self.pageCount = Math.ceil(data.cnt/limit);//self.pageCount최대값
 

@@ -5,15 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/bootstrap-min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap"
+	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <title>게시판 목록 페이지</title>
-
 <style>
 .temp div {
 	text-align: center;
@@ -172,6 +173,12 @@
 .horizontal-list {
 	cursor: default;
 }
+
+.dateHits{
+   text-align: center;
+   /*  margin-left: 150px  */
+}
+
 </style>
 </head>
 <body>
@@ -231,11 +238,13 @@
 							</template>
 						</div>
 						<div class="blog__item__text">
-							<div>
-								<i class="fa fa-calendar"></i> {{item.cDate}}
-							</div>
-							<div>
-								<i class="fa fa-eye"></i> {{item.hits}}
+							<div class="dateHits">
+								<div>
+									<i class="fa fa-calendar"></i> {{item.cDate}}
+								</div>
+								<div>
+									<i class="fa fa-eye"></i> {{item.hits}}
+								</div>
 							</div>
 							<h5>
 								<a @click="fnView(item.boardNo, kind)" href="javascript:;"
@@ -259,7 +268,6 @@
 			<div v-if="userId != '' && userId != undefined">
 				<button class="write-button" @click="fnWrite"
 					v-if="userType == 'A' || kind != 1">글쓰기</button>
-
 			</div>
 			<div class="pagination">
 				<template v-for="n in pageCount">
@@ -273,7 +281,6 @@
 	<div class="clear-both"></div>
 	<%@ include file="layout/footer.jsp"%>
 </body>
-
 <script type="text/javascript">
     var app = new Vue({
         el: '#app',
@@ -293,7 +300,7 @@
 			offset: 1, // 페이지 오프셋 초기값
 			limit: 9, 
         },
-       
+      
         methods: {
 			fnList : function(kind) {
 				var self = this;
@@ -318,7 +325,6 @@
 						console.log(data);
 						self.list = data.list;
 						self.pageCount = Math.ceil(data.cnt/10);//self.pageCount최대값
-
 					}
 				});
 			},

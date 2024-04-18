@@ -128,7 +128,7 @@ input {
 				</div>
 			</div>
 			<div style="margin-top: 10px;">
-				<div id="editor" v-model="contents" style="height: 300px;"></div>
+				<div id="editor" style="height: 300px;"></div>
 			</div>
 			<div class="writeButton" style="text-align: center; margin: 20px;">
 				<button @click="fnWrite">작성완료</button>
