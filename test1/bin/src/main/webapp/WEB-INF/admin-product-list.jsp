@@ -16,6 +16,8 @@
 
 
 </head>
+<link rel="stylesheet" href="css/product.css" type="text/css">
+<link rel="stylesheet" href="css/style2.css" type="text/css">
 <style>
 .container {
 	width: 100%;
@@ -87,6 +89,234 @@
 	float: right;
 	margin: 20px;
 }
+.prodcut-container {
+        margin: 0 auto; 
+        padding: 20px; 
+        max-width: 1200px; 
+        border-style: none;
+        background-color: #ffffff;
+        
+        flex-direction: column; /* 세로 방향으로 내부 요소 정렬 */
+    	align-items: center; /* 가로 방향 중앙 정렬 */  
+    }
+    
+.searchArea {
+    width: 100%;
+    display: flex;
+    justify-content: right; 
+    align-items: center; 
+    margin: 20px 0;
+}
+.logo_search {
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+
+.logo_search__form {
+	width: 504px;
+	height: 100px;
+	position: relative;
+	margin-right: 10px;
+	float: left;
+}
+
+.logo_search__form form .logo_search__categories {
+	width: 30%;
+	float: left;
+	font-size: 16px;
+	color: #1c1c1c;
+	font-weight: 700;
+	padding-left: 18px;
+	padding-top: 11px;
+	position: relative;
+}
+.search-input-btn {
+    display: inline-block;
+  
+    margin-left: 10px;
+}
+.site-btn {
+	border-radius : 10px;
+}
+
+.control-wrapper {
+    display: flex;
+    /* flex-direction: column; */ /* 아래로 정렬되도록 설정 */
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
+    width: 100%;
+    margin-top: 20px; /* 위쪽 마진 추가 */
+    margin-bottom: 20px; /* 아래쪽 마진 추가 */
+    background-color: #f8f9fa; /* 배경색 추가 */
+    padding: 15px; /* 내부 여백 추가 */
+    border-radius: 40px; /* 모서리를 둥글게 만듦 */
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+}
+.order-options {
+    float : right;
+}
+
+.order-options {
+    display: flex;
+    flex-direction: row; /* 좌우로 정렬 */
+    gap: 10px; /* 라디오 버튼 사이의 간격 설정 */
+    margin-right: 15px;
+}
+
+/* 라디오 버튼 컨테이너 스타일 */
+.order-options label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* 라디오 버튼 스타일 */
+.order-options input[type="radio"] {
+    opacity: 0; /* 기본 라디오 버튼 숨기기 */
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* 라디오 버튼 커스텀 디자인 */
+.order-options input[type="radio"]+span {
+    position: relative;
+    padding-left: 25px; /* 라디오 버튼 옆에 여백 추가 */
+}
+
+/* 선택된 라디오 버튼 스타일 */
+.order-options input[type="radio"]:checked+span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ff673d; /* 선택된 상태일 때 배경색 변경 */
+}
+
+/* 선택된 라디오 버튼의 텍스트 스타일 */
+.order-options input[type="radio"]:checked+span {
+    font-weight: bold; /* 굵은 글꼴 적용 */
+}
+/* 호버 시 효과 */
+.order-options label:hover input[type="radio"]+span {
+    transform: translateY(-2px);
+}
+ .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* flex-start로 변경하여 좌측 정렬 */
+        gap: 10px;
+    }
+    .product-item:focus {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    background-color: #f0f0f0; /* 이미지 영역에 강조를 위한 배경색 */
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    transition: transform 0.2s ease-in-out, filter 0.2s ease; /* filter 속성 추가 */
+}
+
+.product-item:focus img {
+    transform: scale(1.05);
+    filter: brightness(90%); /* 포커스 시 이미지 밝기 감소 */
+}
+ .product-img:hover {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+    }
+    .product-info {
+    padding: 15px; /* 내부 여백 추가 */
+    text-align: center;
+    margin-top: auto; /* 항상 하단에 위치 */
+    background-color: #f9f9f9; /* 배경색 */
+    border: 1px solid #ddd; /* 테두리 추가 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    min-height : 142px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.product-name {
+    margin: 10px 0; /* 이름과 가격 사이의 간격 조정 */
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.product-price {
+    color: #E44D26;
+    font-weight: bold;
+    font-size: 14px;
+}
+.product-price del {
+    font-size: 12px;
+}
+.message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px; /* 메시지 영역의 높이. 필요에 따라 조절합니다. */
+}
+.buttonArea {
+    display: flex;
+    align-items: center;
+}
+.buttons-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-right: 5px; /* 버튼 사이 간격 설정 */
+    background-color: #ffffff; /* 배경색 지정 */
+    border: 1px solid #dee2e6; /* 테두리 추가 및 색상 변경 */
+    border-radius: 100%; /* 모서리를 둥글게 만듦 */
+    transition: background-color 0.3s, border-color 0.3s, margin-right 0.3s; /* 호버 효과를 위한 전환 설정 */
+}
+
+.buttons-container.active {
+    background-color: #f1f1f1; /* 눌린 요소에 백그라운드 색상 추가 */
+    border-color: #6c757d; /* 테두리 색상 변경 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* 강조 효과를 위한 그림자 추가 */
+}
+
+
+.buttons-container:hover {
+    background-color: #e9ecef; /* 호버 시 배경색 변경 */
+}
+.product-item button{
+ 	width: 50%;
+ 	float: left;
+ 	border: 1px solid;
+
+}
+.productBtn {
+	height: 50px;
+}
+.product-addBtn button{
+  		display: block;
+  		padding : 0 0 0 0;
+        margin: 5px 0; 
+        background-color: #68d180;
+        color: white; 
+        border-style: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        float: right;
+        height: 50px;
+        width: 100px;
+ }
+.product-addBtn button:hover {
+        background-color: #3e993e;
+    }
+ 
+ 
 </style>
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
@@ -178,7 +408,6 @@
 										class="nav-link" href="#" @click="fnMoveProductList('local')">로컬</a> <a
 										class="nav-link" href="#" @click="fnMoveProductList('vegan')">비건</a> <a
 										class="nav-link" href="#" @click="fnMoveProductList('org')">유기농</a>
-
 								</nav>
 							</div>
 
@@ -227,9 +456,8 @@
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordionPages">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="javascript:;" @click="fnMoveBoardList(1)">공지게시판 이동</a>
-											 <a class="nav-link" href="javascript:;" @click="fnMoveBoardList(2)">레시피게시판 이동</a>
-
+											<a class="nav-link" href="#">공지사항 등록</a> <a class="nav-link"
+												href="#">문의글 관리</a> <a class="nav-link" href="#"></a>
 
 										</nav>
 
@@ -247,7 +475,7 @@
 								</a>
 							</div>
 							<div class="sb-sidenav-menu-heading">차트분석</div>
-							<a class="nav-link" href="/AdminProductChart.do">
+							<a class="nav-link" href="tables.html">
 								<div class="sb-nav-link-icon">
 									<i class="fas fa-chart-area"></i>
 								</div> 월 매출 차트
@@ -269,83 +497,88 @@
 
 			<div id="layoutSidenav_content">
 				<main>
-					<div class="container-fluid px-4">
-
-						<div class="container">
-							<div class="title">
-								<h1>상품 리스트</h1>
-							</div>
-
-							<div class="description">
-								<p>각 카테고리에 맞는 상품을 추가 혹은 삭제와 수정의 기능이 있습니다</p>
-							</div>
-
-							<ul class="nav">
-								<li @click="fnList('All')" v-if="code == 'All'"
-									style="background-color: #d4d4d4;">전체</li>
-								<li @click="fnList('All')" v-if="code != 'All'">전체</li>
-								<li @click="fnList('org')" v-if="code == 'org'"
-									style="background-color: #d4d4d4;">유기농</li>
-								<li @click="fnList('org')" v-if="code != 'org'">유기농</li>
-								<li @click="fnList('vegan')" v-if="code == 'vegan'"
-									style="background-color: #d4d4d4;">비건</li>
-								<li @click="fnList('vegan')" v-if="code != 'vegan'">비건</li>
-								<li @click="fnList('gluten')" v-if="code == 'gluten'"
-									style="background-color: #d4d4d4;">글루텐프리</li>
-								<li @click="fnList('gluten')" v-if="code != 'gluten'">글루텐프리</li>
-								<li @click="fnList('local')" v-if="code == 'local'"
-									style="background-color: #d4d4d4;">로컬푸드</li>
-								<li @click="fnList('local')" v-if="code != 'local'">로컬푸드</li>
-							</ul>
-							<ul class="navselect">
-
-							</ul>
-							<div>
-								<select v-model="code">
-									<option value="All">전체</option>
-									<option value="org">유기농</option>
-									<option value="vegan">비건</option>
-									<option value="gluten">글루텐프리</option>
-									<option value="local">로컬푸드</option>
-								</select> <input type="text" v-model="keyword" @keyup.enter="fnList(code)">
-								<button @click="fnList(code)">검색</button>
-								<button @click="fnMoveAddPage">상품추가</button>
-							</div>
-
-
-
-
-							<div class="product-grid">
-								<div v-if="productlist.length==0">검색된 상품이 없습니다. 상품명을
-									확인해주세요</div>
-								<div class="product" v-for="item in productlist" style="border: 1px solid; box-sizing: border-box;">
-									<template v-for="item2 in filelist"
-										v-if="item.itemNo == item2.itemNo">
-										<template id="item2.fileNo" @click="fnNext(item2.fileNo)">
-											<img :src="item2.filePath+item2.fileName" alt=""
-												style="width: 450px; height: 300px;">
-										</template>
-									</template>
-									</template>
-									<p style="border-bottom: 1px solid; box-sizing: border-box;">
-										<a href="javascript:;" @click="fnMoveProductView(item.itemNo)" class="nav-link" >{{item.itemName}}</a>
-									</p>
-									<p class="price" v-if="item.sRate!=0">
-										<del>₩{{item.price}}</del>
-										<br>할인가₩{{(item.price)*((100-item.sRate)/100)}}<br>
-										할인율{{item.sRate}}%
-									</p>
-									<p class="price" v-if="item.sRate == 0">₩{{item.price}}</p>
-									<a @click="fnRemove(item.itemNo)" href="#">
-									<i class="bi bi-trash-fill"></i>
-									</a>
-									<a @click="fnEdit(item.itemNo)" href="#">
-									<i class="bi bi-pencil-square"></i>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
+					<div class="prodcut-container">
+            <div class="control-wrapper">
+			    <!-- 제품 카테고리 버튼 -->
+			    <div class="buttonArea">
+			        <a :class="[selected == '' ? 'button-selected' : 'buttons-container']" @click="fnList('')"><img src="img/categories/cat-5.png"></a>
+					<a :class="[selected == 'org' ? 'button-selected' : 'buttons-container']" @click="fnList('org')"><img src="img/categories/cat-1.png"></a>
+					<a :class="[selected == 'vegan' ? 'button-selected' : 'buttons-container']" @click="fnList('vegan')"><img src="img/categories/cat-2.png"></a>
+					<a :class="[selected == 'gluten' ? 'button-selected' : 'buttons-container']" @click="fnList('gluten')"><img src="img/categories/cat-3.png"></a>
+					<a :class="[selected == 'local' ? 'button-selected' : 'buttons-container']" @click="fnList('local')"><img src="img/categories/cat-4.png"></a>
+			    </div>
+			    <!-- 정렬 옵션 드롭다운 -->
+			</div>
+			<div class="searchArea" style="margin-top: 0px;">
+				<div class="logo_search">
+		           <div class="logo_search__form">
+		               <form action="javascript:;">
+		                   <div class="search-input-btn">
+			                   <input type="text" placeholder="검색할 상품명을 입력해 주세요" v-model="keyword" @keyup.enter="fnList(code)">
+			                   <button type="submit" class="site-btn" @click="fnList(code)">검색</button>
+			                  
+		                   </div>
+		                   <div class="product-addBtn">
+		                    <button class="site-btn" @click="handleAddProduct(code)">*{{codeName}}*<p>신규 상품 등록</button>
+		                    </div>
+		               </form>
+		               	
+		            
+		           </div>
+		        </div>
+			</div>
+		</div>
+		<div class="prodcut-container">
+			<div class="order-options">
+			    <label>
+			        <input type="radio" name="order-option" value="new" v-model="selectedOption" @change="updateSelected">
+			        <span>신상품 순</span>
+			    </label>
+			    <label>
+			        <input type="radio" name="order-option" value="old" v-model="selectedOption" @change="updateSelected">
+			        <span>구상품 순</span>
+			    </label>
+			    <label>
+			        <input type="radio" name="order-option" value="high" v-model="selectedOption" @change="updateSelected">
+			        <span>높은 가격순</span>
+			    </label>
+			    <label>
+			        <input type="radio" name="order-option" value="low" v-model="selectedOption" @change="updateSelected">
+			        <span>낮은 가격순</span>
+			    </label>
+			</div>
+		</div>
+        <div class="prodcut-container" style="clear: both;">    
+		    <div class="product-list">
+		        <div class="product-item" v-for="item in list" :key="item.id">
+		            <template v-for="item2 in fileList" v-if="item.itemNo == item2.itemNo">
+		                <img class="product-img" :src="item2.filePath+item2.fileName" alt="" @click="fnDetailView(item.itemNo, userId)">
+		                <div class="product-info" @click="fnDetailView(item.itemNo)">
+		                    <div class="product-name">{{item.itemName}}</div>
+		                    <div class="product-price">
+		                        <template v-if="item.sRate > 0">
+		                            <del>{{item.price.toLocaleString('ko-KR')}}원</del>
+		                            <br>{{item.sRate}}% {{DiscountPrice(item.price, item.sRate)}}원		        		
+		                        </template>
+		                        <template v-else>
+		                            <br>{{item.price.toLocaleString('ko-KR')}}원
+		                        </template>
+		                    </div>
+		                </div>
+		                <div class="productBtn">
+		                <button class="add-to-cart-btn" @click="fnEdit(item.itemNo)">제품 수정하기</button>
+		              <button class="add-to-cart-btn" @click="fnRemove">제품 제거하기</button>
+		                </div>
+		              
+		            </template>
+		        </div>
+		        <div class="message-container" v-if="list.length === 0">
+		            <div class="no-results-message">
+		                등록된 상품이 없습니다. 다시 검색해 주세요.
+		            </div>
+		        </div>
+		    </div>
+		</div>
 				</main>
 			</div>
 		</div>
@@ -356,49 +589,70 @@
 	var app = new Vue({
 		el : '#app',
 		data : {
-			userId : "${userId}",
-			productlist : [],
-			keyword : "",
-			code : "${map.code}",
-			filelist : []
+			list : [],
+	    	fileList : [],
+	    	userId : "${userId}",
+			userType : "${userType}",
+	    	code : "${map.code}",
+	    	keyword : "${map.keyword}",
+	    	selected : "",
+	    	type: "CDATE",
+	    	order: "DESC",
+	    	selectedOption: 'new',
+	    	codeName :"----"
 
 		},
 		methods : {
-			fnList : function(code) {
-				var self = this;
-				self.code = code;
-				var nparmap = {
-					keyword : self.keyword,
-					code : self.code,
-					kind : "1"
-
-				};
-				$.ajax({
-					url : "AdminProductList.dox",
-					dataType : "json",
-					type : "POST",
-					data : nparmap,
-					success : function(data) {
-						self.productlist = data.list;
-						self.filelist = data.filelist;
-
-					}
-				});
-			},
+			fnList: function(code) {
+	            var self = this;
+	            self.selected = code;
+	            
+	            if(code == ""){
+	            	self.codeName = "----";
+	            }
+	            if(code == "gluten"){
+	            	self.codeName = "글루텐";
+	            }
+	            if(code == "org"){
+	            	self.codeName = "오가닉";
+	            }
+	            if(code == "local"){
+	            	self.codeName = "로컬";
+	            }
+	            if(code == "vegan"){
+	            	self.codeName = "비건";
+	            }
+	            if(self.code != code){
+	            	self.keyword = "";
+	            }
+	            self.code = code;
+	            var nparmap = {
+	            	code: code,
+	            	keyword : self.keyword,
+	            	type : self.type,
+	            	order : self.order,
+	            	kind : 1
+	            };
+	            $.ajax({
+	                url:"codeList.dox",
+	                dataType:"json",
+	                type: "POST",
+	                data: nparmap,
+	                success: function(data) {
+	                	console.log(data);
+	                	self.list = data.list;
+	                	self.fileList = data.fileList;
+	                }
+	            });
+	        },
 			
-			fnMoveBoardList : function(code){
-				var self = this;
-			$.pageChange("/boardList.do", {
-				code : code});
-		}, fnMoveProductView :function(itemNo){
-        	var self = this;
-        	$.pageChange("/productView.do", {itemNo : itemNo , userId : self.userId});
-        },
 			handleAddProduct : function(code){
 				var self = this;
 				 // 팝업 창을 열고자 하는 페이지 URL
 			    var url = "productAdd.do";
-
+				if (self.selected ==""){
+					code = "All";
+				}
 			    // POST 방식으로 전송할 데이터
 			    var postData = {
 			        code : code,
@@ -446,7 +700,7 @@
 			/* 제품 삭제 실행 */
 			fnRemove : function(itemNo) {
 				var self = this;
-				if (confirm("정말 삭제할까요?")) {
+				if (confirm("정말 제거 하시겠습니까?")) {
 					var nparmap = {
 						itemNo : itemNo
 					};
@@ -502,11 +756,39 @@
 				$.pageChange("/AdminProductView.do", {
 					itemNo : itemNo
 				});
-			}
+			},
+			 updateSelected: function() {
+		        	var self = this;
+		            switch (self.selectedOption) {
+		                case 'new':
+		                	self.type = 'CDATE';
+		                	self.order = 'DESC';
+		                    break;
+		                case 'old':
+		                	self.type = 'CDATE';
+		                	self.order = 'ASC';
+		                    break;
+		                case 'high':
+		                	self.type = 'PRICE';
+		                	self.order = 'DESC';
+		                    break;
+		                case 'low':
+		                	self.type = 'PRICE';
+		                	self.order = 'ASC';
+		                    break;
+		            }
+		            self.fnList(self.code);
+		        },
+		        /* kr통화 표시 */
+		        DiscountPrice: function(price, sRate) {
+		            const disPrice = price * ((100 - sRate) / 100);
+		            return disPrice.toLocaleString('ko-KR');
+		        }
 		},
 		created : function() {
 			var self = this;
-			self.fnList("${map.code}");
+			self.fnList(self.code);
+			
 		}
 	});
 </script>

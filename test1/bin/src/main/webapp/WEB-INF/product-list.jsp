@@ -7,303 +7,92 @@
 	<meta charset="UTF-8">
 	<script src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="css/product.css" type="text/css">
+	<link rel="stylesheet" href="css/teamProj_style.css" type="text/css">
 	<title>상품 페이지</title>
 </head>
 <style>
-    .prodcut-container {
-        margin: 0 auto; 
-        padding: 20px; 
-        max-width: 1200px; 
-        border-style: none;
-        background-color: #ffffff;
-        
-        flex-direction: column; /* 세로 방향으로 내부 요소 정렬 */
-    	align-items: center; /* 가로 방향 중앙 정렬 */  
-    }
-
-    .banner {
-        width: 100%; 
-        margin-bottom: 20px; 
-    }
-    .banner img{
-        width: 100%;
-        height: 300px;
-
-    }
-
-    .product-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start; /* flex-start로 변경하여 좌측 정렬 */
-        gap: 10px;
-    }
-
-    .product-item {
-        width: calc(25% - 10px); /* 4개의 상품이 한 줄에 표시되도록 설정 */
-        display: flex; /* flexbox를 사용 */
-        flex-direction: column; /* 세로 방향으로 항목 정렬 */
-        margin-bottom: 20px;
-        background-color: #fff;
-        border-style: none;
-        cursor: pointer;
-        overflow: hidden;
-    }
-
-    .product-item:hover {
-        box-shadow: 0 2px 4px rgba(0,0,0,0.5); 
-    }
-
-    .product-item img {
-        width: 100%; 
-        height: auto; 
-        object-fit: cover; 
-        aspect-ratio: 1 / 1; /* 이미지 비율을 1:1로 설정 */
-        transition: transform 0.2s ease-in-out;
-    }
-
-    .product-item:hover img {
-        transform: scale(1.05); 
-    }
-
-    .product-item button {
-        display: block;
-        width: 100%; 
-        padding: 10px 0; 
-        margin: 15px 0; 
-        background-color: #5cb85c;
-        color: white; 
-        border-style: none;
-        border-radius: 3px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .product-item button:hover {
-        background-color: #3e993e;
-    }
-
-    .product-info {
-        padding: 10px;
-        text-align: center;
-        margin-top: auto; /* 마진 상단 자동 조정으로 항상 하단에 위치 */
-    }
-
-    .product-name {
-        margin: 1px 10px;
-        font-weight: bold;
-        font-size: 15px;
-    }
-
-    .product-price {
-        color: #E44D26;
-        font-weight: bold;
-        font-size: 14px;
-    }
-    .product-price del{
-        font-size: 12px; 
-    }
-    
-    .admin-btn {
-	    display: flex;
-	    justify-content: flex-start; /* 버튼들을 가로로 정렬 */
-	    gap: 10px; /* 버튼 사이 간격 */
-	}
-    
-    .controls {
-        display: flex;
-        justify-content: space-between; /* 좌우 정렬 */
-        align-items: center;
-        padding: 10px 0;
-    }
-
-    .buttons-container {
-    	display: flex;
-    	align-items: center;
-	    justify-content: center;
-	    gap: 0.5px;
-	    width: 100%;
-	    margin: auto;
-    
-        /* display: flex; */
-       /*  margin-bottom: 30px;
-        margin-right: 5px;
-        color: #5cb85c;
-        border: 1px solid #5cb85c;
-        background-color: white;
-        border-radius: 5px;
-        width: 100px;
-        height: 30px;
-        cursor: pointer; */
-    }
-    
-    .buttons-container img{
-    	width: 120px; 
-   		height: 120px; 
-    	cursor: pointer;   	
-    }
-    
-
-    .buttons-container button:hover {
-    	color : white;
-    	background-color: #5cb85c;
-    }
-
-    .order-container {
-        margin-left: auto; /* 왼쪽 마진 자동으로 주어 오른쪽에 붙임 */
-    }
-
-    .dropdown-container select {
-        padding: 5px;
-        cursor: pointer;
-    }
-    
-    .button-selected {
-    	display: flex;
-    	align-items: center;
-	    justify-content: center; 
-	    gap: 0.5px;
-	    width: 100%;
-	    margin: auto;
-	   /* 	background-color: #4CAF50;
-	    color: white; 
-	    margin-bottom: 30px;
-	    margin-right: 5px;
-        border: 1px solid #5cb85c;
-        border-radius: 5px;
-        width: 100px;
-        height: 30px;
-        cursor: pointer; */
-	}
-	
-	.button-selected img{
-		width: 150px; 
-   		height: 150px; 
-    	cursor: pointer;
-	}
-	
-	.searchArea {
-	    width: 100%; 
-	    display: flex; 
-	    justify-content: center; 
-	    margin: 20px 0; 
-	}
-
-	.searchArea input[type="text"] {
-	    width: 400px; 
-	    padding: 10px; 
-	    border: 1px solid #5cb85c; 
-	    border-radius: 10px; 
-	}
-	
-	.control-wrapper {
-	    display: flex;
-	    justify-content: space-between;
-	    align-items: center;
-	    width: 100%; 
-	}
-	.search {
-		margin: 5px;
-		cursor: pointer;
-		/* text-align: center; */
-	}
-	
-	.message-container {
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	    width: 100%;
-	    height: 100px; /* 메시지 영역의 높이. 필요에 따라 조절합니다. */
-	}
-	
-	.no-results-message {
-	    text-align: center;
-	    margin-top: 20px;
-	    font-size: 20px;
-	    color: #888;
-	    width: 100%; /* 너비를 100%로 설정하여 부모 컨테이너의 전체 너비를 차지하도록 합니다. */
-	    display: flex; /* Flexbox 모델 적용 */
-	    justify-content: center; /* 내용을 중앙에 배치 */
-	    align-items: center; /* 항목들을 가운데 정렬 */
-	}
-	.buttonArea {
-		display: flex;
-    	align-items: center;
-	    justify-content: center;
-	    gap: 0.5px;
-	    width: 70%;
-	    margin-left: 150px;
-	    margin-bottom: 100px;
-	}
-
 </style>
 <body>
 <!-- Header Section -->
 <%@ include file="layout/header.jsp" %>
 	<div id="app">
 		<div class="prodcut-container">
-           <!--  <div class="banner">
-              배너 이미지 영역
-              <img src="/img/vegetable.jpg" alt="상단 배너 이미지">
-            </div> -->
-			<div class="searchArea">
-				<input type="text" placeholder="검색어를 입력해주세요" v-model="keyword" @keyup.enter="fnList(code)">
-				<img class="search" src="/img/search.jpeg" @click="fnList(code)" style="width: 35px; height: 35px;">
+			<div class="searchArea" style="margin-top: 0px;">
+				<div class="logo_search">
+		           <div class="logo_search__form">
+		               <form action="javascript:;">
+		                   <div class="logo_search__categories">
+		                       <img src="img/logo/mainLogo.png">
+		                   </div>
+		                   <div class="search-input-btn">
+			                   <input type="text" placeholder="검색할 상품명을 입력해 주세요" v-model="keyword" @keyup.enter="fnList(code)">
+			                   <button type="submit" class="site-btn" @click="fnList(code)">검색</button>
+		                   </div>
+		               </form>
+		           </div>
+		        </div>
 			</div>
 			
             <div class="control-wrapper">
-            	<div class="buttonArea">
-	            	<a :class="[selected == '' ? 'button-selected' : 'buttons-container']" @click="fnList('')"><img src="img/categories/cat-5.jpg"></a>
-	                <a :class="[selected == 'org' ? 'button-selected' : 'buttons-container']" @click="fnList('org')"><img src="img/categories/cat-1.jpg"></a>
-					<a :class="[selected == 'vegan' ? 'button-selected' : 'buttons-container']" @click="fnList('vegan')"><img src="img/categories/cat-2.jpg"></a>
-					<a :class="[selected == 'gluten' ? 'button-selected' : 'buttons-container']" @click="fnList('gluten')"><img src="img/categories/cat-3.jpg"></a>
-					<a :class="[selected == 'local' ? 'button-selected' : 'buttons-container']" @click="fnList('local')"><img src="img/categories/cat-4.jpg"></a>                 	
-            	</div>
-            	
-            	<!-- <button type="button" :class="[selected == '' ? 'button-selected' : 'buttons-container']" @click="fnList('')">전체</button>
-                <button type="button" :class="[selected == 'org' ? 'button-selected' : 'buttons-container']" @click="fnList('org')">유기농</button>
-				<button type="button" :class="[selected == 'vegan' ? 'button-selected' : 'buttons-container']" @click="fnList('vegan')">비건</button>
-				<button type="button" :class="[selected == 'gluten' ? 'button-selected' : 'buttons-container']" @click="fnList('gluten')">글루텐프리</button>
-				<button type="button" :class="[selected == 'local' ? 'button-selected' : 'buttons-container']" @click="fnList('local')">로컬푸드</button> -->
-
-                <div class="order-container">     
-                    <select v-model="selectedOption" @change="updateSelected">
-					    <option value="new">신상품 순</option>
-					    <option value="old">구상품 순</option>
-					    <option value="high">높은 가격순</option>
-					    <option value="low">낮은 가격순</option>
-					</select>
-                </div>
-            </div>
-            
-
-            <div class="product-list">
-		   		<div class="product-item" v-for="item in list" :key="item.id">
-			    	<template v-for="item2 in fileList" v-if="item.itemNo == item2.itemNo">
-						<img :src="item2.filePath+item2.fileName" alt="" @click="fnDetailView(item.itemNo, userId)">
-				    	
-				      	<button type="button" href="javascript:;" @click="fnAddCart(item.itemNo)">장바구니에 담기</button>
-				      	
-				      	<div class="product-info" @click="fnDetailView(item.itemNo)">
-				        	<div class="product-name">{{item.itemName}}</div>
-				        	<div class="product-price">
-				        		<template v-if="item.sRate > 0">
-					        		<del>{{item.price.toLocaleString('ko-KR')}}원</del>
-					        		<br>{{item.sRate}}% {{DiscountPrice(item.price, item.sRate)}}원		        		
-				        		</template>
-				        		<template v-else>
-				        			<br>{{item.price.toLocaleString('ko-KR')}}원
-				        		</template>
-				        	</div>
-				      	</div>
-				    </template>
+			    <!-- 제품 카테고리 버튼 -->
+			    <div class="buttonArea">
+			        <a :class="[selected == '' ? 'button-selected' : 'buttons-container']" @click="fnList('')"><img src="img/categories/cat-5.png"></a>
+					<a :class="[selected == 'org' ? 'button-selected' : 'buttons-container']" @click="fnList('org')"><img src="img/categories/cat-1.png"></a>
+					<a :class="[selected == 'vegan' ? 'button-selected' : 'buttons-container']" @click="fnList('vegan')"><img src="img/categories/cat-2.png"></a>
+					<a :class="[selected == 'gluten' ? 'button-selected' : 'buttons-container']" @click="fnList('gluten')"><img src="img/categories/cat-3.png"></a>
+					<a :class="[selected == 'local' ? 'button-selected' : 'buttons-container']" @click="fnList('local')"><img src="img/categories/cat-4.png"></a>
 			    </div>
-			    <div class="message-container" v-if="list.length === 0">
-				    <div class="no-results-message">
-				        등록된 상품이 없습니다. 다시 검색해 주세요.
-				    </div>
-				</div>
-			</div> 
+			</div>
 		</div>
+		<div class="prodcut-container">
+			<div class="order-options">
+			    <label>
+			        <input type="radio" name="order-option" value="new" v-model="selectedOption" @change="updateSelected">
+			        <span>신상품 순</span>
+			    </label>
+			    <label>
+			        <input type="radio" name="order-option" value="old" v-model="selectedOption" @change="updateSelected">
+			        <span>구상품 순</span>
+			    </label>
+			    <label>
+			        <input type="radio" name="order-option" value="high" v-model="selectedOption" @change="updateSelected">
+			        <span>높은 가격순</span>
+			    </label>
+			    <label>
+			        <input type="radio" name="order-option" value="low" v-model="selectedOption" @change="updateSelected">
+			        <span>낮은 가격순</span>
+			    </label>
+			</div>
+		</div>
+        <div class="prodcut-container" style="clear: both;">    
+		    <div class="product-list">
+		        <div class="product-item" v-for="item in list" :key="item.id">
+		            <template v-for="item2 in fileList" v-if="item.itemNo == item2.itemNo">
+		                <img class="product-img" :src="item2.filePath+item2.fileName" alt="" @click="fnDetailView(item.itemNo, userId)">
+		                <div class="product-info" @click="fnDetailView(item.itemNo)">
+		                    <div class="product-name">{{item.itemName}}</div>
+		                    <div class="product-price">
+		                        <template v-if="item.sRate > 0">
+		                            <del>{{item.price.toLocaleString('ko-KR')}}원</del>
+		                            <br>{{item.sRate}}% {{DiscountPrice(item.price, item.sRate)}}원		        		
+		                        </template>
+		                        <template v-else>
+		                            <br>{{item.price.toLocaleString('ko-KR')}}원
+		                        </template>
+		                    </div>
+		                </div>
+		                <button class="add-to-cart-btn" @click="fnAddCart(item.itemNo)">장바구니에 담기</button>
+		            </template>
+		        </div>
+		        <div class="message-container" v-if="list.length === 0">
+		            <div class="no-results-message">
+		                등록된 상품이 없습니다. 다시 검색해 주세요.
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
 	</div>
 <!-- Footer Section -->
 <%@ include file="layout/footer.jsp" %>	
