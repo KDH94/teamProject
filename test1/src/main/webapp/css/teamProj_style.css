@@ -541,3 +541,74 @@
 .site-btn {
 	border-radius : 10px;
 }
+
+
+/* board-insert */
+.insert-btn {
+	margin-top: 30px;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	transition: background-color 0.3s;
+}
+
+.insert-btn:hover {
+	background-color: #45a049;
+}
+
+.board-con {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px;
+	background-color: #f9f9f9;
+	color: #333;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+}
+
+#inputBox, #inputBox1 {
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+
+.img-box {
+	margin-bottom: 10px;
+}
+
+.title-box {
+	margin-top: 10px;
+	width: 720px;
+	height: 40px;
+	padding-left: 15px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.title-box:focus {
+	border: 1px solid #777;
+}
+
+.sel-box {
+	border: none;
+	border-bottom: 1px solid #ccc;
+	background-color: rgba(0, 0, 0, 0);
+	width: 300px;
+	height: 40px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-left: 5px;
+	font-weight: bold;
+}
+
+.img-con {
+	margin-bottom: 10px;
+}
+
