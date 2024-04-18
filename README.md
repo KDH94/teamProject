@@ -1,7 +1,7 @@
 # Eco Market (친환경 먹거리 판매 사이트)
 친환경 식품을 원하는 소비자를 위한 홈페이지
 
-![teamProForGithub](https://github.com/KDH94/teamProject/assets/28282851/385f6d53-75ad-4aba-a38d-c2d8cefda93e)
+![main-page](https://github.com/KDH94/teamProject/assets/28282851/778c6b85-825a-46c2-8f96-4b06eaaa2306)
 # 👨‍👩‍👦‍👦 Collaborators: 팀원 소개
 |이름|역할|GitHub 프로필|
 |------|---|---|
