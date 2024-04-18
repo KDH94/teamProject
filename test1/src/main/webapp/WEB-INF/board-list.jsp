@@ -6,9 +6,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/bootstrap-min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/board.css" type="text/css">
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -270,6 +267,13 @@
     height: auto; /* 가로 세로 비율 유지 */
     border-radius: 8px; /* 이미지를 둥글게 만들기 */
 }
+.date-hit {
+	position: absolute;
+	bottom: 1px;
+	margin-bottom : 15px;
+	margin-left: 150px;
+	margin-right: 150px;
+}
 </style>
 </head>
 <body>
@@ -344,13 +348,13 @@
 			                <h5 style="margin-bottom : 10px;">
 			                    <a @click="fnView(item.boardNo, kind)" href="javascript:;" style="font-size: 25px; color: #2C9D59; font-family: 'Orbit', sans-serif;">{{truncateText(item.title, 20)}}</a>
 			                </h5>
-			                <div style="margin-bottom : 10px;">
-			                    <i class="fa fa-user"></i> <a href="javascript:;" @click="fnUser(item.userId)" style="color: black; font-size: 20px; font-weight: bold;">{{item.userId}}</a>
-			                </div>
-			                <div style="position: absolute; bottom: 1px; margin-bottom : 15px;">
-			                	<span ><i class="fa fa-calendar"></i> {{item.cDate}}</span>
-			                    <span style="margin-left : 10px;"><i class="fa fa-eye"></i>  {{item.hits}}</span>
-			                </div>
+				                <div style="margin-bottom : 10px;">
+				                    <i class="fa fa-user"></i> <a href="javascript:;" @click="fnUser(item.userId)" style="color: black; font-size: 20px; font-weight: bold;">{{item.userId}}</a>
+				                </div>
+				                <div class="date-hit">
+				                	<span ><i class="fa fa-calendar"></i> {{item.cDate}}</span>
+				                    <span style="margin-left : 10px;"><i class="fa fa-eye"></i>  {{item.hits}}</span>
+				                </div>
 			            </div>
 			        </div>
 			    </div>
