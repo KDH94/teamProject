@@ -571,7 +571,7 @@
 	border-radius: 8px;
 }
 
-#inputBox, #inputBox1 {
+.inputBox {
 	padding: 8px;
 	border-radius: 4px;
 	border: 1px solid #ccc;

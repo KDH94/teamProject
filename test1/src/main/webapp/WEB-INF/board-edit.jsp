@@ -10,86 +10,43 @@
 <script src="https://unpkg.com/vue2-editor@2.3.11/dist/index.js"></script>
 <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link rel="stylesheet" href="css/teamProj_style.css" type="text/css">
 <title>게시글 수정 페이지</title>
 <style>
-body {
-	font-family: Arial, sans-serif;
-}
-
-table {
-	margin: 10px;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-th, td {
-	border: 1px solid #ddd;
-	padding: 8px;
-	text-align: center;
-	font-size: 14px;
-	font-family: Arial, sans-serif;
-}
-
-th {
-	background-color: #f2f2f2;
-}
-
-tr:hover {
-	background-color: #f5f5f5;
-}
-
-button {
-	margin-top: 10px;
-	padding: 10px 20px;
-	font-size: 16px;
-	cursor: pointer;
-	background-color: #4CAF50;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	transition: background-color 0.3s;
-	font-family: Arial, sans-serif;
-}
-
-button:hover {
-	background-color: #45a049;
-}
 </style>
 </head>
-
 <body>
 	<%@ include file="layout/header.jsp"%>
 	<div id="app">
-		<tr>
-			<th>게시판 선택</th>
-			<td><select v-model="kind">
-					<option value="1">공지사항</option>
-					<option value="2">레시피게시판</option>
-			</select></td>
-		</tr>
-		<div>
-			제목 : <input type="text" v-model="title">
-		</div>
-		<div v-if="kind == '2'" class="fileImage">
-			<tr>
-				<td width="30%">메인 이미지 :</td>
-				<td width="70%"><input type="file" id="file1" name="file1"
-					accept=".jpg,.png,.gif"></td>
-			</tr>
-			<div>
-				<tr>
-					<td width="30%">설명에 들어갈 이미지 :</td>
-					<td width="70%"><input type="file" id="file2" name="file2"
-						accept=".jpg,.png,.gif" multiple></td>
-				</tr>
+		<div class="board-con">
+			<div class="inputBox">
+				<div>
+					<select class="sel-box" v-model="kind">
+						<option value="1" v-if="userType == 'A'">공지사항</option>
+						<option value="2">레시피게시판</option>
+					</select>
+				</div>
+				<input class="title-box" type="text" v-model="title"
+					placeholder="제목을 입력하세요">
 			</div>
-		</div>
-		<div>
-			내용 :
-			<div id="editor" v-model="contents" style="height: 300px;"></div>
-		</div>
-		<div class="editButton" style="text-align: center; margin: 20px;">
-			<button @click="fnEdit">수정완료</button>
+			<div v-if="kind == 2" class="inputBox">
+				<div class="img-con">
+					<div class="img-box">
+						메인 이미지: <input type="file" class="file-box" id="file1"
+							name="file1" accept=".jpg,.png,.gif">
+					</div>
+					<div>
+						내용 이미지: <input type="file" class="file-box" id="file2"
+							name="file2" accept=".jpg,.png,.gif" multiple>
+					</div>
+				</div>
+			</div>
+			<div style="margin-top: 10px;">
+				<div id="editor" v-model="contents" style="height: 300px;"></div>
+			</div>
+			<div style="text-align: center;">
+				<button class="insert-btn" @click="fnEdit">수정완료</button>
+			</div>
 		</div>
 	</div>
 	<%@ include file="layout/footer.jsp"%>

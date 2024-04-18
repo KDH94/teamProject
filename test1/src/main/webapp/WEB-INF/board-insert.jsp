@@ -11,7 +11,7 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <link rel="stylesheet" href="css/teamProj_style.css" type="text/css">
-<title>boardInsert 페이지</title>
+<title>게시글 작성 페이지</title>
 <style>
 </style>
 </head>
@@ -19,7 +19,7 @@
 	<%@ include file="layout/header.jsp"%>
 	<div id="app">
 		<div class="board-con">
-			<div id="inputBox">
+			<div class="inputBox">
 				<div>
 					<select class="sel-box" v-model="kind">
 						<option value="1" v-if="userType == 'A'">공지사항</option>
@@ -29,7 +29,7 @@
 				<input class="title-box" type="text" v-model="title"
 					placeholder="제목을 입력하세요">
 			</div>
-			<div v-if="kind == 2" id="inputBox1">
+			<div v-if="kind == 2" class="inputBox">
 				<div class="img-con">
 					<div class="img-box">
 						메인 이미지: <input type="file" class="file-box" id="file1"
@@ -56,7 +56,6 @@
 	var app = new Vue({
 		el : '#app',
 		data : {
-			info : {},
 			userId : "${userId}",//변수선언
 			kind : "${map.kind}",//컨트롤러에서 가져온 map꺼내서 위에서 사용
 			title : "${title}",
