@@ -38,13 +38,13 @@
 	<!-- Footer Section Begin -->
 	<footer class="footer spad">
 		<div class="container">
-			<div class="row">
+			<div class="row" style="margin-right: -10px;">
 				<div class="col-lg-4 col-md-6 col-sm-6"
 					style="border-right: 1px solid #ccc;">
 					<div class="footer__about">
 						<ul>
 							<li style="font-weight: bold; font-size: 18px;">에코마켓 고객센터<span
-								style="margin-left: 5px; color: rgb(44, 157, 89);">1644-1107</span></li>
+								style="margin-left: 5px; color: rgb(44, 157, 89);">1577-1234</span></li>
 							<li>화-목요일 11:00 ~ 18:00 (점심시간 12:00 ~ 13:00)</li>
 							<li>월·금요일 09:00 ~ 18:00 (점심시간 12:00 ~ 13:00)</li>
 							<li>토·일·공휴일 휴무</li>
@@ -86,7 +86,7 @@
 						<div class="footer__about__logo">
 							<a href="/main.do"><img src="img/logo/mainLogo.png" alt="메인 로고" style="width: 150px;"></a>
 						</div>
-						<p>상호명: ㈜에코마켓 | 대표: 김임시 | <br>사업자등록번호: 123-45-67890 | <br>소재지: 인천광역시 부평구 경원대로 1366, 7층(상록스테이션탸워)</p>
+						<p>상호명: ㈜에코마켓 | 대표: 김임시 <br>| 사업자등록번호: 123-45-67890 <br>| 소재지: 인천광역시 부평구 경원대로 1366, 7층(상록스테이션탸워)</p>
 						<p>통신판매업 신고번호: 2024-테스트부-0101 | 제휴 및 납품 문의: admin@ecomarket.co.kr</p>
 					</div>
 				</div>
@@ -99,8 +99,7 @@
 								Copyright &copy;
 								<!-- <script>document.write(new Date().getFullYear());</script> -->
 								<%=new java.util.Date().toLocaleString().substring(0, 4)%>
-								All rights reserved | <i class="fa fa-heart" aria-hidden="true"></i>
-								by <a href="javascript:;">에코마켓</a>
+								All rights reserved by <span style="color: rgb(44, 157, 89);">에코마켓</span>
 							</p>
 						</div>
 						<div class="footer__copyright__payment">
@@ -111,7 +110,7 @@
 				</div>
 			</div>
 		</div>
-		<div><img src="img/logo/upArrow.png" alt="to up scroll" class="upArrow" id="scrollToTop"></div>
+		<div><img src="img/logo/upArrow.png" alt="scroll to top" class="upArrow" id="scrollToTop"></div>
 	</footer>
 </body>
 <script type="text/javascript">

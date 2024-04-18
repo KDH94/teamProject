@@ -356,23 +356,23 @@
 	            <div class="swiper-wrapper">
 	                <div class="swiper-slide" >
                         <!-- Category 1 -->
-                        <img src="img/categories/cat-1.jpg">
+                        <a href="javascript:;" @click="fnMovetoCategoty('org')"><img src="img/categories/cat-1.jpg"></a>
 	                </div>
 	                <div class="swiper-slide" >
                         <!-- Category 2 -->
-                        <img src="img/categories/cat-2.jpg">
+                        <a href="javascript:;" @click="fnMovetoCategoty('vegan')"><img src="img/categories/cat-2.jpg"></a>
 	                </div>
 	                <div class="swiper-slide" >
                         <!-- Category 3 -->
-                        <img src="img/categories/cat-3.jpg">
+                        <a href="javascript:;" @click="fnMovetoCategoty('gluten')"><img src="img/categories/cat-3.jpg"></a>
 	                </div>
 	                <div class="swiper-slide" >
                         <!-- Category 4 -->
-                        <img src="img/categories/cat-4.jpg">
+                        <a href="javascript:;" @click="fnMovetoCategoty('local')"><img src="img/categories/cat-4.jpg"></a>
 	                </div>
 	                <div class="swiper-slide" >
                         <!-- Category 5 -->
-                        <img src="img/categories/cat-5.jpg">
+                        <a href="javascript:;" @click="fnMovetoCategoty('')"><img src="img/categories/cat-5.jpg"></a>
 	                </div>
 	            </div>
 	            <!-- Add Pagination -->
@@ -629,25 +629,31 @@
             	var self = this;
             	$.pageChange("/productList.do", {keyword: self.keyword, code: code});
             },
+            fnMovetoCategoty: function(code) {
+            	var self = this;
+            	$.pageChange("/productList.do", {code: code});
+            },
             handleSlideChange() {
                 // 현재 활성화된 슬라이드의 인덱스 가져오기
                 if(this.swiper != null){
                 	console.log("swiper", this.swiper.realIndex);
                 	var activeIndex = this.swiper.realIndex;
                     // 활성화된 슬라이드의 배경색을 설정
+                    var heroElement = document.querySelector('.hero');
+                    heroElement.style.transition = "background-color 0.5s";
                     setTimeout(() => {
                     	switch (activeIndex) {
 	                        case 0:
-	                            document.querySelector('.hero').style.backgroundColor = 'rgb(250 197 19)';
+	                        	heroElement.style.backgroundColor = 'rgb(250 197 19)';
 	                            break;
 	                        case 1:
-	                            document.querySelector('.hero').style.backgroundColor = 'rgb(176 225 24)';
+	                        	heroElement.style.backgroundColor = 'rgb(176 225 24)';
 	                            break;
 	                        case 2:
-	                            document.querySelector('.hero').style.backgroundColor = 'rgb(204 234 229)';
+	                        	heroElement.style.backgroundColor = 'rgb(204 234 229)';
 	                            break;
 	                        case 3:
-	                            document.querySelector('.hero').style.backgroundColor = 'rgb(243 230 198)';
+	                        	heroElement.style.backgroundColor = 'rgb(243 230 198)';
 	                            break;
                     	}
                     }, 150);
