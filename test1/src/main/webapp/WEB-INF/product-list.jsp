@@ -19,33 +19,6 @@
     margin: 20px 0;
 }
 
-.search-input {
-    width: 400px;
-    padding: 10px;
-    border: 1px solid #5cb85c;
-    border-radius: 20px; /* 둥근 테두리를 적용합니다 */
-    transition: all 0.3s ease; /* 애니메이션 효과를 추가합니다 */
-    margin-right: 10px; /* 아이콘과의 간격을 조정합니다 */
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #5cb85c; /* 포커스 시 테두리 색상을 변경합니다 */
-    box-shadow: 0 0 5px #5cb85c; /* 포커스 시 그림자 효과를 추가합니다 */
-}
-
-.search-icon {
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    transition: all 0.3s ease; /* 애니메이션 효과를 추가합니다 */
-}
-
-.search-icon:hover {
-    transform: scale(1.1); /* 호버 시 아이콘을 약간 확대합니다 */
-}
-/* search end */
-
 /* 제품 카테고리 및 정렬 옵션 스타일 */
 .control-wrapper {
     display: flex;

@@ -90,7 +90,7 @@
 .categories {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
 .swiper-container {
@@ -351,28 +351,28 @@
 	    </section>
 	    <!-- Hero Section End -->
 	    
-	    <section class="categories" style="display: flex; justify-content: center;">
+	    <section class="categories featured">
 	        <div class="swiper-container" style="width : 1000px; overflow: hidden; ">
 	            <div class="swiper-wrapper">
 	                <div class="swiper-slide" >
                         <!-- Category 1 -->
-                        <a href="javascript:;" @click="fnMovetoCategoty('org')"><img src="img/categories/cat-1.jpg"></a>
+                        <a href="javascript:;" @click="fnMovetoCategoty('org')"><img src="img/categories/cat-1.png"></a>
 	                </div>
 	                <div class="swiper-slide" >
                         <!-- Category 2 -->
-                        <a href="javascript:;" @click="fnMovetoCategoty('vegan')"><img src="img/categories/cat-2.jpg"></a>
+                        <a href="javascript:;" @click="fnMovetoCategoty('vegan')"><img src="img/categories/cat-2.png"></a>
 	                </div>
 	                <div class="swiper-slide" >
                         <!-- Category 3 -->
-                        <a href="javascript:;" @click="fnMovetoCategoty('gluten')"><img src="img/categories/cat-3.jpg"></a>
+                        <a href="javascript:;" @click="fnMovetoCategoty('gluten')"><img src="img/categories/cat-3.png"></a>
 	                </div>
 	                <div class="swiper-slide" >
                         <!-- Category 4 -->
-                        <a href="javascript:;" @click="fnMovetoCategoty('local')"><img src="img/categories/cat-4.jpg"></a>
+                        <a href="javascript:;" @click="fnMovetoCategoty('local')"><img src="img/categories/cat-4.png"></a>
 	                </div>
 	                <div class="swiper-slide" >
                         <!-- Category 5 -->
-                        <a href="javascript:;" @click="fnMovetoCategoty('')"><img src="img/categories/cat-5.jpg"></a>
+                        <a href="javascript:;" @click="fnMovetoCategoty('')"><img src="img/categories/cat-5.png"></a>
 	                </div>
 	            </div>
 	            <!-- Add Pagination -->
@@ -644,16 +644,16 @@
                     setTimeout(() => {
                     	switch (activeIndex) {
 	                        case 0:
-	                        	heroElement.style.backgroundColor = 'rgb(250 197 19)';
+	                        	heroElement.style.backgroundColor = 'rgb(235 182 4)';
 	                            break;
 	                        case 1:
-	                        	heroElement.style.backgroundColor = 'rgb(176 225 24)';
+	                        	heroElement.style.backgroundColor = 'rgb(161 210 9)';
 	                            break;
 	                        case 2:
-	                        	heroElement.style.backgroundColor = 'rgb(204 234 229)';
+	                        	heroElement.style.backgroundColor = 'rgb(189 219 214)';
 	                            break;
 	                        case 3:
-	                        	heroElement.style.backgroundColor = 'rgb(243 230 198)';
+	                        	heroElement.style.backgroundColor = 'rgb(228 215 183)';
 	                            break;
                     	}
                     }, 150);
