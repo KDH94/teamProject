@@ -170,7 +170,7 @@
 		B.*,
 		U.*,
 		C.*,
-		DATE_FORMAT(U.UDATETIME, '%Y.%m.%d') AS UDATE
+		DATE_FORMAT(B.UDATETIME, '%Y.%m.%d') AS UDATE
 		FROM
 			ECO_BOARD B
 		INNER JOIN ECO_USER U ON B.USERID = U.USERID
@@ -179,6 +179,7 @@
 		<if test="userType == 'U'.toString()">
 			AND U.USERID = #{userId}	
 		</if> 
+		ORDER BY B.UDATETIME DESC
 	</select>
 
 	<!-- 문의 등록 -->
