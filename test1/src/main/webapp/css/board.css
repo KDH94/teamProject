@@ -1,0 +1,177 @@
+.temp {
+    margin: 0 auto; 
+    padding: 20px; 
+    max-width: 1500px; 
+    border-style: none;
+    background-color: #ffffff;
+	align-items: center; /* 가로 방향 중앙 정렬 */  
+}
+.temp div {
+	text-align: center;
+}
+
+.temp table {
+	border-collapse: collapse;
+	width: 80%;
+	margin: 10px auto;
+}
+
+.temp th, td {
+	border-top: none;
+	border-bottom: 1px solid #ddd;
+	border-right: none;
+	padding: 8px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 400;
+	font-style: normal;
+	cursor: default;
+}
+
+.temp tr:hover {
+	background-color: #f5f5f5;
+}
+
+.temp tr {
+	border: top 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+.temp th {
+	background-color: #f2f2f2;
+}
+
+.temp button {
+	margin-top: 10px;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	transition: background-color 0.3s;
+	display: inline-block;
+}
+
+.temp button:hover {
+	background-color: #45a049;
+}
+
+.temp li {
+	display: inline-block;
+}
+
+.temp ul {
+	padding: 5px 10px;
+	cursor: default;
+	color: black;
+	border-radius: 4px;
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 30px;
+	transition: font-size 0.3s;
+}
+
+.temp ul:hover {
+	/* font-size: 35px; */
+}
+
+.temp ul:active {
+	font-size: 30px;
+}
+
+.temp td {
+	height: 70px;
+}
+
+.temp a {
+	text-decoration: none;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagination a {
+	margin: 0 5px; /* 페이지 링크 간격 조절 */
+}
+
+.page-num {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.write-button {
+	float: right;
+	font-size: 20px;
+}
+
+.clear-both {
+	clear: both;
+	margin-bottom: 10px;
+}
+
+.blog__item-box {
+	/* background-color: lightgrey; */
+	padding: 10px;
+	border: 1px solid rgb(179, 211, 179);
+	width: 400px; /* 원하는 너비 값으로 조정 */
+	/* margin: 60px;  *//* 원하는 마진 값으로 조정 */
+	border-radius: 10px;
+	color: #02662A;
+}
+
+.tab-button:focus, .tab-button:hover {
+	color: green;
+}
+
+.box {
+	width: 100%;
+	height: 40%;
+	/* background-color: #cccccc; */
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.box .horizontal-list {
+	display: inline-block;
+	list-style: none;
+	padding: 0;
+}
+
+.box .horizontal-list li {
+	display: inline-block;
+	margin: 0 100px;
+}
+
+.point {
+	font-size: 20px;
+}
+
+.select-tab {
+	/* color: green; */
+	font-weight: bold;
+}
+
+.horizontal-list {
+	cursor: default;
+}
+.searchArea {
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    margin: 20px 0; 
+}
+
+.searchArea input[type="text"] {
+    width: 400px; 
+    padding: 10px; 
+    border: 1px solid #5cb85c; 
+    border-radius: 10px; 
+}
