@@ -29,7 +29,9 @@
  
 	
 </head>
-
+<style>
+.row{margin-right : -120px;}
+</style>
 <body id="HeaderAllTab">
 	<!-- Page Preloder -->
 	<div id="preloder">

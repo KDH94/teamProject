@@ -70,9 +70,9 @@
 		color: #6d6d6d;
 	}
 
-	.align-right {
-		color: #6d6d6d;
-		font-size: 20px;
+	.bi {
+		font-size: 14px;
+		margin-top: 3px;
 	}
 	
 	.menu-item-selected, .menu-item:hover {
@@ -159,7 +159,6 @@
 	.input-group {
 		font-size: 17px;
 		font-weight: bold;
-		margin-bottom: 20px;
 	}
 
 	input[type="text"] {
@@ -198,6 +197,63 @@
 	    margin-bottom: 100px;
 
 	}   
+	
+	/* 문의하기 섹션 스타일링 */
+.content-area.inquiry {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.content-area.inquiry h4 {
+    font-size: 25px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.content-area.inquiry p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.input-group input[type="text"],
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.button-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #45a049;
+}
+	
+	
 </style>
 <body>
 <!-- Header Section -->
@@ -205,9 +261,9 @@
 	<div id="app">
 	    <div class="customer-container">
 	        <div class="menu-area">
-				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'faq' }" @click="updateContent('faq')">자주하는 질문 <span class="align-right">></span></div>
-				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'history' }" @click="updateContent('history')">문의 내역 <span class="align-right">></span></div>
-				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'inquiry' }" @click="updateContent('inquiry')">1:1 문의하기 <span class="align-right">></span></div>				
+				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'faq' }" @click="updateContent('faq')">자주하는 질문 <i class="bi bi-chevron-right"></i></div>
+				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'history' }" @click="updateContent('history')">문의 내역 <i class="bi bi-chevron-right"></i></div>
+				<div class="menu-item" :class="{ 'menu-item-selected': selectedMenuItem === 'inquiry' }" @click="updateContent('inquiry')">1:1 문의하기<i class="bi bi-chevron-right"></i></div>				
 	        </div>
 			<div class="content-area">
 				<div v-if="selectedMenu === 'faq'">
@@ -223,12 +279,12 @@
 						</thead>
 						<tbody>
 							<template v-for="(faq, index) in paginatedData">
-								<tr @click="toggleDetail(faq.id)" :key="faq.id">
+								<tr @click="toggleDetail(faq.id)">
 									<td>{{ index + 1 }}</td>
 									<td>{{ faq.category}}</td>
 									<td>{{ faq.title }}</td>
 								</tr>
-								<tr v-if="faq.showDetail" :key="faq.id">
+								<tr v-if="faq.showDetail">
 									<td colspan="3">{{ faq.detail }}</td>
 								</tr>
 							</template>
@@ -317,9 +373,8 @@
 			currentPage2: 1,
 			itemsPerPage2: 10,
 			
-			
 			selectedMenu: 'faq',
-			selectedMenuItem: null, // 선택된 메뉴 아이템을 저장하기 위한 속성 추가	        
+			selectedMenuItem: null, // 선택된 메뉴 아이템을 저장하기 위한 속성 추가
 			faqs : [ 
 				{ id: 1, category: '주문/결제', title: '결제(환불)는 어떻게 하나요?', detail: '▶ 결제(환불)는 다음과 같이 진행해주시면 됩니다. ~~', showDetail: false },
 	            { id: 2, category: '배송', title: '주문한 상품은 언제 배송되나요?', detail: '▶ 주문일로부터 약 1~2일이 소요됩니다', showDetail: false },
@@ -332,8 +387,8 @@
 	            { id: 9, category: '시스템오류', title: '결제가 되지 않아요', detail: '▶ 일시적인 오류 발생이나 은행 점검으로 인해 결제가 되지 않는 경우가 발생합니다. 해당 현상이 계속 발생할 경우 1:1 문의해주세요', showDetail: false },
 	            { id: 10, category: '회원', title: '회원정보는 어떻게 변경하나요?', detail: '▶ 마이페이지에서 수정 가능합니다.', showDetail: false },
 	            { id: 11, category: '배송', title: '배송이 늦는다고 문자가 왔어요', detail: '▶ 도로 교통 상황에 따라 배송이 늦게 될 수 있습니다.', showDetail: false },
-	            { id: 12, category: '회원가입', title: '회원 가입시 어떤 혜택이 있나요?', detail: '▶ 흐흐흐 무엇이 있을까요', showDetail: false },
-	            { id: 13, category: '회원', title: '주문하지도 않았는데 배송완료 알림 문자가 왔어요', detail: '▶ 오 개쩐다', showDetail: false },
+	            { id: 12, category: '회원가입', title: '회원 가입시 어떤 혜택이 있나요?', detail: '▶ 가입 축하 포인트를 부여받을 수 있습니다.', showDetail: false },
+	            { id: 13, category: '회원', title: '주문하지도 않았는데 배송완료 알림 문자가 왔어요', detail: '▶ 다른 유저의 실수로 연락처를 잘못 기재된 경우가 종종 발생합니다.', showDetail: false },
 	            { id: 14, category: '배송', title: '배송 불가 지역으로 조회돼요', detail: '▶ 신도시/신규 지번 등으로 배송 불가지역이 확인될 수 있으며 이런 경우 1:1 문의로 배송불가 지역의 주소를 함께 기재하여 문의해주세요', showDetail: false },
 	            { id: 15, category: '회원', title: '회원 탈퇴를 하고 싶어요', detail: '▶ 마이페이지에서 회원 탈퇴를 진행할 수 있습니다.', showDetail: false }
 			]
@@ -347,7 +402,6 @@
 		    totalPages: function() {
 		        return Math.ceil(this.faqs.length / this.itemsPerPage);
 		    },
-		    
 		    
 		    historyPage: function() {
 		    	const start = (this.currentPage2 - 1) * this.itemsPerPage2;
@@ -415,6 +469,12 @@
 			
 			/* 선택한 메뉴에 따른 항목 업데이트 함수 */
 			updateContent : function(menu) {
+				if ((menu === 'history' || menu === 'inquiry') && !this.userId) {
+		           alert('로그인이 필요한 서비스입니다.');
+		           location.href = "/user-login.do";
+		           return;
+		        }
+				
 				this.selectedMenu = menu;
 				this.selectedMenuItem = menu;
 				

@@ -30,6 +30,33 @@
 
 </head>
 <style>
+.checkout__input__checkbox {
+	text-align: left;
+	background-color: #f5f5f5;
+}
+
+.postUserName {
+	font-weight: bold;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 9998;
+}
+.modal-content {
+	background-color: white;
+	width: 50%;
+	margin: 10% auto;
+	padding: 20px;
+	border-radius: 5px;
+
+}
 </style>
 <body>
 	<div id="app">
@@ -54,18 +81,31 @@
 		<!-- Checkout Section Begin -->
 		<section class="checkout spad">
 
-			<div class="checkout__form" style="text-align: center;">
-				<h4>배송정보</h4>
-				<div class="checkout__input__checkbox" v-for="item in addrList" style=" display:inline-block;">
-					받는 분 성함 : {{item.name}}<br>
-					<label> 
-					<input type="radio" id="addr" name="chk_info"><span>{{item.addr}}</span> <span style="color: red;">{{item.addrName}}</span>
-					<span class="checkmark"></span>
-					</label><br>
-					기본 배송 요청사항 : <input type="text" :value="item.addrRequest">
+			<div class="checkout__form"></div>
+			<div class="container">
+				<div class="checkout__order" style="display: inline-block;">
+
+					<h4>배송지</h4>
+					<div class="postUserName">
+						{{selectAddr.name}}<span style="color: red;">({{selectAddr.addrName}})</span>
+					</div>
+					<div>{{selectAddr.phone}}</div>
+					<div>
+						<span>{{selectAddr.addr}} / {{selectAddr.addrDetail}}</span>
+					</div>
+					<button @click="toggleModal">모달 열기</button>
+					<div class="modal"
+						:style="{ display: modalVisible ? 'block' : 'none' }" @click="toggleModal">
+						
+						<div class="modal-content" @click="">
+							<span @click="toggleModal" style="float: right; cursor: pointer;">&times;</span>
+							<p>여기에 모달 내용을 넣으세요.</p>
+						</div>
+						
+						
+					</div>
 					
 				</div>
-				
 			</div>
 		</section>
 		<section class="checkout spad">
@@ -92,9 +132,9 @@
 						</span>
 					</div>
 					<div class="checkout__order__subtotal">
-						배송비 
-						<span v-if="paymentNoRatePrice > 10000"> 0원 (10,000원 이상 배송비 무료)</span>
-						<span v-if="paymentNoRatePrice < 10000"> 3000원 (10,000원 이상 배송비 무료)</span>
+						배송비 <span v-if="paymentNoRatePrice > 10000"> 0원 (10,000원 이상
+							배송비 무료)</span> <span v-if="paymentNoRatePrice < 10000"> 3000원
+							(10,000원 이상 배송비 무료)</span>
 					</div>
 					<div class="checkout__order__total">
 						총 금액 <span>{{totalPay}}원</span>
@@ -103,10 +143,7 @@
 					<button @click="requestPay" class="site-btn">
 						<img src="../img/logo/kakaoPay.png" alt="카카오페이"> 카카오페이
 					</button>
-					<button id="naverPayBtn" class="site-btn">네이버페이</button>
 
-					<button onclick="requestPay()" class="site-btn">휴대폰 결제</button>
-					<button onclick="requestPay()" class="site-btn">가상계좌 결제</button>
 				</div>
 			</div>
 	</div>
@@ -148,16 +185,16 @@
 			user : {},
 			usePoint : "",
 			paymentPRatePrice : 0,
-			paymentTotalPay :0,
+			paymentTotalPay : 0,
 			paymentNoRatePrice : 0,
 			paymentRatePrice : 0,
-			addrList : []
-			
+			addrList : [],
+			modalVisible : false,
+			selectAddr : {}
 
 		},
 		computed : {
 			payment : function() {
-
 			}
 		},
 		methods : {
@@ -176,13 +213,17 @@
 					}
 				});
 			},
+			toggleModal : function() {
+				this.modalVisible = !this.modalVisible;
+				console.log(this.modalVisible);
+			},
 
 			fnCartList : function() {
 				var self = this;
 				var nparmap = {
 					userId : self.userId,
 					kind : 1,
-					cartCheck :1
+					cartCheck : 1
 
 				};
 				$.ajax({
@@ -196,7 +237,7 @@
 						self.totalPrice();
 						self.user = data.user;
 						self.addrList = data.addrList;
-						
+						self.selectAddr = data.addrList[0];
 
 					}
 				});
@@ -211,9 +252,9 @@
 				for (var i = 0; i < self.list.length; i++) {
 					noRatePay += self.list[i].price * self.list[i].selectcnt;
 				}
-				self.paymentNoRatePrice =noRatePay;
+				self.paymentNoRatePrice = noRatePay;
 				self.noRatePrice = noRatePay.toLocaleString('ko-KR');
-				
+
 				var pay = 0;
 				for (var i = 0; i < self.list.length; i++) {
 					pay += self.list[i].price * self.list[i].selectcnt
@@ -224,22 +265,21 @@
 					if (self.user.point < self.usePoint) {
 						self.usePoint = self.user.point;
 					}
-					if(self.usePoint > pay){
+					if (self.usePoint > pay) {
 						self.usePoint = pay;
 					}
 					pay = pay - self.usePoint;
-					
-				};
-				
-				
-				if(self.paymentNoRatePrice < 3000){
+
+				}
+				;
+
+				if (self.paymentNoRatePrice < 3000) {
 					self.paymentTotalPay = pay + 3000;
-					self.totalPay = (pay+3000).toLocaleString('ko-KR');
-				}else{
+					self.totalPay = (pay + 3000).toLocaleString('ko-KR');
+				} else {
 					self.paymentTotalPay = pay;
 					self.totalPay = pay.toLocaleString('ko-KR');
 				}
-				
 
 				var rate = 0;
 				for (var i = 0; i < self.list.length; i++) {
@@ -268,7 +308,7 @@
 					}
 				}
 
-				 var IMP = window.IMP;
+				var IMP = window.IMP;
 
 				IMP.init("imp71268227");
 
@@ -286,9 +326,9 @@
 				};
 				console.log();
 				var ReceiptCode = randomNum.authNo(100)
-				
-				if(self.paymentTotalPay == 0){
-					if(confirm("포인트로 전액 결제 하시겠습니까?")){
+
+				if (self.paymentTotalPay == 0) {
+					if (confirm("포인트로 전액 결제 하시겠습니까?")) {
 						self.paymentEndCart();
 						self.paymentEndUser();
 						self.paymentEndChart();
@@ -296,10 +336,10 @@
 						alert("결제완료");
 						return;
 					}
-					
+
 					return;
-				} 
-				
+				}
+
 				IMP.request_pay({
 					pg : "kakaopay.TC0ONETIME", //Test는 TC0ONETIME
 					pay_method : "card",
@@ -324,21 +364,20 @@
 							self.paymentEndUser();
 							self.paymentEndChart();
 							self.paymentEndHistorySave(ReceiptCode);
-					        alert("결제 성공");
-					            
-					        location.href="main.do";
-					            
-					        } else {
+							alert("결제 성공");
+
+							location.href = "main.do";
+
+						} else {
 							alert("결제 실패");
-					        }
-	                });
-	            }); 
-	        }, 
-	        
-	        paymentEndCart : function(){
-	        	var self = this;
+						}
+					});
+				});
+			},
+			paymentEndCart : function() {
+				var self = this;
 				var nparmap = {
-						userId : self.userId
+					userId : self.userId
 				};
 				$.ajax({
 					url : "paymentEndCart.dox",
@@ -346,17 +385,17 @@
 					type : "POST",
 					data : nparmap,
 					success : function(data) {
-						
+
 					}
 				});
 			},
-			paymentEndUser : function(){
-	        	var self = this;
+			paymentEndUser : function() {
+				var self = this;
 				var nparmap = {
-						userId : self.userId,
-						totalPay : self.paymentTotalPay,
-						usePoint : self.usePoint,
-						rewardPoint: self.paymentPRatePrice
+					userId : self.userId,
+					totalPay : self.paymentTotalPay,
+					usePoint : self.usePoint,
+					rewardPoint : self.paymentPRatePrice
 				};
 				$.ajax({
 					url : "paymentEndUser.dox",
@@ -367,17 +406,17 @@
 					}
 				});
 			},
-			paymentEndChart : function(){
-	        	var self = this;
-	        	
-	        	for(var i=0 ; i<self.list.length; i++){
-	        		var itemNo = self.list[i].itemNo;
-	        		var selectCnt = self.list[i].selectcnt;
-	        		
-	        		var nparmap = {
-							itemNo : itemNo,
-							selectCnt : selectCnt
-							
+			paymentEndChart : function() {
+				var self = this;
+
+				for (var i = 0; i < self.list.length; i++) {
+					var itemNo = self.list[i].itemNo;
+					var selectCnt = self.list[i].selectcnt;
+
+					var nparmap = {
+						itemNo : itemNo,
+						selectCnt : selectCnt
+
 					};
 					$.ajax({
 						url : "paymentEndChart.dox",
@@ -387,38 +426,32 @@
 						success : function(data) {
 						}
 					});
-	        		
-	        	}
-				
+
+				}
+
 			},
-			paymentEndHistorySave : function(paymentKey){
-	        	var self = this;
-	        		
-	        		var nparmap = {
-	        				userId : self.userId,
-	        				paymentKey : paymentKey,
-	        				usePoint : self.usePoint,
-	        				rewardPoint : self.paymentPRatePrice,
-	        				sumPrice : self.paymentTotalPay
-	        				
-					};
-					$.ajax({
-						url : "paymentEndHistorySave.dox",
-						dataType : "json",
-						type : "POST",
-						data : nparmap,
-						success : function(data) {
-						}
-					});
-	        		
-	        	
-				
+			paymentEndHistorySave : function(paymentKey) {
+				var self = this;
+
+				var nparmap = {
+					userId : self.userId,
+					paymentKey : paymentKey,
+					usePoint : self.usePoint,
+					rewardPoint : self.paymentPRatePrice,
+					sumPrice : self.paymentTotalPay
+
+				};
+				$.ajax({
+					url : "paymentEndHistorySave.dox",
+					dataType : "json",
+					type : "POST",
+					data : nparmap,
+					success : function(data) {
+					}
+				});
+
 			}
-			
-			
-			
-			
-		
+
 		},
 
 		created : function() {
@@ -427,27 +460,4 @@
 		}
 	});
 </script>
-  <script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
-<script>
-    var oPay = Naver.Pay.create({
-          "mode" : "development", // development or production
-          "payType" : "normal",
-          "clientId": "qTHPO27WBZ6jdZDBxpvc"
-    });
 
-    //직접 만드신 네이버페이 결제버튼에 click Event를 할당하세요
-    var elNaverPayBtn = document.getElementById("naverPayBtn");
-
-    elNaverPayBtn.addEventListener("click", function() {
-        oPay.open({
-          "merchantUserKey": "1234",
-          "merchantPayKey": "1234",
-          "productName": "상품명을 입력하세요",
-          "totalPayAmount": "1000",
-          "taxScopeAmount": "1000",
-          "taxExScopeAmount": "0",
-          "returnUrl": "사용자 결제 완료 후 결제 결과를 받을 URL"
-        });
-    });
-
-</script>

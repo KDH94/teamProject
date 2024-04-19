@@ -239,12 +239,13 @@
 }
 .header__top__marginbox{
 	width: 100%;
-	height: 80px;
+	height: 45px;
 }
 
 .header__top__left {
 	
 	position: relative;
+	margin-left : 20px;
 }
 
 .header__top__left ul li {
@@ -868,7 +869,6 @@
 
 .featured__item__pic__hover {
 	position: absolute;
-	left: 0;
 	bottom: -50px;
 	width: 100%;
 	text-align: center;

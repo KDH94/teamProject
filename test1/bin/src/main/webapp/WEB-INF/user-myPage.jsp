@@ -17,7 +17,7 @@
     }
 </style>
 </head>
-<body style="background-color:white;">
+<body>
 <!-- Header Section -->
 <%@ include file="layout/header.jsp" %>
 <div id="app">
@@ -34,14 +34,14 @@
 			    </div>
                 <div class="user-Area">
                     <ul>
-                        <li><span>아이디: </span>{{user.userId}}</li>
-                        <li><span>이름: </span>{{user.name}}</li>
-                        <li><span>닉네임: </span>{{user.nickName}}</li>
-                        <li><span>성별: </span>{{user.gender}}</li>
-                        <li><span>핸드폰 번호: </span>{{ user.phone1 + '-' + user.phone2 + '-' + user.phone3 }}</li>
-                        <li><span>이메일: </span>{{user.email}}</li>
+                        <li><span>아이디 : </span>{{user.userId}}</li>
+                        <li><span>이름 : </span>{{user.name}}</li>
+                        <li><span>닉네임 : </span>{{user.nickName}}</li>
+                        <li><span>성별 : </span>{{user.gender}}</li>
+                        <li><span>핸드폰 번호 : </span>{{ user.phone1 + '-' + user.phone2 + '-' + user.phone3 }}</li>
+                        <li><span>이메일 : </span>{{user.email}}</li>
                         <!-- 변경된 부분 -->
-                        <li><span>생년월일: </span>{{ user.birth | formatDate }}</li>
+                        <li><span>생년월일 : </span>{{ user.birth | formatDate }}</li>
                     </ul>
                 </div>
                 <div class="point-Area">
@@ -69,23 +69,19 @@
                             <div>
                                 <input type="radio" v-model="radio" :value="address.addrNo" :disabled="isPopupOpen">
                             </div>
-								<div style="font-weight: bold; display: flex; justify-content: space-between;">
-									<span>{{ address.name }}</span> 
-								</div>
 								<!-- 기본 배송지인 경우에만 아래 내용을 표시 -->
-                            <div v-if="address.isDefault === 'Y'" style="font-weight: bold; display: flex; justify-content: space-between; color: blue;">
-							    <span style="margin-right: 10px;">기본 배송지</span>
-							    <span style="font-style:italic; color:black; text-align: right;">{{ address.addrName }}</span>
+                            <div v-if="address.isDefault === 'Y'" class="default-addr-container">
+							    <span class="basicAddr">기본 배송지</span>
+							    <span class="addressName" >{{ address.addrName }}</span>
 							</div>
                             <div>
-                                <span>우편번호: </span> {{ address.zipCode }}
+                            	{{ address.addr }}, {{ address.addrDetail }}  {{ address.zipCode }}
                             </div>
-                            <div>
-                                <span>주소: </span>{{ address.addr }}, {{ address.addrDetail }}
+                            <div class="addrName">
+                            	{{ address.name }} | {{ address.phone | formatPhoneNumber }}
                             </div>
-                            <div>전화번호: {{ address.phone | formatPhoneNumber }}</div>
-                            <div v-if="address.addrRequest">
-							    <span>특이사항: </span> {{ address.addrRequest }}
+                            <div v-if="address.addrRequest" class="significant">
+							    특이사항: {{ address.addrRequest }}
 							</div>
                         </div>
                     </div>

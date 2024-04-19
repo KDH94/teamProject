@@ -26,25 +26,74 @@
 </head>
 <style>
 .myContents table {
-	width: 100%;
+width :100%;
 	border-collapse: collapse;
 	margin-top: 20px;
 	background-color: #fff;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	border-radius: 8px;
+	border-radius: 
+}
+
+main {
+	margin-top: 25px; 
+}	
+.userTable {
+	background-color: gray;
 }
 
 .myContents th, td {
 	border: 1px solid #ddd;
 	padding: 12px;
 	text-align: left;
-	text-align: center;
+	
+	
 }
 
 .myContents th {
-	background-color: rgb(247, 187, 7);
-	color: #fff;
+	background-color : #fff;
 	text-align: center;
+	height: 20px;
+}
+.myContents tr:hover {
+    background-color: #ccc; /* 회색정도의 어두운 색감 */
+}
+.myContents button,
+.myContents a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    color: #fff; /* 버튼 텍스트 색상 */
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #68d180;
+}
+.myContents button:hover,
+.myContents a:hover {
+    background-color: #3e993e; /* 마우스를 올렸을 때 버튼 배경색 변경 */
+}
+.myContents select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 선택된 옵션의 스타일 */
+.myContents select option:checked {
+    font-weight: bold;
+}
+.select-tab{
+background-color: #999;
+}
+.tab{
+ background-color: #ccc;
+}
+
+
+.pagingBtn{
+	margin-top: 15px; 
 }
 </style>
 <body>
@@ -59,14 +108,14 @@
 				<i class="fas fa-bars"></i>
 			</button>
 			<!-- Navbar Search-->
-			<form @submit.prevent="handleFormSubmit"
+			<form @submit.prevent="handleFormSubmit(keywordId)"
 				class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 				<div class="input-group">
-					<input @keyup.enter="fnMoveUserDetail" class="form-control"
+					<input @keyup.enter="handleFormSubmit(keywordId)" class="form-control"
 						type="text" placeholder="유저 아이디로 검색..." aria-label="유저 아이디로 검색..."
 						aria-describedby="btnNavbarSearch" v-model="keywordId" autofocus />
 					<button class="btn btn-primary" id="btnNavbarSearch" type="button"
-						@click="fnMoveUserDetail">
+						@click="handleFormSubmit(keywordId)">
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
@@ -219,8 +268,7 @@
 			<div id="layoutSidenav_content">
 				<main>
 					<div class="container-fluid px-4">
-
-<div class="card mb-4">
+					<div class="card mb-4">
 							<div class="card-header">
 								<i class="fas fa-table me-1"></i> 가입 유저 리스트
 							</div>
@@ -231,30 +279,29 @@
 								<option value="10">10개</option>
 								<option value="20">20개</option>
 								<option value="30">30개</option>
-							</select> <select v-model="keywordType">
+							</select> <select v-model="keywordType" @click="searchType(keywordType)">
 								<option value="id">아이디</option>
 								<option value="name">닉네임</option>
-							</select> <input type="text" v-model="keyword" @keyup="fnList()">
-							<button @click="fnList()">검색</button>
+							</select> <input type="text" v-model="keyword" @keyup="fnList()" :placeholder="placeType">
+							<div class="userTable">
 							<table>
-
 								<tr>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>생년 월 일</th>
-									<th>성별</th>
-									<th>이메일</th>
-									<th>닉네임</th>
-									<th>휴대폰번호</th>
-									<th>로그인 실패</th>
-									<th>유저 등급</th>
-									<th>유저 타입</th>
-									<th>총 결제금액</th>
-									<th>포인트</th>
-									<th>상세보기</th>
+									<th width="8%">아이디</th>
+									<th width="6%">이름</th>
+									<th width="7%">생년 월 일</th>
+									<th width="5%">성별</th>
+									<th width="10%">이메일</th>
+									<th width="10%">닉네임</th>
+									<th width="15%">휴대폰번호</th>
+									<th width="9%">로그인 실패</th>
+									<th width="4%">유저 등급</th>
+									<th width="8%">유저 타입</th>
+									<th width="10%">총 결제금액</th>
+									<th width="10%">포인트</th>
+									<th width="5%">상세보기</th>
 								</tr>
 								<tr v-if="list.length ==0">
-									<td colspan="11">검색결과 없슴</td>
+									<td colspan="13">검색결과가 없습니다.</td>
 								</tr>
 								<tr v-for="item in list" v-if="list.length !=0">
 									<td>{{item.userId}}</td>
@@ -273,23 +320,28 @@
 
 									<td>{{item.totalPay.toLocaleString('ko-KR')}}원</td>
 									<td>{{item.point.toLocaleString('ko-KR')}}포인트</td>
-									<td><button @click="fnMoveUserDetail(item.userId)">상세보기</button></td>
+									<form @submit.prevent="handleFormSubmit">
+									<td><button @click="handleFormSubmit(item.userId)"><i class="bi bi-three-dots"></i></button></td>
+									</form>
 								</tr>
 
 
 
 							</table>
-							<a href="javascript:;" @click="fnPageMove(1)">◀</a>
-							<template v-for="n in pageCount">
+						</div>
+							<div class="pagingBtn">
+							<a href="javascript:;" @click="fnPageMove(1)" class="tab">◀</a>
+							<template v-for="n in pageCount" >
 
 								<a href="javascript:;" @click="fnPageList(n)"
-									style="color: red;"
-									:class="selectPage == n ? 'select-tab' : 'tab'" v-if>
+								:class="selectPage == n ? 'select-tab' : 'tab'"
+									>
 									({{n}}) </a>
 
 							</template>
-							<a href="javascript:;" @click="fnPageMove(2)"> ▶</a> <a
-								href="javascript:;" @click="fnPageMove(3)"> ≥</a>
+							<a href="javascript:;" @click="fnPageMove(2)" class="tab"> ▶</a> <a
+								href="javascript:;" @click="fnPageMove(3)" class="tab"> ≥</a>
+								</div>
 							</div></div>
 						</div>
 					</div>
@@ -315,10 +367,22 @@
 			order : "DESC",
 			keywordType : "id",
 			keywordId : "",
-			userId : "${userId}"
+			placeType : "",
+			userId : "${userId}",
+			
 		},
 		methods : {
-
+			
+			searchType : function(type){
+				var self=this;
+				self.selectType = type;
+				if(self.selectType == "id"){
+					self.placeType = "아이디로 검색";
+				}
+				if(self.selectType =="name"){
+					self.placeType = "닉네임으로 검색";
+				}
+			},
 			fnList : function() {
 				var self = this;
 
@@ -382,26 +446,16 @@
 				});
 
 			},
-			fnMoveUserDetail : function() {
+			handleFormSubmit : function(SearchKeyWord) {
 				var self = this;
-				var url = "adminUserDetail.do?userId=" + self.keywordId;
-
-				var width = 500;
-				var height = 550;
-				var left = (screen.width - width) / 2;
-				var top = (screen.height - height) / 2;
-
-				window.open(url, "", "width=" + width + ", height=" + height
-						+ ", left=" + left + ", top=" + top);
-			},
-			handleFormSubmit : function() {
-				var self = this;
+				var userId = SearchKeyWord;
 				// 팝업 창을 열고자 하는 페이지 URL
 				var url = "adminUserDetail.do";
-
+				
+				
 				// POST 방식으로 전송할 데이터
 				var postData = {
-					userId : self.keywordId,
+					userId : userId,
 					popupFlg : "yes"
 				};
 
@@ -424,10 +478,9 @@
 
 				// body에 form 추가하고 submit
 				document.body.appendChild(form);
-
 				// 팝업 창 크기 설정
 				var width = 500;
-				var height = 600;
+				var height = 700;
 				var left = (screen.width - width) / 2;
 				var top = (screen.height - height) / 2;
 				var options = "width=" + width + ", height=" + height
@@ -564,6 +617,7 @@
 		created : function() {
 			var self = this;
 			self.fnList();
+			self.searchType('id');
 
 		}
 	});
