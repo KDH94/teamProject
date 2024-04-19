@@ -20,7 +20,7 @@
 	
 	.login-title {
 		text-align: center;
-		font-size: 15px;
+		font-size: 20px;
 		font-weight: bold;
 		margin: 25px;
 	}
@@ -39,7 +39,7 @@
 	}
 	
 	.login-input::placeholder {
-		font-size: 12px;
+		font-size: 14px;
 		color: #999;
 	}
 	
@@ -77,7 +77,7 @@
 	
 	.login-text {
 		text-decoration: none;
-		font-size: 11px;
+		font-size: 12px;
 		color: black;
 		letter-spacing: -1px;
 	}
@@ -97,11 +97,9 @@
 					@keyup.enter="fnLogin" placeholder="비밀번호를 입력해 주세요" maxlength="16">
 			</div>
 			<div class="find-align" style="margin: 10px;">
-				<a class="login-text" href="/find-password.do"
-					@click.prevent="fnOpenFind('id')">아이디 찾기</a> <span
-					style="font-size: 13px;">|</span> <a class="login-text"
-					href="/find-password.do" @click.prevent="fnOpenFind('password')">비밀번호
-					찾기</a>
+				<a class="login-text" href="/find-password.do" @click.prevent="fnOpenFind('id')">아이디 찾기</a>
+				<span style="font-size: 13px;">|</span>
+				<a class="login-text" href="/find-password.do" @click.prevent="fnOpenFind('password')">비밀번호 찾기</a>
 			</div>
 			<div style="margin: 10px;">
 				<button class="login-btn" @click="fnLogin">로그인</button>

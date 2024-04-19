@@ -26,9 +26,12 @@
         <!-- 왼쪽 구역 -->
         <div class="info-Container">
             <div class="info-User">
-            	<div class="info-User-title">
-	            	개인정보            	
-            	</div>
+            	 <div class="info-User-header">
+			        <div class="info-User-title">개인정보</div>
+			        <div class="recipe-Area">
+			            <button :disabled="isPopupOpen" @click="fnSearhUserRecipe">내가 쓴 레시피</button>
+			        </div>
+			    </div>
                 <div class="user-Area">
                     <ul>
                         <li><span>아이디: </span>{{user.userId}}</li>
@@ -95,21 +98,6 @@
                         <button @click="fnDefault" :disabled="isPopupOpen">기본 배송지</button>
                         <button @click="updateSelectedAddresses" :disabled="isPopupOpen">주소 수정</button>
                         <button @click="deleteSelectedAddresses" :disabled="isPopupOpen">주소 삭제</button>
-                    </div>
-                </div>
-            </div>
-            <div class="recipe-Area">
-                <div class="recipe-AreaStyle">
-                    <div style="margin-right: auto;">내가 쓴 레시피</div>
-                    <div style="margin-left: auto;"><button :disabled="isPopupOpen" @click="fnSearhUserRecipe">더보기</button></div>
-                </div>
-            </div>
-            
-            <div class="order-Container">
-            	<div class="order-Info-title">주문 목록</div>
-                <div class="order-Area">
-                    <div style="border: 1px black solid ;">
-						
                     </div>
                 </div>
             </div>

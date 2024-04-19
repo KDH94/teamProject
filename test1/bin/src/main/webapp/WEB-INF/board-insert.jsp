@@ -25,23 +25,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
 <script src="https://unpkg.com/vue2-editor@2.3.11/dist/index.js"></script>
-
 <title>boardInsert 페이지</title>
-
 <style>
-th, td {
-	border: 1px solid #ddd;
-	padding: 8px;
-	text-align: center;
-	font-size: 14px;
-	font-family: Arial, sans-serif;
-	margin: 10px;
-}
-
-tr:hover {
-	background-color: #f5f5f5;
-}
-
 button {
 	margin: 100px;
 	padding: 10px 20px;
@@ -57,46 +42,98 @@ button {
 button:hover {
 	background-color: #45a049;
 }
+
+.board-con {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px;
+	background-color: #f9f9f9;
+	color: #333;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+}
+
+#inputBox, #inputBox1 {
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+
+input {
+	padding: 0px;
+}
+
+.img-box {
+	margin-bottom: 10px;
+}
+
+.title-box {
+	margin-top: 10px;
+	width: 720px;
+	height: 40px;
+	padding-left: 15px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.title-box:focus {
+	border: 1px solid #777;
+}
+
+.sel-box {
+	border: none;
+	border-bottom: 1px solid #ccc;
+	background-color: rgba(0, 0, 0, 0);
+	width: 300px;
+	height: 40px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-left: 5px;
+	font-weight: bold;
+}
+
+.img-con {
+	margin-bottom: 10px;
+}
 </style>
 </head>
 
 <body>
 	<%@ include file="layout/header.jsp"%>
 	<div id="app">
-
-		<tr>
-			<th>게시판 선택</th>
-			<td><select v-model="kind">
-					<option value="1" v-if="userType == 'A'">공지사항</option>
-					<option value="2">레시피게시판</option>
-
-			</select></td>
-		</tr>
-		<div>
-			제목 : <input type="text" v-model="title">
-		</div>
-		<div v-if="kind == 2">
-			<tr>
-				<td width="30%">메인 이미지 :</td>
-				<td width="70%"><input type="file" id="file1" name="file1"
-					accept=".jpg,.png,.gif"></td>
-			</tr>
-			<div>
-				<tr>
-					<td width="30%">설명에 들어갈 이미지 :</td>
-					<td width="70%"><input type="file" id="file2" name="file2"
-						accept=".jpg,.png,.gif" multiple></td>
-				</tr>
+		<div class="board-con">
+			<div id="inputBox">
+				<div>
+					<select class="sel-box" v-model="kind">
+						<option value="1" v-if="userType == 'A'">공지사항</option>
+						<option value="2">레시피게시판</option>
+					</select>
+				</div>
+				<input class="title-box" type="text" v-model="title"
+					placeholder="제목을 입력하세요">
+			</div>
+			<div v-if="kind == 2" id="inputBox1">
+				<div class="img-con">
+					<div class="img-box">
+						메인 이미지: <input type="file" class="file-box" id="file1"
+							name="file1" accept=".jpg,.png,.gif">
+					</div>
+					<div>
+						내용 이미지: <input type="file" class="file-box" id="file2"
+							name="file2" accept=".jpg,.png,.gif" multiple>
+					</div>
+				</div>
+			</div>
+			<div style="margin-top: 10px;">
+				<div id="editor" v-model="contents" style="height: 300px;"></div>
+			</div>
+			<div class="writeButton" style="text-align: center; margin: 20px;">
+				<button @click="fnWrite">작성완료</button>
 			</div>
 		</div>
-		<div>
-			내용 :
-			<div id="editor" v-model="contents" style="height: 300px;"></div>
-		</div>
-		<div class="writeButton" style="text-align: center; margin: 20px;">
-			<button @click="fnWrite">작성완료</button>
-		</div>
-		<!-- 	<button @click="fnList">목록으로 가기</button> -->
 	</div>
 	<%@ include file="layout/footer.jsp"%>
 </body>
