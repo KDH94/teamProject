@@ -232,7 +232,8 @@
 				if (!confirm("주소록을 수정하겠습니까?")) {
 					return;
 				}
-				console.log(self.radio);
+				console.log('/user-myPage-addrUpdate.do?addrNo='
+						+ self.radio);
 				var popup = window.open('/user-myPage-addrUpdate.do?addrNo='
 						+ self.radio, 'addrUpdate Popup',
 						'width=800,height=800,left=' + leftPosition + ',top=' + topPosition);

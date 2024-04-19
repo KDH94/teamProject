@@ -150,7 +150,7 @@
         gap: 0; /* 버튼 사이의 간격 제거 */
         
         position: sticky;
-	    top: 0; 
+	    top: 50px; 
 	    background-color: #fff; 
 	    z-index: 1000; 
 	 

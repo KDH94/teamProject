@@ -428,9 +428,9 @@
 					data : nparmap,
 					success : function(data) {
 						console.log(data.list);
-						// console.log(self.accountType);
-						
-						self.list = data.list;
+						self.list = data.list.filter(function(item) {
+		                    return item.userId === self.userId || self.userType === 'A';
+		                });
 					}
 				});
 			},

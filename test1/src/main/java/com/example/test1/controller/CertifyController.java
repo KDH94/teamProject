@@ -88,6 +88,17 @@ public class CertifyController {
 		request.setAttribute("map", map);
 		return "/user-myPage-addrUpdate";
 	}
+	
+	// 유저 주소록 수정정보 가져오기
+	@RequestMapping(value = "/user-addr-mypage.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String useraddrmypage(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap = userService.selectAddr(map);
+		System.out.println(resultMap);
+		return new Gson().toJson(resultMap);
+	}
+	
 
 	// 로그인 아웃 시키기
 	@PostMapping("/logout") // POST 방식의 /logout 요청을 처리

@@ -6,9 +6,11 @@
 
 	<select id="selectBoardList" parameterType="hashmap"
 		resultType="com.example.test1.model.Board">
-		SELECT B.*, DATE_FORMAT(CDATETIME, '%Y년 %c월 %e일 %H시 %i분') AS CDATE
+		SELECT B.*, DATE_FORMAT(CDATETIME, '%Y년 %c월 %e일 %H시 %i분') AS CDATE,
+				CONCAT(I.FILEPATH, I.FILENAME) AS PATH
 		FROM ECO_BOARD B
-		WHERE KIND =#{kind}
+		LEFT JOIN ECO_BOARD_IMAGE I ON B.BOARDNO = I.BOARDNO AND I.KIND = 1
+		WHERE B.KIND =#{kind}
 		<if test="keywordType == 'title'">
 			AND TITLE LIKE CONCAT('%',#{keyword},'%') <!-- '%#{keyword}'와 같은 뜻 -->
 		</if>
@@ -168,7 +170,7 @@
 		B.*,
 		U.*,
 		C.*,
-		DATE_FORMAT(U.UDATETIME, '%Y.%m.%d') AS UDATE
+		DATE_FORMAT(B.UDATETIME, '%Y.%m.%d') AS UDATE
 		FROM
 			ECO_BOARD B
 		INNER JOIN ECO_USER U ON B.USERID = U.USERID
@@ -177,6 +179,7 @@
 		<if test="userType == 'U'.toString()">
 			AND U.USERID = #{userId}	
 		</if> 
+		ORDER BY B.UDATETIME DESC
 	</select>
 
 	<!-- 문의 등록 -->

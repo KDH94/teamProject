@@ -107,12 +107,14 @@ a {
 				</div>
 			</div>
 		</div>
-		<div class="buttons" v-if="info.userId == userId || userType == 'A'">
-			<button @click="fnDelete">삭제</button>
-			<button @click="fnEdit">수정</button>
+		<div class="buttons">
+			<span v-if="info.userId == userId || userType == 'A'">
+				<button @click="fnDelete">삭제</button>
+				<button @click="fnEdit">수정</button>
+			</span>
 			<button @click="fnList(kind)">목록으로 가기</button>
 		</div>
-	</div>
+
 	<%@ include file="layout/footer.jsp"%>
 </body>
 </html>

@@ -180,7 +180,8 @@ var app = new Vue({
     	userType : "${map.userType}",
     	contents : "",
     	commentText : "",
-    	isFlg: false
+    	isFlg: false,
+    	hasAdminComment: false
     	
     }
     , methods: {
@@ -201,9 +202,12 @@ var app = new Vue({
                 	console.log(data);
                 	self.info = data.info;
                 	self.contents = data.info.contents;
-                	if(data.comment != null){
-                		self.comment = data.comment;	
-                	}
+                	if (data.comment != null) {
+                        self.comment = data.comment;
+                        self.hasAdminComment = true;
+                    } else {
+                        self.hasAdminComment = false;
+                    }
                 	
                 }
             });
@@ -258,6 +262,10 @@ var app = new Vue({
         },
         fnAddComment: function(){
         	var self = this;
+        	if (self.hasAdminComment) {
+                alert("이미 답변이 담긴 문의입니다.");
+                return;
+            }
             var nparmap = { 
             	boardNo : self.boardNo,
             	comment : self.commentText,

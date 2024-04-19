@@ -15,7 +15,6 @@
 <body class="addrUpdatebackground">
 	<div id="app">
 		<div class="containerAddrUpdate">
-			{{addrNo}}
 			<div>
 				<span>받는 분 성함 : </span> 
 				<input type="text" v-model="user.name" placeholder="직접 입력">
@@ -72,11 +71,13 @@
 				phone : "",
 				addrRequest : "",
 				addrName : "",
+				isDefault : "",
+				addrNo : '${map.addrNo}'
 			},
 			addrName2 : "",
 			addrDetail1 : "",
 			addrDetail2 : "",
-			addrNo : ${map.addrNo},
+			addrNo : '${map.addrNo}',
 		},
 		methods : {
 			//핸드폰 번호 입력 정규식
@@ -165,6 +166,7 @@
                         self.addrDetail2 = data.info.addrDetail.substring(atIdx + 1);
                         self.user.addr = data.info.addr;
                         self.user.zipCode = data.info.zipCode;
+                        self.user.isDefault = data.info.isDefault;
 						//콘솔 창 확인하기
 						console.log("Received data:", data);
    		 				console.log("UserId:", self.user.userId);
@@ -174,7 +176,7 @@
 					 error: function(xhr, status, error) {
 		                    // 에러 발생 시 처리
 		                    // 에러 페이지로 리다이렉션
-		                    window.opener.location.href = "/error-page"; // 에러 페이지의 URL로 리다이렉션
+		                //    location.href = "/error-page"; // 에러 페이지의 URL로 리다이렉션
 		                }
 				});
 			},
@@ -245,7 +247,7 @@
 			     error: function(xhr, status, error) {
 	                    // 에러 발생 시 처리
 	                    // 에러 페이지로 리다이렉션
-	                    window.opener.location.href = "/error-page"; // 에러 페이지의 URL로 리다이렉션
+	                //    window.opener.location.href = "/error-page"; // 에러 페이지의 URL로 리다이렉션
 	                }
 			   });
 		   },

@@ -37,4 +37,6 @@ public interface UserService {
 	HashMap<String, Object> CancleupdateUserDelete(HashMap<String, Object> map);//유저 탈퇴 취소하기
 	
 	HashMap<String, Object> editUserGrade(HashMap<String, Object> map); // 유저 등급 갱신
+	
+	HashMap<String, Object> selectAddr(HashMap<String, Object> map);
 }
