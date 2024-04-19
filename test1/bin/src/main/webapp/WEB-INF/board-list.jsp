@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/bootstrap-min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="css/board.css" type="text/css">
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -22,7 +21,7 @@
     text-align: center; /* 가운데 정렬 추가 */
 }
 
-.prodcut-container {
+.product-container {
     margin: 20px auto; 
     padding: 20px; 
     max-width: 80%; /* 이미지의 크기를 60%로 조정 */
@@ -41,19 +40,19 @@
     margin-bottom: 20px; 
 }
 
-.logo_search {
+.board_search {
     overflow: hidden;
     /* margin-bottom: 20px;  */
 }
 
-.logo_search__form {
+.board_search__form {
     width: 100%; 
     height: 100px;
     position: relative;
 }
 
 
-.logo_search__categories {
+.board_search__categories {
     width: 30%;
     float: left;
     font-size: 16px;
@@ -65,7 +64,7 @@
     margin-left : 50px;
 }
 
-.search-input-btn {
+.search-input-btn-board {
     display: inline-block;
     margin-left: 10px;
     position: absolute;
@@ -289,15 +288,15 @@
 					</ul>
 				</li>
 			</div>
-			<div class="prodcut-container">
+			<div class="product-container">
 				<div class="searchArea" style="margin-top: 0px;">
-					<div class="logo_search">
-			           <div class="logo_search__form">
+					<div class="board_search">
+			           <div class="board_search__form">
 			               <form action="javascript:;">
-			                   <div class="logo_search__categories">
+			                   <div class="board_search__categories">
 			                       <img src="img/logo/mainLogo.png" style="max-width: 80%;">
 			                   </div>
-			                   <div class="search-input-btn">
+			                   <div class="search-input-btn-board">
 			                   		<div class="order-options">
 									    <label>
 									        <input type="radio" name="order-option" value="title" v-model="keywordType">
@@ -401,6 +400,9 @@
 				var self = this;
 				self.kind = kind;
 				var limit = 0;
+				if(self.kind == ""){
+					self.kind = 1;
+				}
 				if(self.kind == 1){
 					limit = 10;
 				} else {
@@ -409,7 +411,7 @@
 				var nparmap = {
 						keyword : self.keyword,
 						keywordType : self.keywordType,
-						kind : kind,
+						kind : self.kind,
 						startNum : 1,
 						lastNum : 10,
 						type : self.type,
@@ -423,7 +425,7 @@
 					type : "POST",
 					data : nparmap,
 					success : function(data) {
-						console.log(data);
+						console.log("data ==> ", data);
 						self.list = data.list;
 						self.pageCount = Math.ceil(data.cnt/limit);//self.pageCount최대값
 
