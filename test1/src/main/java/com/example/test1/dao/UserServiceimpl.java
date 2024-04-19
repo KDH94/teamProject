@@ -359,5 +359,20 @@ public class UserServiceimpl implements UserService {
 		
 		return resultMap;
 	}
+	
+	// 유저 마이페이지 주소록 호출
+	@Override
+	public HashMap<String, Object> selectAddr(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		try {
+			resultMap.put("info", userMapper.selectAddrAddNo(map));
+			resultMap.put("result", "success");
+		} catch (Exception e) {
+			resultMap.put("result", "fail");
+			System.out.println(e.getMessage());
+		}
+		return resultMap;
+	}
 
 }
