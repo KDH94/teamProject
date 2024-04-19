@@ -114,8 +114,8 @@
 		                        	</div>
 			                        <div class="featured__item__text">
 			                            <h4><a href="javascript:;" @click="fnDetailView(item.itemNo, userId)" style="color: black; font-weight: bold;">{{item.itemName}}</a></h4>
-			                            <del>₩{{item.price}}</del>
-			                            <h4 style="color: red;">₩{{(item.price)*((100-item.sRate)/100)}}</h4>
+			                            <del>₩{{item.price.toLocaleString('ko-KR')}}</del>
+			                            <h4 style="color: red;">₩{{DiscountPrice(item.price, item.sRate)}}</h4>
 			                        </div>
 			                    </div>
 			                </div>
@@ -355,6 +355,11 @@
                     }, 150);
                 }
                 
+            },
+            /* kr통화 표시 */
+            DiscountPrice: function(price, sRate) {
+                const disPrice = price * ((100 - sRate) / 100);
+                return disPrice.toLocaleString('ko-KR');
             }
 		},
 		mounted() {
