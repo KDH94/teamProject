@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <meta charset="UTF-8">
 <script src="js/jquery.js"></script>
@@ -26,19 +26,33 @@
 <link rel="stylesheet" href="css/owl-carousel-min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav-min.css" type="text/css">
 <link rel="stylesheet" href="css/style2.css" type="text/css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 </head>
 <style>
+@font-face {
+	font-family: 'KOTRA_GOTHIC';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/KOTRA_GOTHIC.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	font-family: 'KOTRA_GOTHIC';
+}
 .checkout__input__checkbox {
 	text-align: left;
 	background-color: #f5f5f5;
 }
 
+
+
 .postUserName {
 	font-weight: bold;
+	width: 700px;
 }
-
 .modal {
 	display: none;
 	position: fixed;
@@ -48,18 +62,55 @@
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 9998;
+	
 }
 .modal-content {
-	background-color: white;
-	width: 50%;
-	margin: 10% auto;
-	padding: 20px;
-	border-radius: 5px;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 40%;
+    height: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 9999;
+	
+}
+.modal-content button{
+text-align: left;
+border: none;
+
 
 }
+.exitBtn{
+	display : inline-block
+	cursor: pointer;
+}
+
+.btnIcon{
+	position :absolute;
+	right: 15px;
+}
+.request button {
+	position: relative;
+	border : 1px solid;
+	background-color: #fff;
+	box-sizing: border-box;
+}
+.request input {
+	width: 100%;
+	height: 50px;
+	box-sizing: border-box;
+}
+.CheckedBtn button{
+	color : green;
+	background-color: blue;
+}
+
 </style>
 <body>
-	<div id="app">
+	<div id="app" >
 		<!-- Breadcrumb Section Begin -->
 		<section class="breadcrumb-section set-bg"
 			data-setbg="img/breadcrumb.jpg">
@@ -80,12 +131,14 @@
 
 		<!-- Checkout Section Begin -->
 		<section class="checkout spad">
-
-			<div class="checkout__form"></div>
+			
+			<div class="checkout__form">
 			<div class="container">
+			
 				<div class="checkout__order" style="display: inline-block;">
-
-					<h4>배송지</h4>
+				<div>
+					<h4>배송지</h4><span><button>변경</button></span>
+					</div>
 					<div class="postUserName">
 						{{selectAddr.name}}<span style="color: red;">({{selectAddr.addrName}})</span>
 					</div>
@@ -93,19 +146,26 @@
 					<div>
 						<span>{{selectAddr.addr}} / {{selectAddr.addrDetail}}</span>
 					</div>
-					<button @click="toggleModal">모달 열기</button>
+					<div class="request">
+					<button @click="toggleModal" style="border-radius: 0 15px 0 0 ; text-align: left;">{{selectRequest}}<span class="btnIcon"><i class="bi bi-chevron-down"></i></span></button>
+					<input v-if="requestInputOpen" type="text" v-model="addrRequest"> 
+					</div>
 					<div class="modal"
 						:style="{ display: modalVisible ? 'block' : 'none' }" @click="toggleModal">
-						
-						<div class="modal-content" @click="">
-							<span @click="toggleModal" style="float: right; cursor: pointer;">&times;</span>
-							<p>여기에 모달 내용을 넣으세요.</p>
-						</div>
-						
-						
 					</div>
-					
+					<div class="modal-content":style="{ display: modalVisible ? 'block' : 'none' }">
+							<div @click="toggleModal" class="exitBtn">&times;</div>
+							<span><h4> 배송 메모 선택하기 </h4></span>{{selectNum}}
+							<p><button :class="{selectNum : 1 ? 'CheckedBtn' : ''}" @click="selectedReqestBtn(1)">선택 안 함</button></p>
+							<p><button :class="{selectNum : 2 ? 'CheckedBtn' : ''}" @click="selectedReqestBtn(2)">직접 입력하기</button></p>
+							<p><button :class="{selectNum : 3 ? 'CheckedBtn' : ''}" @click="selectedReqestBtn(3)">문앞에 놓아 주세요</button></p>
+							<p><button :class="{selectNum : 4 ? 'CheckedBtn' : ''}" @click="selectedReqestBtn(4)">부재시 연락 부탁드려요</button></p>
+							<p><button :class="{selectNum : 5 ? 'CheckedBtn' : ''}" @click="selectedReqestBtn(5)">배송전 미리 연락 부탁드려요</button></p>
+							<p><button :class="{selectNum : 6 ? 'CheckedBtn' : ''}" @click="selectedReqestBtn(6)">(저장됨){{selectAddr.addrRequest}}</button></p>
+						</div>
 				</div>
+				
+			</div>
 			</div>
 		</section>
 		<section class="checkout spad">
@@ -190,7 +250,11 @@
 			paymentRatePrice : 0,
 			addrList : [],
 			modalVisible : false,
-			selectAddr : {}
+			selectAddr : {},
+			selectRequest :"배송 메모를 선택해 주세요",
+			requestInputOpen : false,
+			addrRequest : "",
+			selectNum : ""
 
 		},
 		computed : {
@@ -213,9 +277,52 @@
 					}
 				});
 			},
+			selectedReqestBtn : function(num){
+				var self = this;
+				if(num == 1){
+					self.selectRequest = "선택 안 함";
+					self.requestInputOpen = false;
+			
+				}
+				if(num == 2){
+					self.selectRequest = "직접 입력하기";
+					self.addrRequest = "";
+					self.requestInputOpen = true;
+			
+				}
+				if(num == 3){
+					self.selectRequest = "문앞에 놓아 주세요";
+					self.requestInputOpen = false;
+				
+				}
+				if(num == 4){
+					self.selectRequest = "부재시 연락 부탁드려요";
+					self.requestInputOpen = false;
+					
+				}
+				if(num == 5){
+					self.selectRequest = "배송전 미리 연락 부탁드려요";
+					self.requestInputOpen = false;
+					
+				}
+				if(num == 6){
+					self.selectRequest = "직접 입력하기";
+					self.requestInputOpen = true;
+					self.addrRequest = self.selectAddr.addrRequest;
+					
+				}
+				self.selectNum = num;
+				self.toggleModal();
+				
+			},
 			toggleModal : function() {
 				this.modalVisible = !this.modalVisible;
 				console.log(this.modalVisible);
+				if (this.modalVisible) {
+			        document.body.style.overflow = 'hidden';
+			    } else {
+			        document.body.style.overflow = ''; // 기본값으로 되돌리기
+			    }
 			},
 
 			fnCartList : function() {

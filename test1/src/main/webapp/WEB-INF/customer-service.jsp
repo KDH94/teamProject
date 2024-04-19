@@ -373,7 +373,7 @@
 			currentPage2: 1,
 			itemsPerPage2: 10,
 			
-			selectedMenu: 'faq',
+			selectedMenu: 'history',
 			selectedMenuItem: null, // 선택된 메뉴 아이템을 저장하기 위한 속성 추가
 			faqs : [ 
 				{ id: 1, category: '주문/결제', title: '결제(환불)는 어떻게 하나요?', detail: '▶ 결제(환불)는 다음과 같이 진행해주시면 됩니다. ~~', showDetail: false },
