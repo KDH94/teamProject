@@ -42,7 +42,7 @@
 				</div>
 			</div>
 			<div style="margin-top: 10px;">
-				<div id="editor" v-model="contents" style="height: 300px;"></div>
+				<div id="editor" style="height: 300px;"></div>
 			</div>
 			<div style="text-align: center;">
 				<button class="insert-btn" @click="fnWrite">작성완료</button>
