@@ -19,11 +19,10 @@
 </details>
 
 # 📕 발표 ppt
-[발표 ppt 링크](https://docs.google.com/presentation/d/11HKjAZkDc91tOBDL0qSU8SxiCg49NlrvPLyDrEFGh34/edit?usp=sharing)
-
+<li><a href="https://docs.google.com/presentation/d/11HKjAZkDc91tOBDL0qSU8SxiCg49NlrvPLyDrEFGh34/edit?usp=sharing">발표 ppt 링크</a></li>
 # 🎞 시연 영상
-<li>사용자: https://youtu.be/O7Ru2W8nMiY</li>
-<li>관리자: https://youtu.be/POTjf1pWeXM</li>
+<li>사용자 페이지 링크: https://youtu.be/O7Ru2W8nMiY</li>
+<li>관리자 페이지 링크: https://youtu.be/POTjf1pWeXM</li>
 
 # 🛠 활용 언어
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
