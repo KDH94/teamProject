@@ -101,7 +101,7 @@ public class SmsExampleController {
 		Message message = new Message();
 		String ranStr = randomMessage();
 		// 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.
-		message.setFrom("01046548947");
+		message.setFrom("01011111111");
 		message.setTo(phoneNumber);
 		message.setText("[홈페이지명 ID본인확인] 인증번호" + "[" + ranStr + "]" + "를 입력해 주세요.");
 
