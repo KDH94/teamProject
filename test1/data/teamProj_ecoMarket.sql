@@ -1,5 +1,5 @@
 -- --------------------------------------------------------
--- 호스트:                          database-3.ccxwnfpmkcwn.ap-northeast-2.rds.amazonaws.com
+-- 호스트:                          team-proj.cpu60ieek4y6.ap-northeast-2.rds.amazonaws.com
 -- 서버 버전:                        8.0.35 - Source distribution
 -- 서버 OS:                        Linux
 -- HeidiSQL 버전:                  12.6.0.6765
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `ECO_ADDR` (
   PRIMARY KEY (`ADDRNO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.ECO_ADDR:~18 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_ADDR:~19 rows (대략적) 내보내기
 INSERT INTO `ECO_ADDR` (`ADDRNO`, `USERID`, `ADDR`, `ADDRDETAIL`, `ZIPCODE`, `NAME`, `PHONE`, `ADDRREQUEST`, `ADDRNAME`, `ISDEFAULT`) VALUES
 	(25, 'user1', '서울 구로구 연동로13길 18-38', '102동 102호  (항동, 동보수목원아파트)', '08360', 'asfasf', '01029594125', '배송전 연락', '회사', 'Y'),
 	(26, 'user1', '인천 중구 내항로 2-45', '여기  (항동7가)', '22345', '김승인', '01029594125', '', '집', 'N'),
@@ -83,20 +83,20 @@ CREATE TABLE IF NOT EXISTS `ECO_ADMIN_QA` (
 
 -- 테이블 데이터 test.ECO_ADMIN_QA:~15 rows (대략적) 내보내기
 INSERT INTO `ECO_ADMIN_QA` (`BOARDNO`, `TITLE`, `QA_CONTENTS`, `USERID`, `DELETEYN`, `DELETEDATE`, `CDATETIME`, `UDATETIME`, `SECRETYN`, `ITEM_NO`) VALUES
-	(1, '문의테스트', '내용테스트입니다 테스트용입니다 집에 가고 싶습니다.', 'temp123', 'N', NULL, '2024-03-14 14:51:37', '2024-03-14 14:51:38', NULL, 43),
-	(2, '테스트문의', '테스트내용입니다 집에가고 싶은데 어떻게 해야하나요?', 'hong123', 'N', NULL, '2024-03-14 15:08:08', '2024-03-14 15:08:08', NULL, 43),
+	(1, '지금 서버가 이상한 건가요?', '사이트가 좀 느린 듯합니다.', 'temp123', 'N', NULL, '2024-03-14 14:51:37', '2024-03-14 14:51:38', NULL, 43),
+	(2, '등급을 올리려면 어떻게 해야 하나요?', '알려주세요.', 'hong123', 'N', NULL, '2024-03-14 15:08:08', '2024-03-14 15:08:08', NULL, 43),
 	(3, '문의등록테스트', '등록한 문의 내용 테스트', 'hong123', 'N', NULL, '2024-03-14 17:15:29', '2024-03-14 17:15:29', NULL, 45),
-	(4, '문의등록테스트', '등록한 문의 내용 테스트', 'hong123', 'N', NULL, '2024-03-14 17:17:53', '2024-03-14 17:17:53', NULL, 44),
-	(30, '제발', '등록해야해', 'hong123', 'N', NULL, '2024-03-14 18:25:06', '2024-03-14 18:25:06', NULL, 62),
-	(32, '귤이 상했어요', '귤이 상해서 너무 속상해요', 'hong123', 'N', NULL, '2024-03-14 18:31:58', '2024-03-14 18:31:58', NULL, 62),
+	(4, '문의등록테스트2', '등록한 문의 내용 테스트2', 'hong123', 'N', NULL, '2024-03-14 17:17:53', '2024-03-14 17:17:53', NULL, 44),
+	(30, '물건이 아직 안 왔는데요', '아직 배송이 안 된 건가요?', 'hong123', 'N', NULL, '2024-03-14 18:25:06', '2024-03-14 18:25:06', NULL, 62),
+	(32, '귤이 상했어요', '환불이나 교환 빠르게 해주세요', 'hong123', 'N', NULL, '2024-03-14 18:31:58', '2024-03-14 18:31:58', NULL, 62),
 	(33, '꺼져', '흥', 'test123', 'N', NULL, '2024-03-18 15:01:06', '2024-03-18 15:01:06', NULL, 62),
 	(34, '문의 남겨봅니다', '흑흑흑 문의요', 'temp123', 'N', NULL, '2024-03-19 20:56:59', '2024-03-19 20:56:59', NULL, 50),
-	(35, '상품 썸네일이 안나와요', 'ㅁ나리ㅏㄴ유하ㅣㄹㅇㅊ투ㅠㅏㅣㅌㅍㄹ추ㅏㅓㅣㅎㄹㄴㅋ타ㅣㅓㅡ.ㅗㅎ류아ㅓ키;ㅔㅗㅠㅡㅓㅟㅏ;ㄿㅌ허ㅏㅣㅜㅡ;ㅌㄹ허ㅏㅣ;ㅜㅗㅇㅌㅎㄹ;ㅓㅣㅏㅜㅗㅎㅌㅍ초', 'admin', 'N', NULL, '2024-03-19 21:53:17', '2024-03-19 21:53:17', NULL, 63),
+	(35, '상품 썸네일이 안나와요', '고쳐 주세요', 'admin', 'N', NULL, '2024-03-19 21:53:17', '2024-03-19 21:53:17', NULL, 63),
 	(38, '정말 무항생제 계란이 맞나요??', '무항상제 계란이 맞는지 궁금합니다.', 'temp123', 'N', NULL, '2024-03-21 10:29:18', '2024-03-21 10:29:18', NULL, 68),
 	(39, '자연 방식으로 얻은 계란이 맞나요?', '자연 방식으로 생산된 계란이 맞는지 궁금합니다.', 'hong123', 'N', NULL, '2024-03-21 15:17:05', '2024-03-21 15:17:06', NULL, 68),
-	(40, '이거 맛이 안좋아요', '사지마세용', 'admin', 'N', NULL, '2024-04-16 03:55:36', '2024-04-16 03:55:36', NULL, 68),
+	(40, '이거 맛이 안 좋아요', '교환 부탁드립니다.', 'admin', 'N', NULL, '2024-04-16 03:55:36', '2024-04-16 03:55:36', NULL, 68),
 	(41, '유기농 케일인가요?', '유기농 케일인가요???', 'a123123', 'N', NULL, '2024-04-16 03:57:11', '2024-04-16 03:57:11', NULL, 62),
-	(42, '계란 1알 당 단백질 함유량이 어떻게 되나요?', '식단에서 단백질 대체를 닭가슴살에서 계란으로 바꿀 예정이여서 단백질 함유량이 궁금해요', 'a123123', 'N', NULL, '2024-04-16 04:04:55', '2024-04-16 04:04:55', NULL, 68),
+	(42, '계란 1알 당 단백질 함유량이 어떻게 되나요?', '식단에서 단백질 대체를 닭가슴살에서 계란으로 바꿀 예정이어서 단백질 함유량이 궁금해요', 'a123123', 'N', NULL, '2024-04-16 04:04:55', '2024-04-16 04:04:55', NULL, 68),
 	(43, '진짜 비건인가요?', '제가 잠시 채식 식단을 경험하고 싶은데 진짜 비건 콩불고기인가요?', 'a123123', 'N', NULL, '2024-04-16 04:05:54', '2024-04-16 04:05:54', NULL, 67);
 
 -- 테이블 test.ECO_ADMIN_QA_IMAGE 구조 내보내기
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `ECO_ADMIN_REVIEW` (
 -- 테이블 데이터 test.ECO_ADMIN_REVIEW:~3 rows (대략적) 내보내기
 INSERT INTO `ECO_ADMIN_REVIEW` (`REVIEW_NO`, `ITEM_NO`, `USERID`, `R_CONTENTS`, `SCORE`, `CDATETIME`, `UDATETIME`, `DELETEYN`, `DELETEDATE`) VALUES
 	(1, '62', 'temp123', '너무 좋아요!', 3.00, '2024-03-14 11:02:04', '2024-03-14 11:02:05', 'N', NULL),
-	(2, '62', 'hong123', '너무 안좋아요!', 5.00, '2024-03-14 11:31:14', '2024-03-14 11:31:15', 'N', NULL),
+	(2, '62', 'hong123', '너무 안 좋아요!', 5.00, '2024-03-14 11:31:14', '2024-03-14 11:31:15', 'N', NULL),
 	(3, '68', 'temp123', '계란이 신선해서 너무 좋아요', 5.00, '2024-03-14 11:31:42', '2024-03-14 11:31:43', 'N', NULL);
 
 -- 테이블 test.ECO_ADMIN_REVIEW_IMAGE 구조 내보내기
@@ -177,11 +177,11 @@ CREATE TABLE IF NOT EXISTS `ECO_BOARD` (
   PRIMARY KEY (`BOARDNO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.ECO_BOARD:~57 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_BOARD:~23 rows (대략적) 내보내기
 INSERT INTO `ECO_BOARD` (`BOARDNO`, `TITLE`, `CONTENTS`, `USERID`, `HITS`, `DELETEYN`, `DELETEDATE`, `KIND`, `REPORTCNT`, `CDATETIME`, `UDATETIME`, `KCAL`) VALUES
 	(18, '비건메뉴추천', '<p>ㄱ강추ㅋㅋㅋㅋㅋ</p>', 'temp123', 65, 'N', NULL, '2', 0, '2024-03-07 15:06:01', '2024-03-18 16:11:37', 2500),
 	(43, '1주일 째 배송이 되지 않아요', '제가 1주일 넘게 기다리고 있습니다.. 배송이 되지 않네요 확인 부탁드립니다.ㅠ', 'hong123', 11, 'N', NULL, '3', 0, '2024-03-08 12:31:03', '2024-04-18 09:13:28', 3000),
-	(45, '조금은 낯선 얼굴의 라디치오!', '<p>어떻게 먹어야할지 고민되신다면 이렇게 드셔보세요. 라디치오 이외에도 양배추, 쌈채소 등의 샐러드채소로 만들어도 맛있어요. 양념에 약간의 변화를 주면 한 가지 채소도 매우 다양하게 먹을 수 있어요 :)</p>', 'admin', 106, 'N', NULL, '2', 0, '2024-03-08 14:32:24', '2024-03-08 17:03:39', 3000),
+	(45, '조금은 낯선 얼굴의 라디치오!', '<p>어떻게 먹어야 할지 고민되신다면 이렇게 드셔보세요. 라디치오 이외에도 양배추, 쌈채소 등의 샐러드채소로 만들어도 맛있어요. 양념에 약간의 변화를 주면 한 가지 채소도 매우 다양하게 먹을 수 있어요 :)</p>', 'admin', 106, 'N', NULL, '2', 0, '2024-03-08 14:32:24', '2024-03-08 17:03:39', 3000),
 	(48, 'test04', '<p>test</p>', 'user1', 6, 'N', NULL, '3', 0, '2024-03-08 14:52:47', '2024-03-08 14:52:47', 3000),
 	(49, '2222222222', '<p>222222222222</p>', 'user1', 14, 'N', NULL, '3', 0, '2024-03-08 14:55:46', '2024-03-08 14:55:46', 3000),
 	(70, '문의하기!!', '<p>0000000000000000000000000000000</p>', 'temp123', 3, 'N', NULL, '3', 0, '2024-03-12 14:33:12', '2024-03-12 19:21:53', 2500),
@@ -201,7 +201,7 @@ INSERT INTO `ECO_BOARD` (`BOARDNO`, `TITLE`, `CONTENTS`, `USERID`, `HITS`, `DELE
 	(139, '유기농이자 무농약 제품을 싱싱하게 제철아이들로 받는다는것. 매력적이네요!', '<p>오랜만에 잔뜩 추가해서 주문해봤어요. 알록달록 푸릇하게 모아 놓으니 마음이 무척 풍족해요 국산콩두부는 늘 주문하는데 마트 국산콩두부보다 저렴해서 좋아요. 사보이 양배추는 처음 받아보는데 기대돼요. 작고 못생겼다는데 받을 때마다 크고 예뻐서 놀라요. 이번엔 파프리카와 배가 참 커다랬어요. 봄을 맞아 냉이와 달래를 담아봤는데 달래가 손질되어서 오니 편하네요! 당장 달래장 만들 거예요. 에코마켓에서 주문하면 해먹을 요리 리스트 짜는 게 큰 즐거움이에요.</p>', 'temp123', 178, 'N', NULL, '2', 0, '2024-03-19 18:17:12', '2024-03-19 18:17:12', 2500),
 	(142, '오늘 홈페이지 리뉴얼 오픈합니다.', '<p><span style="color: var(--tw-prose-bold);">홈페이지 리뉴얼 오픈 소식!</span></p><p>안녕하세요, 에코마켓의 새로운 홈페이지가 리뉴얼 되어 개장했습니다!  새롭게 갈아입은 홈페이지로 여러분을 초대합니다.</p><p><br></p><p><span style="color: var(--tw-prose-bold);">1️⃣새로운 콘텐츠와 서비스!</span></p><p>새로운 홈페이지에서는 최신 소식, 이벤트, 제품 정보 등 다양한 콘텐츠를 제공할 예정입니다. 또한, 고객 서비스를 더욱 향상시켜 여러분의 편의를 높일 것입니다. 저희와 함께 더 나은 서비스를 경험해보세요.</p><p><br></p><p><span style="color: rgb(111, 111, 111);">2️⃣</span><span style="color: var(--tw-prose-bold);">새로운 디자인과 기능!</span></p><p>우리의 홈페이지는 더욱 사용자 친화적인 디자인과 향상된 기능을 갖추고 있습니다. 사용자들이 원하는 정보를 쉽고 빠르게 찾을 수 있도록 더욱 간결하고 직관적인 레이아웃으로 구성되어 있습니다.</p><p><br></p><p><span style="color: rgb(111, 111, 111);">3️⃣</span><span style="color: var(--tw-prose-bold);">참여와 피드백 환영합니다!</span></p><p>여러분의 소중한 의견과 피드백은 저희에게 큰 도움이 됩니다. 언제든지 홈페이지에 방문하여 의견을 남겨주세요. 저희는 항상 여러분의 목소리를 듣고 더 나은 서비스를 제공하기 위해 노력하겠습니다.</p><p><br></p><p><span style="color: var(--tw-prose-bold);">4️⃣방문해보세요!</span></p><p>지금 바로 새로워진 에코마켓의 홈페이지를 방문해보세요! 새로운 경험과 다양한 혜택을 만나보실 수 있습니다.</p><p><br></p><p>감사합니다.</p>', 'admin', 323, 'N', NULL, '1', 0, '2024-03-20 17:42:04', '2024-04-17 07:54:44', 2500),
 	(157, '단종 예정상품 안내', '<p class="ql-align-center">안녕하세요. 에코마켓입니다.</p><p class="ql-align-center">&nbsp;</p><p class="ql-align-center">에코마켓에서 정성을 담아 선보였던 제품들 중 일부 제품들의 단종 예정 소식을 안내드립니다.</p><p class="ql-align-center">&nbsp;</p><p class="ql-align-center">하기 제품을 사랑해주신 고객님들께 구매에 불편을 드리는 점 양해 부탁드리며,</p><p class="ql-align-center">&nbsp;추후 더 나은 제품으로 에코마켓만의 고유의 가치를 담은 제품으로</p><p class="ql-align-center">&nbsp;보답드릴 수 있도록 노력하겠습니다.</p><p class="ql-align-center"><br></p><p><span style="color: black;">아로마티카 라이프 순비누 손빨래세제&nbsp;500ML</span></p><p><span style="color: black;">재고 소진 후 단종</span></p><p><span style="color: black;">헤어케어</span></p><p><span style="color: black;">퀴노아 프로틴 트리트먼트마스크&nbsp;300ml</span></p><p><span style="color: black;">로즈마리 솔트 스크럽 샴푸&nbsp;500g</span></p><p><span style="color: black;">아로마테라피</span></p><p><span style="color: black;">서렌 아로마테라피 미스트 라벤더&amp;마조람&nbsp;200ml</span></p><p><span style="color: black;">메디테이트 시너지 오일&nbsp;10ml</span></p><p><span style="color: black;">스킨케어</span></p><p><span style="color: black;">티트리53&nbsp;블레미쉬 스팟&nbsp;10ml</span></p><p><span style="color: black;">티트리 포어 퓨리파잉 젤크림&nbsp;100ml</span></p><p><span style="color: black;">티트리 밸런싱 에멀전&nbsp;100ml</span></p><p><span style="color: black;">컴포팅 카렌듈라 쥬시크림&nbsp;150ml</span></p><p><span style="color: black;">유기농 골든 호호바오일&nbsp;30ml</span></p><p><span style="color: black;">수딩 알로에 미네랄 선스크린&nbsp;50ml</span></p><p><span style="color: black;">바이탈라이징로즈마리 컨센트레이티드 에센스&nbsp;200ml</span></p><p><span style="color: black;">바이탈라이징 로즈마리 클렌징 오일&nbsp;200ml</span></p><p><span style="color: black;">바이탈라이징 로즈마리 디콕션 토너리필&nbsp;300ml</span></p><p><span style="color: black;">바이탈라이징 로즈마리 디콕션 토너&nbsp;300ml</span></p><p><span style="color: black;">브랜드 굿즈</span></p><p><span style="color: black;">아로마테라피 헴프버킷백</span></p><p><span style="color: black;">다회용 대나무 화장솜</span></p><p><span style="color: black;">100%&nbsp;순면 목화씨 화장솜</span></p><p><span style="color: black;">100%&nbsp;무표백&nbsp;3겹 화장솜</span></p><p class="ql-align-center">&nbsp;</p><p class="ql-align-center"><br></p><p class="ql-align-center">단종 예정인 상품의 재고가 소진되는 시점은 별도의 고지 없이</p><p class="ql-align-center">판매량에 따라 판매 종료 시점이 상이한 부분이 있는 점 구매 시 참고 부탁 드립니다.</p><p class="ql-align-center"><br></p><p class="ql-align-center">&nbsp;궁금하신 사항은 고객센터를 통해 문의 주시면 순차적으로 안내 도와 드리겠습니다.</p><p class="ql-align-center">감사합니다.</p><p><br></p>', 'admin', 53, 'N', NULL, '1', 0, '2024-04-18 09:19:30', '2024-04-18 09:19:30', 2500),
-	(158, '주문에 대해 문의할게 있습니다.', '어떻게 주문하는지 문의합니다', 'a123123', 0, 'N', NULL, '3', 0, '2024-04-18 09:20:12', '2024-04-18 09:20:12', 2500);
+	(158, '주문에 대해 문의할 게 있습니다.', '어떻게 주문하는지 문의합니다', 'a123123', 0, 'N', NULL, '3', 0, '2024-04-18 09:20:12', '2024-04-18 09:20:12', 2500);
 
 -- 테이블 test.ECO_BOARD_IMAGE 구조 내보내기
 CREATE TABLE IF NOT EXISTS `ECO_BOARD_IMAGE` (
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `ECO_BOARD_IMAGE` (
   PRIMARY KEY (`FILENO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.ECO_BOARD_IMAGE:~56 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_BOARD_IMAGE:~28 rows (대략적) 내보내기
 INSERT INTO `ECO_BOARD_IMAGE` (`FILENO`, `BOARDNO`, `FILEPATH`, `FILENAME`, `FILEORGNAME`, `FILESIZE`, `FILEETC`, `KIND`) VALUES
 	(31, 121, '..\\img\\', '202422031022193.jpg', '레시피2.jpg', '141154', '.jpg', 1),
 	(32, 45, '..\\img\\', 'chicken.jpg', '글루텐프리.jpg', '33622', '.jpg', 1),
@@ -313,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `ECO_COMMENT` (
   PRIMARY KEY (`COMMENTNO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.ECO_COMMENT:~16 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_COMMENT:~23 rows (대략적) 내보내기
 INSERT INTO `ECO_COMMENT` (`COMMENTNO`, `BOARDNO`, `COMMENT`, `USERID`, `DELETEYN`, `PCOMMENTNO`, `REGDATE`, `UPDATEDATE`) VALUES
 	(12, 42, '3123123', 'admin', '0', NULL, '2024-03-12 19:04:49', '2024-03-12 19:04:49'),
 	(13, 8, '12312321312321321', 'admin', '0', NULL, '2024-03-12 19:05:05', '2024-03-12 19:05:05'),
