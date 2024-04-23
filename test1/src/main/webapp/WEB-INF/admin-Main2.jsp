@@ -232,7 +232,7 @@
 									<div class="card-body">문의관리</div>
 									<div
 										class="card-footer d-flex align-items-center justify-content-between">
-										<a class="small text-white stretched-link" href="#">자세히보기
+										<a class="small text-white stretched-link" href="customerService.do">자세히보기
 											</a>
 										<div class="small text-white">
 											<i class="fas fa-angle-right"></i>

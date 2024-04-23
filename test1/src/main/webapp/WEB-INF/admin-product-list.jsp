@@ -455,12 +455,10 @@
 									<div class="collapse" id="pagesCollapseError"
 										aria-labelledby="headingOne"
 										data-bs-parent="#sidenavAccordionPages">
-										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="#">공지사항 등록</a> <a class="nav-link"
-												href="#">문의글 관리</a> <a class="nav-link" href="#"></a>
-
+									<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="javascript:;" @click="fnMoveBoardList(1)">공지게시판 이동</a>
+											 <a class="nav-link" href="javascript:;" @click="fnMoveBoardList(2)">레시피게시판 이동</a>
 										</nav>
-
 									</div>
 
 								</nav>
@@ -567,7 +565,7 @@
 		                </div>
 		                <div class="productBtn">
 		                <button class="add-to-cart-btn" @click="fnEdit(item.itemNo)">제품 수정하기</button>
-		              <button class="add-to-cart-btn" @click="fnRemove">제품 제거하기</button>
+		              <button class="add-to-cart-btn" @click="fnRemove(item.itemNo)">제품 제거하기</button>
 		                </div>
 		              
 		            </template>
@@ -645,7 +643,11 @@
 	                }
 	            });
 	        },
-			
+	        fnMoveBoardList : function(code){
+				var self = this;
+			$.pageChange("/boardList.do", {
+				code : code});
+		},
 			handleAddProduct : function(code){
 				var self = this;
 				 // 팝업 창을 열고자 하는 페이지 URL
@@ -700,9 +702,10 @@
 			/* 제품 삭제 실행 */
 			fnRemove : function(itemNo) {
 				var self = this;
+				console.log(itemNo);
 				if (confirm("정말 제거 하시겠습니까?")) {
 					var nparmap = {
-						itemNo : itemNo
+					  itemNo : itemNo
 					};
 					$.ajax({
 						url : "productRemove.dox",
@@ -751,12 +754,10 @@
 					code : self.code
 				});
 			},
-			fnDetailView : function(itemNo) {
-				var self = this
-				$.pageChange("/AdminProductView.do", {
-					itemNo : itemNo
-				});
-			},
+			 fnDetailView: function(itemNo, userId) {
+					var self = this;
+					$.pageChange("/productView.do", {itemNo: itemNo, userId: self.userId});
+				},
 			 updateSelected: function() {
 		        	var self = this;
 		            switch (self.selectedOption) {
