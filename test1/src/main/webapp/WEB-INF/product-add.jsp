@@ -189,7 +189,7 @@
 					data : nparmap,
 					success : function(data) {
 						if (data.result == "success") {
-							alert("등록완료");
+							
 
 							var files = $("#file1")[0].files;
 							for (var i = 0; i < files.length; i++) {
@@ -216,6 +216,7 @@
 								formContents.append("itemNo", data.itemNo);
 								self.uploadDetailFile(formContents);
 							}
+							alert("등록완료");
 
 							/*    location.href="AdminProductList.do"; */
 
