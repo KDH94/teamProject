@@ -199,5 +199,15 @@
 	<select id="selectPaymentList" parameterType="hashmap" resultType="com.example.test1.model.Payment">
 		SELECT *
 		FROM ECO_PAYMENT
+		ORDER BY PAYMENT_NO DESC
 	</select>
+	<select id="selectPaymentDetailList" parameterType="hashmap" resultType="com.example.test1.model.PaymentDetail">
+		SELECT D.PAYMENT_NO,D.ITEM_NO,D.SELLCNT,ITEM_NAME,PRICE,S_RATE,P_RATE,M.PAYTIME
+		FROM ECO_PAYMENT_DETAIL D
+		INNER JOIN ECO_PRODUCT P ON D.ITEM_NO = P.ITEM_NO
+		INNER JOIN ECO_PAYMENT M ON M.PAYMENT_NO = D.PAYMENT_NO
+		WHERE D.PAYMENT_NO = #{paymentNo}
+	</select>
+	
+	
 </mapper>

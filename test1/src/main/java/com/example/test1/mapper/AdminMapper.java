@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.test1.model.PaymentDetail;
 import com.example.test1.model.Product;
 import com.example.test1.model.ProductFile;
 import com.example.test1.model.User;
@@ -50,4 +51,6 @@ public interface AdminMapper {
 	List<User> selectUserListALL(HashMap<String, Object> map);
 	
 	List<Payment> selectPaymentList(HashMap<String, Object> map);
+	
+	List<PaymentDetail> selectPaymentDetailList(HashMap<String, Object> map);
 }

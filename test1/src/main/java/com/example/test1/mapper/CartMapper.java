@@ -27,6 +27,8 @@ public interface CartMapper {
 	int selectChartCheck(HashMap<String, Object> map); // 차트에 데이터를 insert 할지 update 할지 구분해줄 함수
 	void updateProductChart(HashMap<String, Object> map); // 차트에 결제금액 업데이트
 	void insertPaymentHistory(HashMap<String, Object> map); // 결제로그 남기기
+	void insertPaymentHistoryDetail(HashMap<String, Object> map);
+	
 	List<Cart> selectFavoriteList(HashMap<String, Object> map); // 찜목록 가져오기
 	List<Addr> selectAddrList(HashMap<String, Object> map);//주소 목록 가져오기
 	void insertFavorite(HashMap<String, Object> map); // 찜목록에 추가

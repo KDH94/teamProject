@@ -116,12 +116,20 @@ public class CartController {
 		}
 		
 		
-		//결제완료 시점 결제로그 payment 테이블에 저장
+		//결제완료 시점 결제로그 payment 테이블 , payment_detail 테이블 에 저장
 		@RequestMapping(value = "paymentEndHistorySave.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
 		public String paymentEndHistorySave(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
 			resultMap = cartService.paymentFinishHistory(map);
+			return new Gson().toJson(resultMap);
+		}
+		
+		@RequestMapping(value = "paymentEndHistoryDetailSave.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String paymentEndHistoryDetailSave(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			resultMap = cartService.paymentFinishHistoryDetail(map);
 			return new Gson().toJson(resultMap);
 		}
 	
