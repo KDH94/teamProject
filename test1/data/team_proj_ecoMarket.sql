@@ -29,8 +29,8 @@ DELIMITER //
 CREATE EVENT `DELETE_USER_DATA_EVENT1` ON SCHEDULE EVERY 1 DAY STARTS '2024-03-16 00:00:00' ON COMPLETION PRESERVE ENABLE DO DELETE FROM ECO_USER WHERE DELETE_DATE <= NOW() - INTERVAL 3 MONTH//
 DELIMITER ;
 
--- 테이블 test.eco_addr 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_addr` (
+-- 테이블 test.ECO_ADDR 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_ADDR` (
   `ADDRNO` int NOT NULL AUTO_INCREMENT,
   `USERID` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ADDR` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
@@ -42,32 +42,32 @@ CREATE TABLE IF NOT EXISTS `eco_addr` (
   `ADDRNAME` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `ISDEFAULT` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'N',
   PRIMARY KEY (`ADDRNO`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_addr:~19 rows (대략적) 내보내기
-INSERT INTO `eco_addr` (`ADDRNO`, `USERID`, `ADDR`, `ADDRDETAIL`, `ZIPCODE`, `NAME`, `PHONE`, `ADDRREQUEST`, `ADDRNAME`, `ISDEFAULT`) VALUES
+-- 테이블 데이터 test.ECO_ADDR:~18 rows (대략적) 내보내기
+DELETE FROM `ECO_ADDR`;
+INSERT INTO `ECO_ADDR` (`ADDRNO`, `USERID`, `ADDR`, `ADDRDETAIL`, `ZIPCODE`, `NAME`, `PHONE`, `ADDRREQUEST`, `ADDRNAME`, `ISDEFAULT`) VALUES
 	(25, 'user1', '서울 구로구 연동로13길 18-38', '102동 102호  (항동, 동보수목원아파트)', '08360', 'asfasf', '01029594125', '배송전 연락', '회사', 'Y'),
 	(26, 'user1', '인천 중구 내항로 2-45', '여기  (항동7가)', '22345', '김승인', '01029594125', '', '집', 'N'),
 	(27, 'user1', '인천 중구 내항로 2-45', '102동 102호  (항동7가)', '22345', '고말숙', '01029594125', '', '집', 'N'),
 	(28, 'hong123', '인천 중구 내항로 2-45', '102호  (항동7가)', '22345', '나', '01029594125', '', '집', 'Y'),
 	(29, 'dong123', '인천 부평구 마장로272번길 76', '311-703  (산곡동, 경남아파트)', '21376', '김동휘', '01072082755', NULL, '집', 'N'),
-	(30, 'admin', '경기 부천시 오정구 고강로 3', '우리집  (원종동)', '14403', '김은석', '01065363310', '안녕하세요ㅁㄴㅇㅁㄴㅇ', '집', 'Y'),
-	(31, 'a123123', '경기 성남시 분당구 대왕판교로606번길 45', '202-101  (삼평동)', '13524', '에이', '01011112222', NULL, '집', 'Y'),
+	(30, 'admin', '경기 부천시 오정구 고강로 3', '우리집  (원종동)', '14403', '김은석', '01065363310', '안녕하세요ㅁㄴㅇㅁㄴㅇ', '집', 'N'),
+	(31, 'a123123', '경기 성남시 분당구 대왕판교로606번길 45', '202-101  (삼평동)', '13524', '에이', '01011112222', NULL, '집', 'N'),
 	(32, 'temp123', '경기 성남시 분당구 대왕판교로 477', '11  (판교동)', '13480', '김임시', '01010101010', NULL, '집', 'N'),
 	(33, 'test123', '서울 구로구 연동로13길 18-38', '102동 102호  (항동, 동보수목원아파트)', '08360', '김승인', '01029594125', NULL, '집', 'N'),
 	(34, 'test123', '인천 부평구 길주로 지하 379', 'ㅂㄹㅈ  (산곡동)', '21313', '길막숙', '01029594125', '없어', '라라라?', 'Y'),
 	(37, 'hommefatale01', '부산 수영구 망미동 802-33', '102동 102호 ', '48236', 'The bed is my stage', '01029594125', NULL, '집', 'Y'),
-	(38, 'admin', '경기 부천시 오정구 고강로 3', '멋진 (원종동)', '14403', '내가받을꺼야', '01051515152', '배송와아ㅏ아아아ㅋㅋㅋ', '지구', 'N'),
+	(38, 'admin', '경기 부천시 오정구 고강로 3', '멋진집  (원종동)', '14403', '내가받을꺼야', '01051515151', '배송와아ㅏ아아아', '지구', 'Y'),
+	(39, 'admin', '경기 성남시 분당구 대왕판교로606번길 45', '323-123  (삼평동)', '13524', '김동휘', '01072082755', '현관문 앞에', '기타', 'N'),
 	(40, 'hommefatale', '서울 구로구 연동로13길 18-38', '102동 102호  (항동, 동보수목원아파트)', '08360', '김승인', '01029594125', NULL, '집', 'N'),
 	(41, 'kfkmds', '경기 부천시 오정구 고강로 3', '1112233  (원종동)', '14403', '김은석', '01055551111', NULL, '집', 'N'),
 	(42, 'tmep111', '경기 성남시 분당구 대왕판교로 477', '11  (판교동)', '13480', '임시', '01011111111', NULL, '집', 'N'),
 	(44, 'test12', '인천 부평구 가재울로 129', '사무실  (십정동)', '21449', '김동휘', '01011111111', '조심히와주세요', '회사사무실', 'Y'),
-	(45, 'test0101', '부산 중구 부평1길 4', '테스트주소  (부평동2가)', '48979', '테스트이름', '01068899070', NULL, '집', 'N'),
-	(47, 'admin', '인천 남동구 백범로 455-1', 'ㅋㅋㅋ  (간석동)', '21504', 'test', '01012341234', 'zzz', '집', 'N'),
-	(48, 'test001', '부산 중구 부평1길 4', '201호  (부평동2가)', '48979', '김철수', '01068899070', NULL, '집', 'N');
+	(45, 'test0101', '부산 중구 부평1길 4', '테스트주소  (부평동2가)', '48979', '테스트이름', '01068899070', NULL, '집', 'N');
 
--- 테이블 test.eco_admin_qa 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_admin_qa` (
+-- 테이블 test.ECO_ADMIN_QA 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_ADMIN_QA` (
   `BOARDNO` int NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(100) DEFAULT NULL,
   `QA_CONTENTS` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -79,28 +79,25 @@ CREATE TABLE IF NOT EXISTS `eco_admin_qa` (
   `SECRETYN` char(1) DEFAULT NULL,
   `ITEM_NO` int DEFAULT NULL,
   PRIMARY KEY (`BOARDNO`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_admin_qa:~15 rows (대략적) 내보내기
-INSERT INTO `eco_admin_qa` (`BOARDNO`, `TITLE`, `QA_CONTENTS`, `USERID`, `DELETEYN`, `DELETEDATE`, `CDATETIME`, `UDATETIME`, `SECRETYN`, `ITEM_NO`) VALUES
-	(1, '지금 서버가 이상한 건가요?', '사이트가 좀 느린 듯합니다.', 'temp123', 'N', NULL, '2024-03-14 14:51:37', '2024-03-14 14:51:38', NULL, 43),
-	(2, '등급을 올리려면 어떻게 해야 하나요?', '알려주세요.', 'hong123', 'N', NULL, '2024-03-14 15:08:08', '2024-03-14 15:08:08', NULL, 43),
+-- 테이블 데이터 test.ECO_ADMIN_QA:~11 rows (대략적) 내보내기
+DELETE FROM `ECO_ADMIN_QA`;
+INSERT INTO `ECO_ADMIN_QA` (`BOARDNO`, `TITLE`, `QA_CONTENTS`, `USERID`, `DELETEYN`, `DELETEDATE`, `CDATETIME`, `UDATETIME`, `SECRETYN`, `ITEM_NO`) VALUES
+	(1, '문의테스트', '내용테스트입니다 테스트용입니다 집에 가고 싶습니다.', 'temp123', 'N', NULL, '2024-03-14 14:51:37', '2024-03-14 14:51:38', NULL, 43),
+	(2, '테스트문의', '테스트내용입니다 집에가고 싶은데 어떻게 해야하나요?', 'hong123', 'N', NULL, '2024-03-14 15:08:08', '2024-03-14 15:08:08', NULL, 43),
 	(3, '문의등록테스트', '등록한 문의 내용 테스트', 'hong123', 'N', NULL, '2024-03-14 17:15:29', '2024-03-14 17:15:29', NULL, 45),
-	(4, '문의등록테스트2', '등록한 문의 내용 테스트2', 'hong123', 'N', NULL, '2024-03-14 17:17:53', '2024-03-14 17:17:53', NULL, 44),
-	(30, '물건이 아직 안 왔는데요', '아직 배송이 안 된 건가요?', 'hong123', 'N', NULL, '2024-03-14 18:25:06', '2024-03-14 18:25:06', NULL, 62),
-	(32, '귤이 상했어요', '환불이나 교환 빠르게 해주세요', 'hong123', 'N', NULL, '2024-03-14 18:31:58', '2024-03-14 18:31:58', NULL, 62),
+	(4, '문의등록테스트', '등록한 문의 내용 테스트', 'hong123', 'N', NULL, '2024-03-14 17:17:53', '2024-03-14 17:17:53', NULL, 44),
+	(30, '제발', '등록해야해', 'hong123', 'N', NULL, '2024-03-14 18:25:06', '2024-03-14 18:25:06', NULL, 62),
+	(32, '귤이 상했어요', '귤이 상해서 너무 속상해요', 'hong123', 'N', NULL, '2024-03-14 18:31:58', '2024-03-14 18:31:58', NULL, 62),
 	(33, '꺼져', '흥', 'test123', 'N', NULL, '2024-03-18 15:01:06', '2024-03-18 15:01:06', NULL, 62),
 	(34, '문의 남겨봅니다', '흑흑흑 문의요', 'temp123', 'N', NULL, '2024-03-19 20:56:59', '2024-03-19 20:56:59', NULL, 50),
-	(35, '상품 썸네일이 안나와요', '고쳐 주세요', 'admin', 'N', NULL, '2024-03-19 21:53:17', '2024-03-19 21:53:17', NULL, 63),
+	(35, '상품 썸네일이 안나와요', 'ㅁ나리ㅏㄴ유하ㅣㄹㅇㅊ투ㅠㅏㅣㅌㅍㄹ추ㅏㅓㅣㅎㄹㄴㅋ타ㅣㅓㅡ.ㅗㅎ류아ㅓ키;ㅔㅗㅠㅡㅓㅟㅏ;ㄿㅌ허ㅏㅣㅜㅡ;ㅌㄹ허ㅏㅣ;ㅜㅗㅇㅌㅎㄹ;ㅓㅣㅏㅜㅗㅎㅌㅍ초', 'admin', 'N', NULL, '2024-03-19 21:53:17', '2024-03-19 21:53:17', NULL, 63),
 	(38, '정말 무항생제 계란이 맞나요??', '무항상제 계란이 맞는지 궁금합니다.', 'temp123', 'N', NULL, '2024-03-21 10:29:18', '2024-03-21 10:29:18', NULL, 68),
-	(39, '자연 방식으로 얻은 계란이 맞나요?', '자연 방식으로 생산된 계란이 맞는지 궁금합니다.', 'hong123', 'N', NULL, '2024-03-21 15:17:05', '2024-03-21 15:17:06', NULL, 68),
-	(40, '이거 맛이 안 좋아요', '교환 부탁드립니다.', 'admin', 'N', NULL, '2024-04-16 03:55:36', '2024-04-16 03:55:36', NULL, 68),
-	(41, '유기농 케일인가요?', '유기농 케일인가요???', 'a123123', 'N', NULL, '2024-04-16 03:57:11', '2024-04-16 03:57:11', NULL, 62),
-	(42, '계란 1알 당 단백질 함유량이 어떻게 되나요?', '식단에서 단백질 대체를 닭가슴살에서 계란으로 바꿀 예정이어서 단백질 함유량이 궁금해요', 'a123123', 'N', NULL, '2024-04-16 04:04:55', '2024-04-16 04:04:55', NULL, 68),
-	(43, '진짜 비건인가요?', '제가 잠시 채식 식단을 경험하고 싶은데 진짜 비건 콩불고기인가요?', 'a123123', 'N', NULL, '2024-04-16 04:05:54', '2024-04-16 04:05:54', NULL, 67);
+	(39, '자연 방식으로 얻은 계란이 맞나요?', '자연 방식으로 생산된 계란이 맞는지 궁금합니다.', 'hong123', 'N', NULL, '2024-03-21 15:17:05', '2024-03-21 15:17:06', NULL, 68);
 
--- 테이블 test.eco_admin_qa_image 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_admin_qa_image` (
+-- 테이블 test.ECO_ADMIN_QA_IMAGE 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_ADMIN_QA_IMAGE` (
   `FILENO` int NOT NULL,
   `BOARDNO` int DEFAULT NULL,
   `FILEPATH` varchar(200) DEFAULT NULL,
@@ -110,10 +107,11 @@ CREATE TABLE IF NOT EXISTS `eco_admin_qa_image` (
   `FILEETC` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_admin_qa_image:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_ADMIN_QA_IMAGE:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_ADMIN_QA_IMAGE`;
 
--- 테이블 test.eco_admin_review 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_admin_review` (
+-- 테이블 test.ECO_ADMIN_REVIEW 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_ADMIN_REVIEW` (
   `REVIEW_NO` int NOT NULL,
   `ITEM_NO` varchar(100) DEFAULT NULL,
   `USERID` varchar(20) DEFAULT NULL,
@@ -126,14 +124,15 @@ CREATE TABLE IF NOT EXISTS `eco_admin_review` (
   PRIMARY KEY (`REVIEW_NO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_admin_review:~3 rows (대략적) 내보내기
-INSERT INTO `eco_admin_review` (`REVIEW_NO`, `ITEM_NO`, `USERID`, `R_CONTENTS`, `SCORE`, `CDATETIME`, `UDATETIME`, `DELETEYN`, `DELETEDATE`) VALUES
+-- 테이블 데이터 test.ECO_ADMIN_REVIEW:~3 rows (대략적) 내보내기
+DELETE FROM `ECO_ADMIN_REVIEW`;
+INSERT INTO `ECO_ADMIN_REVIEW` (`REVIEW_NO`, `ITEM_NO`, `USERID`, `R_CONTENTS`, `SCORE`, `CDATETIME`, `UDATETIME`, `DELETEYN`, `DELETEDATE`) VALUES
 	(1, '62', 'temp123', '너무 좋아요!', 3.00, '2024-03-14 11:02:04', '2024-03-14 11:02:05', 'N', NULL),
-	(2, '62', 'hong123', '너무 안 좋아요!', 5.00, '2024-03-14 11:31:14', '2024-03-14 11:31:15', 'N', NULL),
+	(2, '62', 'hong123', '너무 안좋아요!', 5.00, '2024-03-14 11:31:14', '2024-03-14 11:31:15', 'N', NULL),
 	(3, '68', 'temp123', '계란이 신선해서 너무 좋아요', 5.00, '2024-03-14 11:31:42', '2024-03-14 11:31:43', 'N', NULL);
 
--- 테이블 test.eco_admin_review_image 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_admin_review_image` (
+-- 테이블 test.ECO_ADMIN_REVIEW_IMAGE 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_ADMIN_REVIEW_IMAGE` (
   `FILENO` int NOT NULL,
   `BOARDNO` int DEFAULT NULL,
   `FILEPATH` varchar(200) DEFAULT NULL,
@@ -145,10 +144,11 @@ CREATE TABLE IF NOT EXISTS `eco_admin_review_image` (
   KEY `BOARDNO` (`BOARDNO`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_admin_review_image:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_ADMIN_REVIEW_IMAGE:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_ADMIN_REVIEW_IMAGE`;
 
--- 테이블 test.eco_admin_review_imagefile 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_admin_review_imagefile` (
+-- 테이블 test.ECO_ADMIN_REVIEW_IMAGEFILE 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_ADMIN_REVIEW_IMAGEFILE` (
   `FILENO` int NOT NULL,
   `BOARDNO` int DEFAULT NULL,
   `FILEPATH` varchar(200) DEFAULT NULL,
@@ -158,13 +158,14 @@ CREATE TABLE IF NOT EXISTS `eco_admin_review_imagefile` (
   `FILEETC` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_admin_review_imagefile:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_ADMIN_REVIEW_IMAGEFILE:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_ADMIN_REVIEW_IMAGEFILE`;
 
--- 테이블 test.eco_board 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_board` (
+-- 테이블 test.ECO_BOARD 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_BOARD` (
   `BOARDNO` int NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(100) DEFAULT NULL,
-  `CONTENTS` varchar(10000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `CONTENTS` varchar(1000) DEFAULT NULL,
   `USERID` varchar(30) DEFAULT NULL,
   `HITS` int DEFAULT '0',
   `DELETEYN` char(1) DEFAULT NULL,
@@ -175,36 +176,73 @@ CREATE TABLE IF NOT EXISTS `eco_board` (
   `UDATETIME` datetime DEFAULT NULL,
   `KCAL` int DEFAULT NULL,
   PRIMARY KEY (`BOARDNO`)
-) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_board:~23 rows (대략적) 내보내기
-INSERT INTO `eco_board` (`BOARDNO`, `TITLE`, `CONTENTS`, `USERID`, `HITS`, `DELETEYN`, `DELETEDATE`, `KIND`, `REPORTCNT`, `CDATETIME`, `UDATETIME`, `KCAL`) VALUES
+-- 테이블 데이터 test.ECO_BOARD:~59 rows (대략적) 내보내기
+DELETE FROM `ECO_BOARD`;
+INSERT INTO `ECO_BOARD` (`BOARDNO`, `TITLE`, `CONTENTS`, `USERID`, `HITS`, `DELETEYN`, `DELETEDATE`, `KIND`, `REPORTCNT`, `CDATETIME`, `UDATETIME`, `KCAL`) VALUES
+	(1, '123456', 'aaaaaaaaaaaa', 'user1', 59, 'N', NULL, '1', 0, '2024-03-04 16:58:49', '2024-03-08 17:16:54', 1000),
+	(8, 'test', '<p>이거 왜이럼??</p>', 'admin', 40, 'N', NULL, '3', 0, '2024-03-06 10:56:24', '2024-03-06 10:56:24', 1500),
 	(18, '비건메뉴추천', '<p>ㄱ강추ㅋㅋㅋㅋㅋ</p>', 'temp123', 65, 'N', NULL, '2', 0, '2024-03-07 15:06:01', '2024-03-18 16:11:37', 2500),
-	(43, '1주일 째 배송이 되지 않아요', '제가 1주일 넘게 기다리고 있습니다.. 배송이 되지 않네요 확인 부탁드립니다.ㅠ', 'hong123', 11, 'N', NULL, '3', 0, '2024-03-08 12:31:03', '2024-04-18 09:13:28', 3000),
-	(45, '조금은 낯선 얼굴의 라디치오!', '<p>어떻게 먹어야 할지 고민되신다면 이렇게 드셔보세요. 라디치오 이외에도 양배추, 쌈채소 등의 샐러드채소로 만들어도 맛있어요. 양념에 약간의 변화를 주면 한 가지 채소도 매우 다양하게 먹을 수 있어요 :)</p>', 'admin', 106, 'N', NULL, '2', 0, '2024-03-08 14:32:24', '2024-03-08 17:03:39', 3000),
+	(20, '666666', '<p>66666666</p>', 'admin', 15, 'N', NULL, '3', 0, '2024-03-07 15:07:42', '2024-03-07 15:07:42', 2500),
+	(22, 'test0307 11', '수정수정', 'temp123', 20, 'N', NULL, '3', 0, '2024-03-07 17:02:49', '2024-03-14 14:30:18', 2500),
+	(42, 'test0308', '111111111', 'hong123', 3, 'N', NULL, '3', 0, '2024-03-08 12:19:48', '2024-03-08 12:19:48', 3000),
+	(43, '문의합니다', '<p>ㅇ왜배송안되요1111111111</p>', 'hong123', 11, 'N', NULL, '3', 0, '2024-03-08 12:31:03', '2024-03-08 12:31:03', 3000),
+	(44, 'test', '<p>test</p>', 'admin', 22, 'N', NULL, '1', 0, '2024-03-08 13:04:59', '2024-03-08 13:04:59', 3000),
+	(45, 'test01010101', '<p>test</p>', 'admin', 101, 'N', NULL, '2', 0, '2024-03-08 14:32:24', '2024-03-08 17:03:39', 3000),
 	(48, 'test04', '<p>test</p>', 'user1', 6, 'N', NULL, '3', 0, '2024-03-08 14:52:47', '2024-03-08 14:52:47', 3000),
 	(49, '2222222222', '<p>222222222222</p>', 'user1', 14, 'N', NULL, '3', 0, '2024-03-08 14:55:46', '2024-03-08 14:55:46', 3000),
+	(51, '수정테스트입니다.ㅋㅋㅋ메롱', '수정테스트인것이에요ㅋㅋㅋ하기싫다!!!!', 'admin', 12, 'N', NULL, '3', 0, '2024-03-08 15:33:54', '2024-03-08 17:01:19', 2500),
+	(56, 'test', '<p>test</p>', 'admin', 2, 'N', NULL, '3', 0, '2024-03-08 17:43:01', '2024-03-08 17:43:01', 3000),
+	(57, 'test', '<p>test</p>', 'admin', 1, 'N', NULL, '3', 0, '2024-03-08 17:43:09', '2024-03-08 17:43:09', 3000),
+	(58, 'test', '<p>test</p>', 'admin', 8, 'N', NULL, '3', 0, '2024-03-08 17:56:18', '2024-03-08 17:56:18', 3000),
+	(65, '123123', '<p><span style="color: rgb(230, 0, 0);">ㅇ안녕하세요</span></p>', 'admin', 11, 'N', NULL, '1', 0, '2024-03-08 18:13:56', '2024-03-08 18:13:56', 3000),
+	(66, 'test44', '<p>test4</p>', 'user031', 5, 'N', NULL, '2', 0, '2024-03-11 10:58:15', '2024-03-11 10:58:15', 3000),
+	(68, '문의할거야!', '문의 수정해요', 'temp123', 5, 'N', NULL, '3', 0, '2024-03-11 18:14:51', '2024-03-13 11:22:31', 2500),
 	(70, '문의하기!!', '<p>0000000000000000000000000000000</p>', 'temp123', 3, 'N', NULL, '3', 0, '2024-03-12 14:33:12', '2024-03-12 19:21:53', 2500),
+	(71, 'test', '<p>test</p>', 'admin', 41, 'N', NULL, '1', 0, '2024-03-12 16:01:11', '2024-03-12 16:01:11', 3000),
+	(74, 'zz111111111', '<p>1111111</p>', 'hong123', 31, 'N', NULL, '1', 0, '2024-03-12 17:08:35', '2024-03-14 11:29:31', 3000),
+	(76, 'zzz', '<p>z</p>', 'hong123', 1, 'N', NULL, '1', 0, '2024-03-12 17:09:57', '2024-03-12 17:09:57', 3000),
+	(77, 'zz', '<p>z</p>', 'hong123', 3, 'N', NULL, '1', 0, '2024-03-12 17:10:44', '2024-03-12 17:10:44', 3000),
+	(81, '테스트 문의입니다', '내용내용', 'admin', 1, 'N', NULL, '3', 0, '2024-03-12 18:12:19', '2024-03-12 18:12:19', 2500),
+	(82, '안녕', '<p style="color:red;">빨간색 글씨가 나올까요</p>', 'admin', 1, 'N', NULL, '3', 0, '2024-03-12 19:17:26', '2024-03-12 19:17:26', 2500),
 	(83, '작성', '수정하겠읍니다.', 'temp123', 7, 'N', NULL, NULL, 0, '2024-03-12 19:20:37', '2024-03-13 15:52:38', 2500),
-	(91, '글로만 적는 레시피.txt', '<p>test</p>', 'hong123', 11, 'N', NULL, '2', 0, '2024-03-13 12:34:07', '2024-04-19 01:01:53', 3000),
-	(106, '가격 인상 안내', '<p>안녕하세요. 에코마켓입니다.</p><p><br></p><p>에코마켓을 사랑해주시는 고객님께 진심으로 감사의 말씀드립니다.</p><p>채소 및 원재료 변동으로 인해 2024년 5월 2일부터 일부 제품 가격이 조정됨을 안내드립니다.</p><p><br></p><p>가격 인상 및 인하 제품은 아래와 같습니다.</p><p><br></p><p>*조정 판매가 적용 시기 : 2024년 5월 2일 ~</p><p><br></p><p>제품명&nbsp;</p><p>기존 판매가&nbsp;</p><p>조정 판매가&nbsp;</p><p><br></p><p>난각번호1 자연방사 동물복지 유정란 (당일 낳은 달걀 동물복지인증 무항생제인증 HACCP인증)[삼초계란], 30구, 1개</p><p>22,000원&nbsp;</p><p>18,000원&nbsp;</p><p><br></p><p>유기농마루 듬뿍두유 무가당, 190ml 24개</p><p><span style="color: rgb(111, 111, 111);">18,000원&nbsp;&nbsp;</span></p><p>25,000원&nbsp;</p><p><br></p><p>언버든 스트레스 릴리프 밤</p><p>22,000원&nbsp;</p><p>28,000원&nbsp;</p><p><br></p><p>에코마켓 상품에 많은 관심과 응원 부탁드리며,</p><p>언제나 더 좋은 제품을 제공할 수 있도록 최선을 다하겠습니다.</p><p><br></p><p>감사합니다.</p>', 'admin', 33, 'N', NULL, '1', 0, '2024-03-14 09:28:05', '2024-04-17 07:50:54', 3000),
-	(107, '오늘 저녁은 맛있는 샐러드 추천', '<p>매번 닭가슴살을 다이어트 식단에만 활용해 오셨다고요? 그런 분들을 위해, 레시피 공유하겠습니다!</p>', 'hong123', 18, 'N', NULL, '2', 0, '2024-03-14 09:31:13', '2024-03-14 09:31:13', 3000),
-	(108, '비건 | 식물성 닭가슴살 숙주 볶음', '<p>식물성 닭가슴살과 숙주로 만든 초간단 레시피 공유해요 간단한 조리과정에 비해 정말 맛있고, 크게 다르지 않으면서도 이색적인 느낌을 파프리카를 그냥 먹는 것도 좋지만 운동 후라서 남은 양파와 함께 먹을 수 있는</p>', 'kfkmds', 24, 'N', NULL, '2', 0, '2024-03-14 10:07:07', '2024-03-14 10:07:07', 2500),
-	(115, '글루텐프리로 건강해지자', '<p>에코마켓에서 다양한 야채를 다양한 방법으로 먹어보고자 채소박스를 처음 시켜봤습니다. 소량의 야채들이 다양하게 와서 좋았고 레시피가 있어서 생소한 야채들도 쉽게 먹을 수 있어서 좋네요. 비빔밥은 생각했던 것보다 훨씬 맛있었습니다. 만족스러워서 앞으로도 계속 배송받을 생각이에요.</p>', 'admin', 24, 'N', NULL, '2', 0, '2024-03-14 12:40:21', '2024-03-14 12:40:21', 2500),
-	(116, '두번째 구매하는데 채소가 너무 좋아요', '<p>쑥이랑 달래는 잎이 시들어서 물러진 채로 배송이 와서 빨리 해치웠는데요! 다 넘 넘 맛있게 먹구 있습니당 특히 청경채는 유기농인 거 자랑하는건가용? 애벌레도 함께 왔는데 재밌었어용</p>', 'temp123', 26, 'N', NULL, '2', 0, '2024-03-14 18:17:00', '2024-03-14 18:17:00', 2500),
-	(117, '글루텐프리도 맛있다', '<p>간단한 조리과정에 비해 정말 맛있고, 크게 다르지 않으면서도 이색적인 느낌을 건강하게 먹으려 노력하는편인데 이번엔 버섯조림 레시피대로 따라해봤어요~^^ 달큰해서 아이들이 좋아하네요^^ 다음 채소박스도 기대할께요~!!</p>', 'hommefatale', 144, 'N', NULL, '2', 0, '2024-03-14 18:22:36', '2024-03-14 18:22:36', 2500),
-	(120, '상큼하고 맛있는 - 연어 포케 비건 샐러드 파스타', '<p>간단한 조리과정에 비해 정말 맛있고, 크게 다르지 않으면서도 이색적인 느낌을</p>', 'kfkmds', 31, 'N', NULL, '2', 0, '2024-03-15 16:56:12', '2024-03-15 16:56:12', 2500),
-	(121, '비건샐러드식단을 공유합니다', '<p><span style="color: rgb(31, 41, 55);">에코 마켓은 신선하고 꼼꼼히 포장돼왔어요</span></p><p><span style="color: rgb(31, 41, 55);">토마토 마리네이드만 활용하여 샐러드로 먹어도 좋아요. 그맘때</span></p><p><span style="color: rgb(31, 41, 55);">가장 맛이 있는 다양한 잎채소와 함께하세요.</span></p>', 'kfkmds', 49, 'N', NULL, '2', 0, '2024-03-15 17:04:45', '2024-03-21 15:19:25', 2500),
-	(122, '압축랩 포장지 변경 안내', '<p class="ql-align-center">안녕하세요. 에코마켓입니다.</p><p class="ql-align-center"><br></p><p class="ql-align-center">압축랩 포장지인 티트리 밸런싱이 리뉴얼 되어 9월경 출시됨을 알려드립니다.</p><p class="ql-align-center">티트리 밸런싱을 기다려주시는 고객님들께 양해의 말씀 드립니다.</p><p class="ql-align-center"><br></p><p class="ql-align-center">좋은 제품으로 보답하는 에코마켓이 되겠습니다.</p><p class="ql-align-center">감사합니다.</p><p><br></p>', 'admin', 84, 'N', NULL, '1', 0, '2024-03-15 18:15:55', '2024-04-17 08:44:07', 2500),
-	(123, '믿고 먹는 유기농 에코마켓 채소들!', '<p>유기농 채소와 신선하고 다양한 채소들에 행복했어요 저녁으로 먹기 좋은 메뉴 추천합니다! 간단한 조리과정에 비해 정말 맛있고, 크게 다르지 않으면서도 기존 마트만 이용하다가 다양한 야채를 다양한 방법으로 먹어보고자 채소박스를 처음 시켜봤습니다. 소량의 야채들이 다양하게 와서 좋았고 레시피가 있어서 생소한 야채들도 쉽게 먹을 수 있어서 좋네요. 비빔밥은 생각했던 것보다 훨씬 맛있었습니다. 만족스러워서 앞으로도 계속 배송받을 생각이에요.</p>', 'kfkmds', 180, 'N', NULL, '2', 0, '2024-03-18 09:32:52', '2024-03-18 09:32:52', 2500),
-	(130, '패밀리 위크 할인 안내', '<p>안녕하세요, 에코 마켓 고객 여러분!</p><p>5월이 오면서 가정의 달을 맞아, 에코 마켓에서 특별한 할인 행사를 준비했습니다. 이번 가정의 달, 가족들과 함께 건강한 식단을 즐기고 싶은 분들을 위해 준비한 특별한 혜택을 소개합니다.</p><p><br></p><p><span style="color: var(--tw-prose-bold);">☝ 할인 품목</span>: 다양한 신선한 채소들이 특별 가격으로 만나보실 수 있습니다.</p><p><span style="color: rgb(111, 111, 111);">✌ </span><span style="color: var(--tw-prose-bold);">기간</span>: 4월22일부터 5월 10일까지</p><p><span style="color: rgb(111, 111, 111);">👌 </span><span style="color: var(--tw-prose-bold);">혜택</span>: 행사 기간 동안 구매하신 모든 상품에 대해 추가 할인 혜택을 제공합니다.</p><p><br></p><p>가정의 달을 맞아, 가족들과 함께 건강한 식단을 준비하는 것은 더 나은 삶의 시작입니다. 우리는 여러분의 건강과 행복을 응원하며, 이번 특별한 할인 행사로 여러분의 삶에 작은 변화를 가져다줄 수 있기를 기대합니다.</p><p>더 많은 정보 및 할인 혜택을 확인하시려면 저희 홈페이지를 방문해주세요. 언제든지 문의 사항이 있으시면 저희에게 연락해주세요. </p><p>여러분의 가정이 더 행복하고 에코마켓과 함께 건강하길 바랍니다!</p><p><br></p>', 'admin', 62, 'N', NULL, '1', 0, '2024-03-19 10:46:45', '2024-04-17 08:48:00', 2500),
-	(139, '유기농이자 무농약 제품을 싱싱하게 제철아이들로 받는다는것. 매력적이네요!', '<p>오랜만에 잔뜩 추가해서 주문해봤어요. 알록달록 푸릇하게 모아 놓으니 마음이 무척 풍족해요 국산콩두부는 늘 주문하는데 마트 국산콩두부보다 저렴해서 좋아요. 사보이 양배추는 처음 받아보는데 기대돼요. 작고 못생겼다는데 받을 때마다 크고 예뻐서 놀라요. 이번엔 파프리카와 배가 참 커다랬어요. 봄을 맞아 냉이와 달래를 담아봤는데 달래가 손질되어서 오니 편하네요! 당장 달래장 만들 거예요. 에코마켓에서 주문하면 해먹을 요리 리스트 짜는 게 큰 즐거움이에요.</p>', 'temp123', 178, 'N', NULL, '2', 0, '2024-03-19 18:17:12', '2024-03-19 18:17:12', 2500),
-	(142, '오늘 홈페이지 리뉴얼 오픈합니다.', '<p><span style="color: var(--tw-prose-bold);">홈페이지 리뉴얼 오픈 소식!</span></p><p>안녕하세요, 에코마켓의 새로운 홈페이지가 리뉴얼 되어 개장했습니다!  새롭게 갈아입은 홈페이지로 여러분을 초대합니다.</p><p><br></p><p><span style="color: var(--tw-prose-bold);">1️⃣새로운 콘텐츠와 서비스!</span></p><p>새로운 홈페이지에서는 최신 소식, 이벤트, 제품 정보 등 다양한 콘텐츠를 제공할 예정입니다. 또한, 고객 서비스를 더욱 향상시켜 여러분의 편의를 높일 것입니다. 저희와 함께 더 나은 서비스를 경험해보세요.</p><p><br></p><p><span style="color: rgb(111, 111, 111);">2️⃣</span><span style="color: var(--tw-prose-bold);">새로운 디자인과 기능!</span></p><p>우리의 홈페이지는 더욱 사용자 친화적인 디자인과 향상된 기능을 갖추고 있습니다. 사용자들이 원하는 정보를 쉽고 빠르게 찾을 수 있도록 더욱 간결하고 직관적인 레이아웃으로 구성되어 있습니다.</p><p><br></p><p><span style="color: rgb(111, 111, 111);">3️⃣</span><span style="color: var(--tw-prose-bold);">참여와 피드백 환영합니다!</span></p><p>여러분의 소중한 의견과 피드백은 저희에게 큰 도움이 됩니다. 언제든지 홈페이지에 방문하여 의견을 남겨주세요. 저희는 항상 여러분의 목소리를 듣고 더 나은 서비스를 제공하기 위해 노력하겠습니다.</p><p><br></p><p><span style="color: var(--tw-prose-bold);">4️⃣방문해보세요!</span></p><p>지금 바로 새로워진 에코마켓의 홈페이지를 방문해보세요! 새로운 경험과 다양한 혜택을 만나보실 수 있습니다.</p><p><br></p><p>감사합니다.</p>', 'admin', 323, 'N', NULL, '1', 0, '2024-03-20 17:42:04', '2024-04-17 07:54:44', 2500),
-	(157, '단종 예정상품 안내', '<p class="ql-align-center">안녕하세요. 에코마켓입니다.</p><p class="ql-align-center">&nbsp;</p><p class="ql-align-center">에코마켓에서 정성을 담아 선보였던 제품들 중 일부 제품들의 단종 예정 소식을 안내드립니다.</p><p class="ql-align-center">&nbsp;</p><p class="ql-align-center">하기 제품을 사랑해주신 고객님들께 구매에 불편을 드리는 점 양해 부탁드리며,</p><p class="ql-align-center">&nbsp;추후 더 나은 제품으로 에코마켓만의 고유의 가치를 담은 제품으로</p><p class="ql-align-center">&nbsp;보답드릴 수 있도록 노력하겠습니다.</p><p class="ql-align-center"><br></p><p><span style="color: black;">아로마티카 라이프 순비누 손빨래세제&nbsp;500ML</span></p><p><span style="color: black;">재고 소진 후 단종</span></p><p><span style="color: black;">헤어케어</span></p><p><span style="color: black;">퀴노아 프로틴 트리트먼트마스크&nbsp;300ml</span></p><p><span style="color: black;">로즈마리 솔트 스크럽 샴푸&nbsp;500g</span></p><p><span style="color: black;">아로마테라피</span></p><p><span style="color: black;">서렌 아로마테라피 미스트 라벤더&amp;마조람&nbsp;200ml</span></p><p><span style="color: black;">메디테이트 시너지 오일&nbsp;10ml</span></p><p><span style="color: black;">스킨케어</span></p><p><span style="color: black;">티트리53&nbsp;블레미쉬 스팟&nbsp;10ml</span></p><p><span style="color: black;">티트리 포어 퓨리파잉 젤크림&nbsp;100ml</span></p><p><span style="color: black;">티트리 밸런싱 에멀전&nbsp;100ml</span></p><p><span style="color: black;">컴포팅 카렌듈라 쥬시크림&nbsp;150ml</span></p><p><span style="color: black;">유기농 골든 호호바오일&nbsp;30ml</span></p><p><span style="color: black;">수딩 알로에 미네랄 선스크린&nbsp;50ml</span></p><p><span style="color: black;">바이탈라이징로즈마리 컨센트레이티드 에센스&nbsp;200ml</span></p><p><span style="color: black;">바이탈라이징 로즈마리 클렌징 오일&nbsp;200ml</span></p><p><span style="color: black;">바이탈라이징 로즈마리 디콕션 토너리필&nbsp;300ml</span></p><p><span style="color: black;">바이탈라이징 로즈마리 디콕션 토너&nbsp;300ml</span></p><p><span style="color: black;">브랜드 굿즈</span></p><p><span style="color: black;">아로마테라피 헴프버킷백</span></p><p><span style="color: black;">다회용 대나무 화장솜</span></p><p><span style="color: black;">100%&nbsp;순면 목화씨 화장솜</span></p><p><span style="color: black;">100%&nbsp;무표백&nbsp;3겹 화장솜</span></p><p class="ql-align-center">&nbsp;</p><p class="ql-align-center"><br></p><p class="ql-align-center">단종 예정인 상품의 재고가 소진되는 시점은 별도의 고지 없이</p><p class="ql-align-center">판매량에 따라 판매 종료 시점이 상이한 부분이 있는 점 구매 시 참고 부탁 드립니다.</p><p class="ql-align-center"><br></p><p class="ql-align-center">&nbsp;궁금하신 사항은 고객센터를 통해 문의 주시면 순차적으로 안내 도와 드리겠습니다.</p><p class="ql-align-center">감사합니다.</p><p><br></p>', 'admin', 53, 'N', NULL, '1', 0, '2024-04-18 09:19:30', '2024-04-18 09:19:30', 2500),
-	(158, '주문에 대해 문의할 게 있습니다.', '어떻게 주문하는지 문의합니다', 'a123123', 0, 'N', NULL, '3', 0, '2024-04-18 09:20:12', '2024-04-18 09:20:12', 2500);
+	(84, 'hhh', '<p>hhh</p>', 'hong123', 55, 'N', NULL, '1', 0, '2024-03-13 10:52:56', '2024-03-13 10:52:56', 3000),
+	(91, 'test', '<p>test</p>', 'hong123', 7, 'N', NULL, '2', 0, '2024-03-13 12:34:07', '2024-03-13 12:34:07', 3000),
+	(92, 'z', '<p>z</p>', 'hong123', 0, 'N', NULL, '2', 0, '2024-03-13 12:36:25', '2024-03-13 12:36:25', 3000),
+	(93, 'z', '<p>z</p>', 'hong123', 0, 'N', NULL, '2', 0, '2024-03-13 12:37:33', '2024-03-13 12:37:33', 3000),
+	(94, 'z', '<p>z</p>', 'hong123', 0, 'N', NULL, '2', 0, '2024-03-13 12:37:59', '2024-03-13 12:37:59', 3000),
+	(95, 'z', '<p>z</p>', 'admin', 2, 'N', NULL, '2', 0, '2024-03-13 12:39:39', '2024-03-13 12:39:39', 3000),
+	(96, 'z', '<p>z</p>', 'admin', 1, 'N', NULL, '2', 0, '2024-03-13 12:40:16', '2024-03-13 12:40:16', 3000),
+	(97, 'test12:4611:22', '<p>11:22</p>', 'admin', 27, 'N', NULL, '2', 0, '2024-03-13 12:46:21', '2024-03-13 12:46:21', 3000),
+	(98, '98test', '<p>test</p>', 'admin', 9, 'N', NULL, '2', 0, '2024-03-13 16:19:05', '2024-03-13 16:19:05', 3000),
+	(104, 'ff', '<p>ff</p>', 'admin', 3, 'N', NULL, '2', 0, '2024-03-14 09:22:54', '2024-03-14 09:22:54', 3000),
+	(105, 't', '<p>t</p>', 'admin', 4, 'N', NULL, '2', 0, '2024-03-14 09:23:37', '2024-03-14 09:23:37', 3000),
+	(106, '가격 인상 안내', '<p>z</p>', 'admin', 11, 'N', NULL, '1', 0, '2024-03-14 09:28:05', '2024-03-21 16:27:10', 3000),
+	(107, '오늘은 맛있는 샐러드 추천', '<p>다 비건~~~~이지만 맛나 저녁 메뉴로 먹기에 넘나 좋은 메뉴 추천추천추천추천</p>', 'hong123', 6, 'N', NULL, '2', 0, '2024-03-14 09:31:13', '2024-03-14 09:31:13', 3000),
+	(108, '비건메뉴추천', '<p>간단한 조리과정에 비해 정말 맛있고, 크게 다르지 않으면서도 이색적인 느낌을</p>', 'kfkmds', 16, 'N', NULL, '2', 0, '2024-03-14 10:07:07', '2024-03-14 10:07:07', 2500),
+	(115, '글루텐프리로 건강해지자', '<p>다 비건~~~~이지만 맛나 저녁 메뉴로 먹기에 넘나 좋은 메뉴 추천추천추천추천</p>', 'user1', 15, 'N', NULL, '2', 0, '2024-03-14 12:40:21', '2024-03-14 12:40:21', 2500),
+	(116, '오늘은 맛있는 샐러드 추천', '<p>다 비건~~~~이지만 맛나 저녁 메뉴로 먹기에 넘나 좋은 메뉴 추천추천추천추천</p>', 'temp123', 11, 'N', NULL, '2', 0, '2024-03-14 18:17:00', '2024-03-14 18:17:00', 2500),
+	(117, '글루텐프리도 맛있다', '<p>간단한 조리과정에 비해 정말 맛있고, 크게 다르지 않으면서도 이색적인 느낌을</p>', 'hommefatale', 129, 'N', NULL, '2', 0, '2024-03-14 18:22:36', '2024-03-14 18:22:36', 2500),
+	(118, 'test', '<p>testtest</p>', 'dong123', 1, 'N', NULL, '3', 0, '2024-03-15 09:36:38', '2024-03-15 09:36:38', 2500),
+	(120, '상큼하고 맛있는 - 토마토 샐러드 파스타', '<p>간단한 조리과정에 비해 정말 맛있고, 크게 다르지 않으면서도 이색적인 느낌을</p>', 'kfkmds', 24, 'N', NULL, '2', 0, '2024-03-15 16:56:12', '2024-03-15 16:56:12', 2500),
+	(121, '비건샐러드식당공유공유', '<p><span style="color: rgb(31, 41, 55);">간단한 조리과정에 비해 정말 맛있고, 크게 다르지 않으면서도 이색적인 느낌을</span></p><p><span style="color: rgb(31, 41, 55);">내기 좋아요. 오이, 토마토 하나가 통으로 올라가니 비주얼도 정말 좋답니다. 파스타</span></p><p><span style="color: rgb(31, 41, 55);">없이 토마토 마리네이드만 활용하여 샐러드로 먹어도 먹어도 좋아요. 그맘때</span></p><p><span style="color: rgb(31, 41, 55);">가장 맛이 있는 다양한 잎채소와 함께하세요.</span></p>', 'kfkmds', 31, 'N', NULL, '2', 0, '2024-03-15 17:04:45', '2024-03-21 15:19:25', 2500),
+	(122, '압축타월 포장지 변경 안내', '<p>test</p>', 'admin', 59, 'N', NULL, '1', 0, '2024-03-15 18:15:55', '2024-03-21 16:26:31', 2500),
+	(123, '이게 다 유기농ㅋㅋㅋ', '<p>다 비건~~~~이지만 맛나 저녁 메뉴로 먹기에 넘나 좋은 메뉴 추천추천추천추천간단한 조리과정에 비해 정말 맛있고, 크게 다르지 않으면서도 이색적인 느낌을</p>', 'kfkmds', 143, 'N', NULL, '2', 0, '2024-03-18 09:32:52', '2024-03-18 09:32:52', 2500),
+	(127, '문의를 남겨볼까요!', '예외사항 테스트', 'admin', 0, 'N', NULL, '3', 0, '2024-03-18 15:59:53', '2024-03-18 15:59:53', 2500),
+	(128, '', 'a', '', 0, 'N', NULL, '3', 0, '2024-03-18 17:57:37', '2024-03-18 17:57:37', 2500),
+	(130, '패밀리 위크 할인 안내', '<p>ㅁㄴㅇasda</p>', 'admin', 38, 'N', NULL, '1', 0, '2024-03-19 10:46:45', '2024-03-21 16:25:53', 2500),
+	(136, '123', '13', 'temp123', 0, 'N', NULL, '3', 0, '2024-03-19 17:30:13', '2024-03-19 17:30:13', 2500),
+	(137, '1', '', '', 0, 'N', NULL, '3', 0, '2024-03-19 17:57:17', '2024-03-19 17:57:17', 2500),
+	(138, '123', '123', 'admin', 0, 'N', NULL, '3', 0, '2024-03-19 17:57:59', '2024-03-19 17:57:59', 2500),
+	(139, '오늘은 맛있는 샐러드 추천', '<p>다 비건~~~~이지만 맛나 저녁 메뉴로 먹기에 넘나 좋은 메뉴 추천추천추천추천</p>', 'temp123', 125, 'N', NULL, '2', 0, '2024-03-19 18:17:12', '2024-03-19 18:17:12', 2500),
+	(140, '로그인 안해도 문의가 남겨져요?', '진짜?', '', 0, 'N', NULL, '3', 0, '2024-03-20 11:57:28', '2024-03-20 11:57:28', 2500),
+	(142, '오늘 홈페이지 개장합니다.', '<p>제목이 곧 내용입니다 ^ㅡ^</p>', 'admin', 109, 'N', NULL, '1', 0, '2024-03-20 17:42:04', '2024-03-21 16:24:45', 2500),
+	(146, '문의여', '나문희', 'kfkmds', 0, 'N', NULL, '3', 0, '2024-03-21 15:13:54', '2024-03-21 15:13:54', 2500),
+	(147, '상품문의', '상품문의', 'test12', 0, 'N', NULL, '3', 0, '2024-03-21 16:51:30', '2024-03-21 16:51:30', 2500);
 
--- 테이블 test.eco_board_image 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_board_image` (
+-- 테이블 test.ECO_BOARD_IMAGE 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_BOARD_IMAGE` (
   `FILENO` int NOT NULL AUTO_INCREMENT,
   `BOARDNO` int DEFAULT NULL,
   `FILEPATH` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -214,41 +252,69 @@ CREATE TABLE IF NOT EXISTS `eco_board_image` (
   `FILEETC` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `KIND` int DEFAULT NULL,
   PRIMARY KEY (`FILENO`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_board_image:~28 rows (대략적) 내보내기
-INSERT INTO `eco_board_image` (`FILENO`, `BOARDNO`, `FILEPATH`, `FILENAME`, `FILEORGNAME`, `FILESIZE`, `FILEETC`, `KIND`) VALUES
+-- 테이블 데이터 test.ECO_BOARD_IMAGE:~55 rows (대략적) 내보내기
+DELETE FROM `ECO_BOARD_IMAGE`;
+INSERT INTO `ECO_BOARD_IMAGE` (`FILENO`, `BOARDNO`, `FILEPATH`, `FILENAME`, `FILEORGNAME`, `FILESIZE`, `FILEETC`, `KIND`) VALUES
 	(31, 121, '..\\img\\', '202422031022193.jpg', '레시피2.jpg', '141154', '.jpg', 1),
-	(32, 45, '..\\img\\', 'chicken.jpg', '글루텐프리.jpg', '33622', '.jpg', 1),
-	(34, 45, '..\\img\\', 'chicken.jpg', '2.jpg', '5829', '.jpg', 2),
+	(32, 97, '..\\img\\', '202421304623585.jpg', '글루텐프리.jpg', '33622', '.jpg', 2),
+	(33, 97, '..\\img\\', '202421304623586.JPG', '4.JPG', '3680', '.jpg', 2),
+	(34, 97, '..\\img\\', '202421304623592.jpg', '2.jpg', '5829', '.jpg', 2),
+	(35, 98, '..\\img\\', '20242134198896.jpg', '레시피1.jpg', '246430', '.jpg', 2),
+	(36, 98, '..\\img\\', '202421341996.jpg', 'recipe5.jpg', '12945918', '.jpg', 2),
+	(37, 98, '..\\img\\', '2024213419955.jpg', 'recipe4.jpg', '18952741', '.jpg', 2),
+	(38, 98, '..\\img\\', '20242134199109.jpg', 'recipe3.jpg', '25393417', '.jpg', 2),
+	(39, 99, '..\\img\\', '2024213443570.jpg', '3.jpg', '33622', '.jpg', 2),
+	(40, 99, '..\\img\\', '2024213443570.jpg', '3.jpg', '33622', '.jpg', 1),
+	(41, 100, '..\\img\\', '202421345111237.jpg', '썸네일.jpg', '246430', '.jpg', 1),
+	(42, 100, '..\\img\\', '202421345111239.jpg', '컨텐츠.jpg', '141154', '.jpg', 2),
+	(47, 103, '..\\img\\', '20242136253243.JPG', '2캡처.JPG', '16500', '.JPG', 1),
+	(48, 103, '..\\img\\', '20242136253242.jpg', '3.jpg', '33622', '.jpg', 2),
+	(49, 104, '..\\img\\', '202421492255526.jpg', '컨텐츠.jpg', '141154', '.jpg', 2),
+	(50, 104, '..\\img\\', '202421492255526.jpg', '썸네일.jpg', '246430', '.jpg', 1),
+	(51, 105, '..\\img\\', '20242149233815.JPG', '1캡처.JPG', '13732', '.JPG', 1),
+	(52, 105, '..\\img\\', '20242149233815.JPG', '2캡처.JPG', '16500', '.JPG', 2),
 	(53, 106, '..\\img\\', '20242149287998.jpg', '2.jpg', '5829', '.jpg', 1),
 	(54, 106, '..\\img\\', '20242149288104.jpg', 'recipe5.jpg', '12945918', '.jpg', 2),
 	(55, 106, '..\\img\\', '20242149288144.jpg', 'recipe4.jpg', '18952741', '.jpg', 2),
-	(56, 107, '..\\img\\', 'chicken.jpg', 'recipe5.jpg', '12945918', '.jpg', 1),
-	(57, 107, '..\\img\\', 'chicken.jpg', 'recipe4.jpg', '18952741', '.jpg', 2),
-	(58, 107, '..\\img\\', 'noodle2.jpg', 'recipe3.jpg', '25393417', '.jpg', 2),
+	(56, 107, '..\\img\\', '202421493114494.jpg', 'recipe5.jpg', '12945918', '.jpg', 1),
+	(57, 107, '..\\img\\', '202421493114545.jpg', 'recipe4.jpg', '18952741', '.jpg', 2),
+	(58, 107, '..\\img\\', '202421493114587.jpg', 'recipe3.jpg', '25393417', '.jpg', 2),
 	(59, 108, '..\\img\\', '202421893256625.jpg', 'recipe5.jpg', '5829', '.jpg', 1),
 	(60, 108, '..\\img\\', '202421493114587.jpg', 'recipe3.jpg', '12945918', '.jpg', 2),
 	(61, 108, '..\\img\\', '20242141077902.jpg', 'recipe4.jpg', '18952741', '.jpg', 2),
-	(72, 116, '..\\img\\', 'noodle2.jpg', '2캡처.JPG', '16500', '.JPG', 2),
-	(73, 116, '..\\img\\', 'orangeSalad.jpg', 'recipe5.jpg', '5829', '.jpg', 1),
-	(74, 116, '..\\img\\', 'chicken.jpg', 'recipe5.jpg', '12945918', '.jpg', 2),
-	(75, 117, '..\\img\\', 'VeganFriedRice.jpg', 'recipe5.jpg', '12945918', '.jpg', 2),
-	(76, 117, '..\\img\\', 'VeganFriedRice.jpg', 'recipe4.jpg', '18952741', '.jpg', 1),
+	(66, 112, '..\\img\\', '2024214115048834.JPG', '4.JPG', '3680', '.JPG', 2),
+	(67, 112, '..\\img\\', '2024214115048834.jpg', '3.jpg', '33622', '.jpg', 1),
+	(68, 112, '..\\img\\', '2024214115048834.JPG', '5.JPG', '19471', '.JPG', 2),
+	(69, 113, '..\\img\\', '2024214115114340.JPG', '캡처.JPG', '13960', '.JPG', 2),
+	(70, 113, '..\\img\\', '2024214115114341.jpg', '썸네일.jpg', '246430', '.jpg', 2),
+	(71, 113, '..\\img\\', '2024214115114340.JPG', '5.JPG', '19471', '.JPG', 1),
+	(72, 116, '..\\img\\', '20242146170777.JPG', '2캡처.JPG', '16500', '.JPG', 2),
+	(73, 116, '..\\img\\', '20242146170858.jpg', 'recipe5.jpg', '5829', '.jpg', 1),
+	(74, 116, '..\\img\\', '20242146170858.jpg', 'recipe5.jpg', '12945918', '.jpg', 2),
+	(75, 117, '..\\img\\', '202421462237677.jpg', 'recipe5.jpg', '12945918', '.jpg', 2),
+	(76, 117, '..\\img\\', '202421462237714.jpg', 'recipe4.jpg', '18952741', '.jpg', 1),
+	(77, 118, '..\\img\\', '202421593640856.JPG', '4.JPG', '3680', '.JPG', 2),
+	(78, 118, '..\\img\\', '202421593640856.JPG', '5.JPG', '19471', '.JPG', 2),
+	(79, 118, '..\\img\\', '202421593640856.jpg', '3.jpg', '33622', '.jpg', 1),
 	(80, 120, '..\\img\\', '202421545614107.JPG', '5.JPG', '19471', '.JPG', 2),
 	(81, 120, '..\\img\\', '202421493114587.jpg', 'recipe3.jpg', '3680', '.JPG', 2),
 	(82, 120, '..\\img\\', '202421462237714.jpg', 'recipe4.jpg', '141154', '.jpg', 1),
-	(83, 123, '..\\img\\', 'KoreanRadish.jpg', 'recipe5.jpg', '12945918', '.jpg', 2),
-	(84, 123, '..\\img\\', 'KoreanRadish.jpg', 'recipe3.jpg', '25393417', '.jpg', 1),
-	(90, 123, '..\\img\\', 'orangeSalad.jpg', 'bg0.jpg', '528000', '.jpg', 2),
-	(95, 139, '..\\img\\', 'salmonPoke.jpg', 'salmonPoke.jpg', '141154', '.jpg', 1),
+	(83, 123, '..\\img\\', '202421893256625.jpg', 'recipe5.jpg', '12945918', '.jpg', 2),
+	(84, 123, '..\\img\\', '202421893256706.jpg', 'recipe3.jpg', '25393417', '.jpg', 1),
+	(90, 130, '..\\img\\', '2024219104648694.jpg', 'bg0.jpg', '528000', '.jpg', 2),
+	(91, 130, '..\\img\\', '2024219104648694.jpg', 'bg1.jpg', '123979', '.jpg', 2),
+	(92, 130, '..\\img\\', '2024219104648694.jpg', 'cup-2.jpg', '21789', '.jpg', 1),
+	(93, 130, '..\\img\\', '2024219104648694.jpg', 'bg2.jpg', '161195', '.jpg', 2),
+	(94, 130, '..\\img\\', '2024219104648694.jpg', 'bg3.jpg', '27028', '.jpg', 2),
+	(95, 139, '..\\img\\', '202421893256706.jpg', 'recipe3.jpg', '141154', '.jpg', 1),
 	(96, 108, '..\\img\\', '202422031022193.jpg', 'recipe3.jpg', '246430', '.jpg', 2),
-	(97, 115, '..\\img\\', 'noodle.jpg', 'recipe3.jpg', '141154', '.jpg', 2),
-	(98, 115, '..\\img\\', 'noodle.jpg', 'recipe5.jpg', '12945918', '.jpg', 1),
-	(99, 139, '..\\img\\', 'salmonPoke.jpg', 'orangeSalad.jpg', '27028', '.jpg', 2);
+	(97, 115, '..\\img\\', '202421493114587.jpg', 'recipe3.jpg', '141154', '.jpg', 2),
+	(98, 115, '..\\img\\', '202421893256625.jpg', 'recipe5.jpg', '12945918', '.jpg', 1);
 
--- 테이블 test.eco_cart 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_cart` (
+-- 테이블 test.ECO_CART 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_CART` (
   `CART_NO` int NOT NULL AUTO_INCREMENT,
   `USERID` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ITEM_NO` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -256,10 +322,11 @@ CREATE TABLE IF NOT EXISTS `eco_cart` (
   `IS_FAVORITE` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'N',
   `SELECTCNT` int DEFAULT '0',
   PRIMARY KEY (`CART_NO`)
-) ENGINE=InnoDB AUTO_INCREMENT=349 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=284 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_cart:~16 rows (대략적) 내보내기
-INSERT INTO `eco_cart` (`CART_NO`, `USERID`, `ITEM_NO`, `CDATETIME`, `IS_FAVORITE`, `SELECTCNT`) VALUES
+-- 테이블 데이터 test.ECO_CART:~18 rows (대략적) 내보내기
+DELETE FROM `ECO_CART`;
+INSERT INTO `ECO_CART` (`CART_NO`, `USERID`, `ITEM_NO`, `CDATETIME`, `IS_FAVORITE`, `SELECTCNT`) VALUES
 	(1, 'hong123', '4', '2024-03-06 10:06:34', 'N', 1),
 	(99, 'test123', '51', '2024-03-18 10:21:58', 'N', 1),
 	(105, 'hommefatale01', '49', '2024-03-18 18:10:23', 'N', 1),
@@ -271,21 +338,24 @@ INSERT INTO `eco_cart` (`CART_NO`, `USERID`, `ITEM_NO`, `CDATETIME`, `IS_FAVORIT
 	(220, 'temp123', '68', '2024-03-21 11:13:23', 'N', 4),
 	(221, 'temp123', '66', '2024-03-21 11:15:05', 'N', 1),
 	(223, 'temp123', '65', '2024-03-21 11:15:18', 'N', 1),
+	(255, 'admin', '52', '2024-03-21 14:38:02', 'N', 1),
 	(258, 'kfkmds', '68', '2024-03-21 15:10:52', 'N', 0),
 	(260, 'kfkmds', '68', '2024-03-21 15:11:00', 'Y', 1),
 	(261, 'kfkmds', '66', '2024-03-21 15:13:02', 'N', 0),
 	(262, 'kfkmds', '65', '2024-03-21 15:13:04', 'N', 0),
-	(263, 'temp123', '67', '2024-03-21 15:38:21', 'Y', 1);
+	(263, 'temp123', '67', '2024-03-21 15:38:21', 'Y', 1),
+	(279, 'admin', '68', '2024-03-21 16:57:37', 'N', 1);
 
--- 테이블 test.eco_code 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_code` (
+-- 테이블 test.ECO_CODE 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_CODE` (
   `KIND` varchar(20) DEFAULT NULL,
   `NAME` varchar(50) DEFAULT NULL,
   `CODE` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_code:~9 rows (대략적) 내보내기
-INSERT INTO `eco_code` (`KIND`, `NAME`, `CODE`) VALUES
+-- 테이블 데이터 test.ECO_CODE:~9 rows (대략적) 내보내기
+DELETE FROM `ECO_CODE`;
+INSERT INTO `ECO_CODE` (`KIND`, `NAME`, `CODE`) VALUES
 	('product', 'gluten', 'gluten'),
 	('product', 'local', 'local'),
 	('product', 'organic', 'org'),
@@ -296,8 +366,8 @@ INSERT INTO `eco_code` (`KIND`, `NAME`, `CODE`) VALUES
 	('boardFile', '썸네일', '1'),
 	('boardFile', '내용', '2');
 
--- 테이블 test.eco_comment 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_comment` (
+-- 테이블 test.ECO_COMMENT 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_COMMENT` (
   `COMMENTNO` int NOT NULL AUTO_INCREMENT,
   `BOARDNO` int DEFAULT NULL,
   `COMMENT` varchar(200) DEFAULT NULL,
@@ -307,10 +377,11 @@ CREATE TABLE IF NOT EXISTS `eco_comment` (
   `REGDATE` datetime DEFAULT NULL,
   `UPDATEDATE` datetime DEFAULT NULL,
   PRIMARY KEY (`COMMENTNO`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_comment:~23 rows (대략적) 내보내기
-INSERT INTO `eco_comment` (`COMMENTNO`, `BOARDNO`, `COMMENT`, `USERID`, `DELETEYN`, `PCOMMENTNO`, `REGDATE`, `UPDATEDATE`) VALUES
+-- 테이블 데이터 test.ECO_COMMENT:~15 rows (대략적) 내보내기
+DELETE FROM `ECO_COMMENT`;
+INSERT INTO `ECO_COMMENT` (`COMMENTNO`, `BOARDNO`, `COMMENT`, `USERID`, `DELETEYN`, `PCOMMENTNO`, `REGDATE`, `UPDATEDATE`) VALUES
 	(12, 42, '3123123', 'admin', '0', NULL, '2024-03-12 19:04:49', '2024-03-12 19:04:49'),
 	(13, 8, '12312321312321321', 'admin', '0', NULL, '2024-03-12 19:05:05', '2024-03-12 19:05:05'),
 	(14, 51, '메롱', 'admin', '0', NULL, '2024-03-12 19:07:45', '2024-03-12 19:07:45'),
@@ -325,18 +396,10 @@ INSERT INTO `eco_comment` (`COMMENTNO`, `BOARDNO`, `COMMENT`, `USERID`, `DELETEY
 	(28, 35, '나도 몰라 ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ히히히히히히히히히히히히히히히히회히히ㅣㅎ', 'admin', '0', NULL, '2024-03-19 21:53:38', '2024-03-19 21:53:38'),
 	(29, 68, '문의하지마마마마마마마마마마!!', 'admin', '0', NULL, '2024-03-19 22:06:03', '2024-03-19 22:06:03'),
 	(30, 38, '네 항생제를 사용하지 않고 방목하여 키운 닭에서 생산된 계란입니다.', 'admin', '0', NULL, '2024-03-21 15:19:06', '2024-03-21 15:19:06'),
-	(31, 147, '답변입니다.', 'admin', '0', NULL, '2024-03-21 16:52:14', '2024-03-21 16:52:14'),
-	(32, 40, '어쩔', 'admin', '0', NULL, '2024-04-16 03:56:00', '2024-04-16 03:56:00'),
-	(33, 127, '확인하였습니다', 'admin', '0', NULL, '2024-04-18 08:47:48', '2024-04-18 08:47:48'),
-	(34, 147, '답변', 'admin', '0', NULL, '2024-04-18 08:48:08', '2024-04-18 08:48:08'),
-	(35, 154, '잘 담아보시는 걸 추천합니다', 'admin', '0', NULL, '2024-04-18 08:48:46', '2024-04-18 08:48:46'),
-	(37, 154, 'ㅎㅎㅎㅎㅎ', 'admin', '0', NULL, '2024-04-18 08:49:04', '2024-04-18 08:49:04'),
-	(38, 153, 'ㅂㅈㄷㅂㅈㄷㅂㅈㄷ', 'admin', '0', NULL, '2024-04-18 08:49:46', '2024-04-18 08:49:46'),
-	(40, 22, '답변 테스트', 'admin', '0', NULL, '2024-04-18 08:54:39', '2024-04-18 08:54:39'),
-	(41, 43, '죄송합니다, 고객님. 바로 확인하고 처리해드리겠습니다.', 'admin', '0', NULL, '2024-04-19 01:00:57', '2024-04-19 01:00:57');
+	(31, 147, '답변입니다.', 'admin', '0', NULL, '2024-03-21 16:52:14', '2024-03-21 16:52:14');
 
--- 테이블 test.eco_famer_qa 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_famer_qa` (
+-- 테이블 test.ECO_FAMER_QA 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_FAMER_QA` (
   `BOARDNO` int NOT NULL,
   `TITLE` varchar(100) DEFAULT NULL,
   `CONTENTS` varchar(1000) DEFAULT NULL,
@@ -348,10 +411,11 @@ CREATE TABLE IF NOT EXISTS `eco_famer_qa` (
   `SECRETYN` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_famer_qa:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_FAMER_QA:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_FAMER_QA`;
 
--- 테이블 test.eco_famer_qa_image 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_famer_qa_image` (
+-- 테이블 test.ECO_FAMER_QA_IMAGE 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_FAMER_QA_IMAGE` (
   `FILENO` int NOT NULL,
   `BOARDNO` int DEFAULT NULL,
   `FILEPATH` varchar(200) DEFAULT NULL,
@@ -362,10 +426,11 @@ CREATE TABLE IF NOT EXISTS `eco_famer_qa_image` (
   PRIMARY KEY (`FILENO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_famer_qa_image:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_FAMER_QA_IMAGE:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_FAMER_QA_IMAGE`;
 
--- 테이블 test.eco_famer_review 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_famer_review` (
+-- 테이블 test.ECO_FAMER_REVIEW 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_FAMER_REVIEW` (
   `REVIEW_NO` int NOT NULL,
   `ITEM_NO` varchar(100) DEFAULT NULL,
   `USERID` varchar(20) DEFAULT NULL,
@@ -377,10 +442,11 @@ CREATE TABLE IF NOT EXISTS `eco_famer_review` (
   `DELETEDATE` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_famer_review:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_FAMER_REVIEW:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_FAMER_REVIEW`;
 
--- 테이블 test.eco_famer_review_image 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_famer_review_image` (
+-- 테이블 test.ECO_FAMER_REVIEW_IMAGE 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_FAMER_REVIEW_IMAGE` (
   `FILENO` int NOT NULL,
   `BOARDNO` int DEFAULT NULL,
   `FILEPATH` varchar(200) DEFAULT NULL,
@@ -390,10 +456,11 @@ CREATE TABLE IF NOT EXISTS `eco_famer_review_image` (
   `FILEETC` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_famer_review_image:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_FAMER_REVIEW_IMAGE:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_FAMER_REVIEW_IMAGE`;
 
--- 테이블 test.eco_payment 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_payment` (
+-- 테이블 test.ECO_PAYMENT 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_PAYMENT` (
   `PAYMENT_NO` int NOT NULL AUTO_INCREMENT,
   `USER_ID` varchar(50) NOT NULL,
   `PAYMENT_KEY` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '카카오페이 결제시 생성된 코드',
@@ -402,10 +469,11 @@ CREATE TABLE IF NOT EXISTS `eco_payment` (
   `SUM_PRICE` int NOT NULL COMMENT '실제 결제 가격(할인가+쿠폰가 다 적용된 거)',
   `PAYTIME` datetime DEFAULT NULL COMMENT '결제된 날짜(시간)',
   PRIMARY KEY (`PAYMENT_NO`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_payment:~18 rows (대략적) 내보내기
-INSERT INTO `eco_payment` (`PAYMENT_NO`, `USER_ID`, `PAYMENT_KEY`, `USE_POINT`, `REWARD_POINT`, `SUM_PRICE`, `PAYTIME`) VALUES
+-- 테이블 데이터 test.ECO_PAYMENT:~14 rows (대략적) 내보내기
+DELETE FROM `ECO_PAYMENT`;
+INSERT INTO `ECO_PAYMENT` (`PAYMENT_NO`, `USER_ID`, `PAYMENT_KEY`, `USE_POINT`, `REWARD_POINT`, `SUM_PRICE`, `PAYTIME`) VALUES
 	(1, 'admin', '8536219906182992721609288121941669395037645537633299453616761738354901123780597392434601633512765214', 10000, 201000, 1889000, '2024-03-15 13:24:06'),
 	(2, 'admin', '1881949510591129093695467089231581931982086739241849197423871978324165719223266946382905597015335345', 9000, 1000, 0, '2024-03-15 14:43:57'),
 	(3, 'admin', '6060821233144573748072339178253531026079539759222618305233287207039216022073475535216988953718245584', 9330, 1555, 0, '2024-03-15 14:45:36'),
@@ -419,34 +487,10 @@ INSERT INTO `eco_payment` (`PAYMENT_NO`, `USER_ID`, `PAYMENT_KEY`, `USE_POINT`, 
 	(11, 'admin', '7916685414707806559801108612528890084286582314916696064544518237833692156712585943612595207827417866', 990000, 10000, 0, '2024-03-20 10:38:33'),
 	(12, 'admin', '5258720197340793253211168833473092692609629383176276947908022452457566783121973467501183822876210469', 990000, 10000, 0, '2024-03-20 10:39:30'),
 	(13, 'admin', '7496351517855886012534363357912346281659883466548801640960057114829743711127041873414018694009270471', 966625, 750000, 5783375, '2024-03-20 10:54:15'),
-	(14, 'test12', '3517374925699125802678906275874915240049316139013149483220434715189913218933115010227996357823731767', 0, 81950, 8113050, '2024-03-21 17:20:55'),
-	(15, 'admin', '4996284925407221251474986658932800945202584844222164593671779658770267111249021235611721708761396326', 0, 2948, 51720, '2024-04-26 11:05:28'),
-	(16, 'admin', '5063061770494116082630031059369783940314695418479501790257634418030209693105864256185629860384629268', 0, 99, 9405, '2024-04-26 11:11:11'),
-	(17, 'admin', '6525577158154581092884899501160728662027937431886166234216797732325231748917981529541773671055103703', 0, 1655, 186465, '2024-04-26 11:20:41'),
-	(18, 'admin', '7739015718193501657824454389465260201427927687947462271633642197202728412409792217777229165198574279', 0, 16100, 1919940, '2024-04-26 17:39:00');
+	(14, 'test12', '3517374925699125802678906275874915240049316139013149483220434715189913218933115010227996357823731767', 0, 81950, 8113050, '2024-03-21 17:20:55');
 
--- 테이블 test.eco_payment_detail 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_payment_detail` (
-  `PAYMENT_NO` int DEFAULT NULL,
-  `ITEM_NO` int DEFAULT NULL,
-  `SELLCNT` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- 테이블 데이터 test.eco_payment_detail:~10 rows (대략적) 내보내기
-INSERT INTO `eco_payment_detail` (`PAYMENT_NO`, `ITEM_NO`, `SELLCNT`) VALUES
-	(17, 60, 1),
-	(17, 55, 1),
-	(17, 61, 1),
-	(17, 54, 1),
-	(17, 59, 1),
-	(18, 60, 10),
-	(18, 61, 11),
-	(18, 54, 4),
-	(18, 53, 7),
-	(18, 66, 10);
-
--- 테이블 test.eco_product 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_product` (
+-- 테이블 test.ECO_PRODUCT 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_PRODUCT` (
   `ITEM_NO` int NOT NULL AUTO_INCREMENT,
   `ITEM_NAME` varchar(100) NOT NULL,
   `PRICE` int NOT NULL DEFAULT (0),
@@ -461,36 +505,38 @@ CREATE TABLE IF NOT EXISTS `eco_product` (
   `CODE` varchar(50) DEFAULT NULL,
   `SELLCNT` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`ITEM_NO`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_product:~15 rows (대략적) 내보내기
-INSERT INTO `eco_product` (`ITEM_NO`, `ITEM_NAME`, `PRICE`, `S_RATE`, `P_RATE`, `CONTENTS`, `TRANS_INFO`, `SELLYN`, `CDATETIME`, `UDATETIME`, `CNT`, `CODE`, `SELLCNT`) VALUES
-	(49, '양배추 3kg', 20000, 35, 10, '<p>테스트지롱</p>', '유료배송', 'N', '2024-03-13 18:17:55', '2024-03-22 10:13:59', 399, 'org', 101),
+-- 테이블 데이터 test.ECO_PRODUCT:~19 rows (대략적) 내보내기
+DELETE FROM `ECO_PRODUCT`;
+INSERT INTO `ECO_PRODUCT` (`ITEM_NO`, `ITEM_NAME`, `PRICE`, `S_RATE`, `P_RATE`, `CONTENTS`, `TRANS_INFO`, `SELLYN`, `CDATETIME`, `UDATETIME`, `CNT`, `CODE`, `SELLCNT`) VALUES
+	(49, '양배추 3kg', 20000, 35, 10, '<p>테스트지롱</p>', '유료배송', 'N', '2024-03-13 18:17:55', '2024-03-22 10:13:59', 400, 'org', 100),
 	(50, '비건 상품1', 150000, 5, 1, '<p>비건테스트지만 이미지는 채소죠</p>', '유료배송', 'N', '2024-03-14 09:36:37', '2024-03-18 10:51:27', 300, 'vegan', 200),
-	(51, '감자 5kg', 10000, 10, 5, '<p>내요내용</p>', '무료배송', 'N', '2024-03-14 16:21:05', '2024-03-21 09:47:21', 842, 'org', 158),
+	(51, '감자 5kg', 10000, 10, 5, '<p>내요내용</p>', '무료배송', 'N', '2024-03-14 16:21:05', '2024-03-21 09:47:21', 850, 'org', 150),
 	(52, '유기농 브로콜리', 1000, 1, 1, '<p>브로콜리에여</p>', '무료배송', 'N', '2024-03-15 12:34:25', '2024-03-21 09:55:22', 0, 'org', 1500),
-	(53, '양배추', 1000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:34:51', '2024-03-21 09:44:20', 992, 'vegan', 8),
-	(54, '파프리카', 1000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:35:01', '2024-03-21 09:57:21', 994, 'local', 6),
-	(55, '토마토 단품', 1000, 10, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:35:09', '2024-03-21 14:45:03', 986, 'gluten', 14),
-	(59, '[KF365] 친환경 브로콜리', 6750, 10, 2, '<p>무농약으로 재배한 브로콜리입니다.</p><p>건강에도 아주 좋습니다.</p>', '무료배송', 'N', '2024-03-18 11:20:12', '2024-03-21 09:51:31', 1492, 'local', 8),
-	(60, '당근 10kg', 150000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-18 11:31:57', '2024-03-21 09:49:33', 1483, 'gluten', 17),
-	(61, '오이 5kg', 30000, 0, 0, '<p>잘 될까?</p>', '무료배송', 'N', '2024-03-19 14:30:39', '2024-03-21 09:50:41', 1485, 'gluten', 15),
+	(53, '양배추', 1000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:34:51', '2024-03-21 09:44:20', 1000, 'vegan', 0),
+	(54, '파프리카', 1000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:35:01', '2024-03-21 09:57:21', 1000, 'local', 0),
+	(55, '토마토 단품', 1000, 10, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:35:09', '2024-03-21 14:45:03', 1000, 'gluten', 0),
+	(59, '[KF365] 친환경 브로콜리', 6750, 10, 2, '<p>무농약으로 재배한 브로콜리입니다.</p><p>건강에도 아주 좋습니다.</p>', '무료배송', 'N', '2024-03-18 11:20:12', '2024-03-21 09:51:31', 1500, 'local', 0),
+	(60, '당근 10kg', 150000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-18 11:31:57', '2024-03-21 09:49:33', 1500, 'gluten', 0),
+	(61, '오이 5kg', 30000, 0, 0, '<p>잘 될까?</p>', '무료배송', 'N', '2024-03-19 14:30:39', '2024-03-21 09:50:41', 1500, 'gluten', 0),
 	(62, '케일', 15000, 5, 5, '123213123312', '무료배송', 'N', '2024-03-19 14:53:53', '2024-03-21 09:56:14', 0, 'org', 100),
-	(65, '채소묶음', 15000, 1, 1, '<p>테스트합니다.</p>', '무료배송', 'N', '2024-03-20 10:29:46', '2024-03-21 09:50:57', 0, 'gluten', 11),
-	(66, '비건햄 (Vegan Ham) 500g - 무오신채', 9900, 5, 1, '<p>맛있어요</p>', '무료배송', 'N', '2024-03-21 09:52:10', '2024-03-21 09:52:10', 988, 'vegan', 12),
+	(65, '채소묶음', 15000, 1, 1, '<p>테스트합니다.</p>', '무료배송', 'N', '2024-03-20 10:29:46', '2024-03-21 09:50:57', 11, 'gluten', 0),
+	(66, '비건햄 (Vegan Ham) 500g - 무오신채', 9900, 5, 1, '<p>맛있어요</p>', '무료배송', 'N', '2024-03-21 09:52:10', '2024-03-21 09:52:10', 1000, 'vegan', 0),
 	(67, '비건 콩불구이 250g (Vegan Soy Bulgogi)', 5500, 1, 1, '<p>콩불고기에요</p>', '무료배송', 'N', '2024-03-21 09:53:44', '2024-03-21 09:53:44', 0, 'vegan', 1500),
-	(68, '[무항생제] 신선 계란', 8960, 25, 5, '<p><strong style="background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);">1등급 깨끗한 계란 (국내산) 15입(특란)</strong></p>', '무료배송', 'N', '2024-03-21 10:20:51', '2024-03-21 10:26:06', 136, 'org', 14);
+	(68, '[무항생제] 신선 계란', 8960, 25, 5, '<p><strong style="background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);">1등급 깨끗한 계란 (국내산) 15입(특란)</strong></p>', '무료배송', 'N', '2024-03-21 10:20:51', '2024-03-21 10:26:06', 138, 'org', 12);
 
--- 테이블 test.eco_product_chart 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_product_chart` (
+-- 테이블 test.ECO_PRODUCT_CHART 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_PRODUCT_CHART` (
   `ITEM_NO` int NOT NULL,
   `VALUE` int DEFAULT '0',
   `MONTH` int DEFAULT NULL,
   CONSTRAINT `ECO_PRODUCT_CHART_chk_1` CHECK ((`MONTH` between 1 and 12))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_product_chart:~70 rows (대략적) 내보내기
-INSERT INTO `eco_product_chart` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
+-- 테이블 데이터 test.ECO_PRODUCT_CHART:~62 rows (대략적) 내보내기
+DELETE FROM `ECO_PRODUCT_CHART`;
+INSERT INTO `ECO_PRODUCT_CHART` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
 	(49, 0, 6),
 	(45, 0, 1),
 	(43, 0, 7),
@@ -512,7 +558,7 @@ INSERT INTO `eco_product_chart` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
 	(52, 1111, 12),
 	(52, 1400, 1),
 	(53, 0, 2),
-	(53, 8, 4),
+	(53, 0, 4),
 	(53, 1200, 5),
 	(53, 0, 6),
 	(53, 0, 7),
@@ -523,7 +569,7 @@ INSERT INTO `eco_product_chart` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
 	(53, 1, 3),
 	(53, 30, 12),
 	(54, 0, 2),
-	(54, 1406, 4),
+	(54, 1400, 4),
 	(54, 1400, 5),
 	(54, 0, 6),
 	(54, 0, 7),
@@ -534,7 +580,7 @@ INSERT INTO `eco_product_chart` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
 	(54, 1111, 12),
 	(54, 0, 3),
 	(55, 30, 2),
-	(55, 14, 4),
+	(55, 0, 4),
 	(55, 0, 5),
 	(55, 0, 6),
 	(55, 0, 7),
@@ -552,18 +598,10 @@ INSERT INTO `eco_product_chart` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
 	(63, 50, 3),
 	(68, 12, 3),
 	(67, 1500, 3),
-	(62, 100, 3),
-	(65, 11, 4),
-	(68, 2, 4),
-	(66, 12, 4),
-	(59, 8, 4),
-	(51, 8, 4),
-	(49, 1, 4),
-	(61, 15, 4),
-	(60, 17, 4);
+	(62, 100, 3);
 
--- 테이블 test.eco_product_famer 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_product_famer` (
+-- 테이블 test.ECO_PRODUCT_famer 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_PRODUCT_famer` (
   `ITEM_NO` int NOT NULL AUTO_INCREMENT,
   `ITEM_NAME` varchar(100) NOT NULL,
   `PRICE` int NOT NULL DEFAULT (0),
@@ -580,12 +618,13 @@ CREATE TABLE IF NOT EXISTS `eco_product_famer` (
   PRIMARY KEY (`ITEM_NO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_product_famer:~1 rows (대략적) 내보내기
-INSERT INTO `eco_product_famer` (`ITEM_NO`, `ITEM_NAME`, `PRICE`, `S_RATE`, `P_RATE`, `CONTENTS`, `TRANS_INFO`, `SELLYN`, `CDATETIME`, `UDATETIME`, `CNT`, `CODE`, `SELLCNT`) VALUES
+-- 테이블 데이터 test.ECO_PRODUCT_famer:~1 rows (대략적) 내보내기
+DELETE FROM `ECO_PRODUCT_famer`;
+INSERT INTO `ECO_PRODUCT_famer` (`ITEM_NO`, `ITEM_NAME`, `PRICE`, `S_RATE`, `P_RATE`, `CONTENTS`, `TRANS_INFO`, `SELLYN`, `CDATETIME`, `UDATETIME`, `CNT`, `CODE`, `SELLCNT`) VALUES
 	(1, '1:1 매칭 테스트', 15000, 10, 10, '<p>123</p>', '무료배송', 'N', '2024-03-21 15:40:43', '2024-03-21 15:40:43', 1500, 'local', 0);
 
--- 테이블 test.eco_product_famer_image 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_product_famer_image` (
+-- 테이블 test.ECO_PRODUCT_FAMER_IMAGE 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_PRODUCT_FAMER_IMAGE` (
   `FILENO` int NOT NULL AUTO_INCREMENT,
   `BOARDNO` int DEFAULT NULL,
   `FILEPATH` varchar(200) NOT NULL,
@@ -596,10 +635,11 @@ CREATE TABLE IF NOT EXISTS `eco_product_famer_image` (
   PRIMARY KEY (`FILENO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_product_famer_image:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_PRODUCT_FAMER_IMAGE:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_PRODUCT_FAMER_IMAGE`;
 
--- 테이블 test.eco_product_image 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_product_image` (
+-- 테이블 test.ECO_PRODUCT_IMAGE 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_PRODUCT_IMAGE` (
   `FILENO` int NOT NULL AUTO_INCREMENT,
   `ITEM_NO` int DEFAULT NULL,
   `FILEPATH` varchar(200) DEFAULT NULL,
@@ -609,10 +649,11 @@ CREATE TABLE IF NOT EXISTS `eco_product_image` (
   `FILEETC` varchar(20) DEFAULT NULL,
   `KIND` int DEFAULT NULL,
   PRIMARY KEY (`FILENO`)
-) ENGINE=InnoDB AUTO_INCREMENT=307 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=285 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_product_image:~175 rows (대략적) 내보내기
-INSERT INTO `eco_product_image` (`FILENO`, `ITEM_NO`, `FILEPATH`, `FILENAME`, `FILEORGNAME`, `FILESIZE`, `FILEETC`, `KIND`) VALUES
+-- 테이블 데이터 test.ECO_PRODUCT_IMAGE:~153 rows (대략적) 내보내기
+DELETE FROM `ECO_PRODUCT_IMAGE`;
+INSERT INTO `ECO_PRODUCT_IMAGE` (`FILENO`, `ITEM_NO`, `FILEPATH`, `FILENAME`, `FILEORGNAME`, `FILESIZE`, `FILEETC`, `KIND`) VALUES
 	(116, 43, '..\\img\\', '2024213104725716.gif', 'dog.gif', '58772', '.gif', 1),
 	(117, 43, '..\\img\\adminProduct\\2024313\\', '2024213104725717.jpg', 'cup-2.jpg', '21789', '.jpg', 2),
 	(118, 43, '..\\img\\adminProduct\\2024313\\', '2024213104725729.jpg', 'cup-7.jpg', '16841', '.jpg', 2),
@@ -765,32 +806,10 @@ INSERT INTO `eco_product_image` (`FILENO`, `ITEM_NO`, `FILEPATH`, `FILENAME`, `F
 	(281, 74, '..\\img\\adminProduct\\2024322\\ContentsDetail\\', '2024222102325168.jpg', 'vegetable.jpg', '59812', '.jpg', 3),
 	(282, 74, '..\\img\\adminProduct\\2024322\\ContentsDetail\\', '2024222102325170.jpg', 'vegetable3.jpg', '111612', '.jpg', 3),
 	(283, 74, '..\\img\\adminProduct\\2024322\\ContentsDetail\\', '2024222102325175.jpg', 'vegetable4.jpg', '70556', '.jpg', 3),
-	(284, 74, '..\\img\\adminProduct\\2024322\\ContentsDetail\\', '2024222102325168.jpg', 'vegetable2.jpg', '10057', '.jpg', 3),
-	(285, 75, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '2024316086879.jpg', '230105_366.jpg', '90606', '.jpg', 3),
-	(286, 75, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '2024316086879.jpg', '230105_368.jpg', '83601', '.jpg', 3),
-	(287, 75, '..\\img\\adminProduct\\2024416\\ContentsThumbnail\\', '2024316086879.jpg', '230105_368.jpg', '83601', '.jpg', 2),
-	(288, 75, '..\\img\\adminProduct\\2024416\\ContentsThumbnail\\', '2024316086879.jpg', '230105_370.jpg', '86791', '.jpg', 2),
-	(289, 75, '..\\img\\adminProduct\\2024416\\ContentsThumbnail\\', '2024316086879.jpg', '230105_366.jpg', '90606', '.jpg', 2),
-	(290, 75, '..\\img\\adminProduct\\2024416\\ListThumbnail\\', '2024316086879.jpg', '230105_366.jpg', '90606', '.jpg', 1),
-	(291, 75, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '2024316086908.jpg', '230105_370.jpg', '86791', '.jpg', 3),
-	(292, 75, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '2024316086910.jpg', '230105_371.jpg', '122470', '.jpg', 3),
-	(293, 75, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '2024316086915.jpg', '230105_372-.jpg', '269745', '.jpg', 3),
-	(294, 76, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601141873.jpg', '230105_368.jpg', '83601', '.jpg', 3),
-	(295, 76, '..\\img\\adminProduct\\2024416\\ContentsThumbnail\\', '202431601141872.jpg', '230105_370.jpg', '86791', '.jpg', 2),
-	(296, 76, '..\\img\\adminProduct\\2024416\\ListThumbnail\\', '202431601141871.jpg', '230105_366.jpg', '90606', '.jpg', 1),
-	(297, 76, '..\\img\\adminProduct\\2024416\\ContentsThumbnail\\', '202431601141871.jpg', '230105_366.jpg', '90606', '.jpg', 2),
-	(298, 76, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601141873.jpg', '230105_370.jpg', '86791', '.jpg', 3),
-	(299, 76, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601141881.jpg', '230105_371.jpg', '122470', '.jpg', 3),
-	(300, 76, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601141897.jpg', '230105_372-.jpg', '269745', '.jpg', 3),
-	(301, 77, '..\\img\\adminProduct\\2024416\\ListThumbnail\\', '202431601529745.jpg', '230105_366.jpg', '90606', '.jpg', 1),
-	(302, 77, '..\\img\\adminProduct\\2024416\\ContentsThumbnail\\', '202431601529748.jpg', '230105_370.jpg', '86791', '.jpg', 2),
-	(303, 77, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601529749.jpg', '230105_368.jpg', '83601', '.jpg', 3),
-	(304, 77, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601529750.jpg', '230105_370.jpg', '86791', '.jpg', 3),
-	(305, 77, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601529755.jpg', '230105_371.jpg', '122470', '.jpg', 3),
-	(306, 77, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601529758.jpg', '230105_372-.jpg', '269745', '.jpg', 3);
+	(284, 74, '..\\img\\adminProduct\\2024322\\ContentsDetail\\', '2024222102325168.jpg', 'vegetable2.jpg', '10057', '.jpg', 3);
 
--- 테이블 test.eco_user 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_user` (
+-- 테이블 test.ECO_USER 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_USER` (
   `USERID` varchar(20) NOT NULL,
   `USERPW` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `NAME` varchar(20) DEFAULT NULL,
@@ -816,19 +835,19 @@ CREATE TABLE IF NOT EXISTS `eco_user` (
   PRIMARY KEY (`USERID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_user:~138 rows (대략적) 내보내기
-INSERT INTO `eco_user` (`USERID`, `USERPW`, `NAME`, `NICKNAME`, `GENDER`, `PHONE1`, `PHONE2`, `PHONE3`, `EMAIL`, `BIRTH`, `USER_GRADE`, `AUTHYN`, `EVENTYN`, `LOGINCNT`, `POINT`, `TOTALPAY`, `USERTYPE`, `CDATETIME`, `UDATETIME`, `START_DATE`, `END_DATE`, `DELETE_DATE`) VALUES
-	('a123123', 'a123123!', '에이', '에이', '남성', '010', '1111', '2222', 'a123123@gmail.com', '19910101', 'SILVER', 'Y', 'N', 0, 0, 0, 'F', '2024-03-15 17:16:45', '2024-04-17 03:57:58', NULL, NULL, NULL),
-	('admin', 'admin', '어드민', '어드민', '남성', '010', '6536', '3310', 'admin@naver.com', '20000706', 'PLATINUM', 'Y', 'Y', 0, 786594, 41400775, 'A', '2024-03-04 11:28:57', '2024-03-18 09:46:34', '2024-03-04 11:28:57', '2024-06-04 11:28:57', NULL),
+-- 테이블 데이터 test.ECO_USER:~137 rows (대략적) 내보내기
+DELETE FROM `ECO_USER`;
+INSERT INTO `ECO_USER` (`USERID`, `USERPW`, `NAME`, `NICKNAME`, `GENDER`, `PHONE1`, `PHONE2`, `PHONE3`, `EMAIL`, `BIRTH`, `USER_GRADE`, `AUTHYN`, `EVENTYN`, `LOGINCNT`, `POINT`, `TOTALPAY`, `USERTYPE`, `CDATETIME`, `UDATETIME`, `START_DATE`, `END_DATE`, `DELETE_DATE`) VALUES
+	('a123123', 'a123123!', '에이', '에이', '남성', '010', '1111', '2222', 'a123123@gmail.com', '19910101', 'SILVER', 'N', 'N', 0, 0, 0, 'U', '2024-03-15 17:16:45', '2024-03-15 17:16:45', NULL, NULL, NULL),
+	('admin', 'admin', '어드민', '어드민', '남성', '010', '6536', '3310', 'kakkumok@naver.com', '20000706', 'PLATINUM', 'Y', 'Y', 0, 750000, 37976565, 'A', '2024-03-04 11:28:57', '2024-03-18 09:46:34', '2024-03-04 11:28:57', '2024-06-04 11:28:57', NULL),
 	('dong123', 'qjsgh12!', '김동휘', '동휘', '남성', '010', '7208', '2755', 'dong123@gmail.com', '19940418', 'SILVER', 'Y', 'N', 0, 0, 0, 'A', '2024-03-14 15:59:02', '2024-03-14 15:59:02', '2024-03-14 15:59:02', '2024-06-14 15:59:02', '2024-06-16 16:46:27'),
-	('farmer123', 'test123', '박농부', '파머', '남성', '010', '2959', '4125', 'hommefatale01@naver.com', '19960115', 'SILVER', 'Y', 'Y', 0, 0, 0, 'F', '2024-03-18 09:56:32', '2024-03-18 09:56:32', NULL, NULL, NULL),
 	('hommefatale', 'rlatmddls1!', '김승인', 'The bed is my stage', '남성', '010', '2959', '4125', 'hommefatale01@naver.com', '19960115', 'SILVER', 'Y', 'N', 0, 0, 0, 'U', '2024-03-21 10:19:01', '2024-03-21 10:19:01', NULL, NULL, NULL),
 	('hommefatale01', 'rlatmddls1!', 'The bed is my stage', 'The bed is my stage', '남성', '010', '2959', '4125', 'hommefatale01@naver.com', '19960115', 'SILVER', 'N', 'N', 0, 250000, 0, 'U', '2024-03-18 18:07:56', '2024-03-18 18:07:56', NULL, NULL, NULL),
-	('hong123', 'qjsgh12!', '홍길동', '길동', '기타', '010', '1234', '5678', 'hong123@naver.com', '19991231', 'SILVER', 'Y', 'N', 0, 0, 0, 'U', '2024-03-05 18:11:19', '2024-03-05 18:11:19', '2024-03-05 18:11:19', '2024-06-05 18:11:19', NULL),
+	('hong123', 'qjsgh12!', '홍길동', '길동', '기타', '010', '1234', '5678', 'hong123@naver.com', '19991231', 'SILVER', 'N', 'N', 0, 0, 0, 'U', '2024-03-05 18:11:19', '2024-03-05 18:11:19', '2024-03-05 18:11:19', '2024-06-05 18:11:19', NULL),
 	('kfkmds', 'dms3131@', '김은석', '유지혜', '남성', '010', '5555', '1111', 'kakkimok@naver.com', '20000706', 'SILVER', 'Y', 'N', 0, 0, 0, 'U', '2024-03-21 15:07:46', '2024-03-21 15:07:46', NULL, NULL, NULL),
 	('temp111', 'temp111!', '임시', '임시', '남성', '010', '1111', '1111', 'asasd@gmail.com', '19900101', 'SILVER', 'Y', 'N', 0, 0, 0, 'U', '2024-03-21 16:03:34', '2024-03-21 16:03:34', NULL, NULL, NULL),
+	('temp12', 'qwe123', '박농부', '파머', '남성', '010', '2959', '4125', 'hommefatale01@naver.com', '19960115', 'SILVER', 'Y', 'Y', 0, 0, 0, 'F', '2024-03-18 09:56:32', '2024-03-18 09:56:32', NULL, NULL, NULL),
 	('temp123', 'temp123!', '김임시', '임시', '남성', '010', '1010', '1010', 'asdas@gmail.com', '19910101', 'GOLD', 'Y', 'N', 0, 0, 1000000, 'U', '2024-03-18 09:49:28', '2024-03-18 09:49:28', NULL, NULL, NULL),
-	('test001', 'test1234!', '김철수', '철수킴', '남성', '010', '6889', '9070', 'koreaok01@gmail.com', '19920630', 'SILVER', 'Y', 'N', 0, 0, 0, 'U', '2024-04-19 01:37:45', '2024-04-19 01:37:45', NULL, NULL, NULL),
 	('test0101', 'test0101!', '테스트이름', '테스트닉네임', '남성', '010', '6889', '9070', 'testemail@gmail.com', '19920630', 'SILVER', 'Y', 'N', 0, 896, 13440, 'U', '2024-03-22 10:01:11', '2024-03-22 10:01:11', NULL, NULL, NULL),
 	('test12', 'test123@', '테스트', '테스트', '남성', '010', '6536', '3310', 'kakk@naver.com', '20000706', 'SILVER', 'Y', 'N', 0, 161980, 9659700, 'F', '2024-03-21 16:41:46', '2024-03-21 16:53:57', NULL, NULL, NULL),
 	('user001', '551205091d68d333f6ed56768ef79f45', 'User001', 'Nickname001', '남성', '010', '1234', '5678', 'user001@example.com', '20240606', 'SILVER', 'Y', 'Y', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL),
@@ -939,7 +958,7 @@ INSERT INTO `eco_user` (`USERID`, `USERPW`, `NAME`, `NICKNAME`, `GENDER`, `PHONE
 	('user106', '9bb919052d036750f59952c1e8a5662b', 'User106', 'Nickname106', '남성', '010', '1234', '5678', 'user106@example.com', '20150319', 'SILVER', 'Y', 'Y', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL),
 	('user107', 'cba306d891fdec282664264e79b8ca84', 'User107', 'Nickname107', '남성', '010', '1234', '5678', 'user107@example.com', '19890805', 'SILVER', 'Y', 'Y', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL),
 	('user108', '1ea10359e9350be5aa6e3b3f074b0050', 'User108', 'Nickname108', '여성', '010', '1234', '5678', 'user108@example.com', '20131207', 'SILVER', 'N', 'N', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL),
-	('user109', 'd44a41c09c2d2bd0a7a4f1e37e4c8d5c', 'User109', 'Nickname109', '남성', '010', '1234', '5678', 'user109@example.com', '19860820', 'SILVER', 'Y', 'N', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-04-17 01:02:22', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL),
+	('user109', 'd44a41c09c2d2bd0a7a4f1e37e4c8d5c', 'User109', 'Nickname109', '남성', '010', '1234', '5678', 'user109@example.com', '19860820', 'SILVER', 'Y', 'N', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL),
 	('user110', '35ed219ac290801a7223944c7cf973e9', 'User110', 'Nickname110', '여성', '010', '1234', '5678', 'user110@example.com', '19970616', 'SILVER', 'N', 'Y', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL),
 	('user111', '3c7fec80d60be0d8445453f3681a8ca2', 'User111', 'Nickname111', '남성', '010', '1234', '5678', 'user111@example.com', '19930810', 'SILVER', 'Y', 'Y', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL),
 	('user112', '9881d47c06471637df040b5b53b97e3e', 'User112', 'Nickname112', '여성', '010', '1234', '5678', 'user112@example.com', '19890717', 'SILVER', 'N', 'Y', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL),
@@ -957,21 +976,22 @@ INSERT INTO `eco_user` (`USERID`, `USERPW`, `NAME`, `NICKNAME`, `GENDER`, `PHONE
 	('user124', '8f954eda2f669ef13806d496f423a712', 'User124', 'Nickname124', '남성', '010', '1234', '5678', 'user124@example.com', '19900918', 'SILVER', 'Y', 'Y', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL),
 	('user125', '240ff9fc1c7e2bb5b70ceb51385f65c3', 'User125', 'Nickname125', '여성', '010', '1234', '5678', 'user125@example.com', '19941006', 'SILVER', 'Y', 'Y', 0, 0, 0, 'U', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-03-08 17:16:17', '2024-06-08 17:16:17', NULL);
 
--- 테이블 test.eco_usergrade_bmi 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_usergrade_bmi` (
+-- 테이블 test.ECO_USERGRADE_BMI 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_USERGRADE_BMI` (
   `GRADEBMI` varchar(20) NOT NULL,
   `LOBMI` decimal(10,0) NOT NULL,
   `HIBMI` decimal(10,0) NOT NULL,
   `USERID` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`GRADEBMI`),
   KEY `USERID` (`USERID`),
-  CONSTRAINT `ECO_USERGRADE_BMI_ibfk_1` FOREIGN KEY (`USERID`) REFERENCES `eco_user` (`USERID`)
+  CONSTRAINT `ECO_USERGRADE_BMI_ibfk_1` FOREIGN KEY (`USERID`) REFERENCES `ECO_USER` (`USERID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_usergrade_bmi:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_USERGRADE_BMI:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_USERGRADE_BMI`;
 
--- 테이블 test.eco_usergrade_history 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_usergrade_history` (
+-- 테이블 test.ECO_USERGRADE_HISTORY 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_USERGRADE_HISTORY` (
   `GRADE` varchar(20) NOT NULL,
   `LOPRICE` decimal(10,0) NOT NULL,
   `HIPRICE` decimal(10,0) NOT NULL,
@@ -979,10 +999,11 @@ CREATE TABLE IF NOT EXISTS `eco_usergrade_history` (
   PRIMARY KEY (`GRADE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_usergrade_history:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_USERGRADE_HISTORY:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_USERGRADE_HISTORY`;
 
--- 테이블 test.eco_user_delete 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_user_delete` (
+-- 테이블 test.ECO_USER_DELETE 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_USER_DELETE` (
   `USERID` varchar(20) NOT NULL,
   `USERPW` varchar(100) DEFAULT NULL,
   `NAME` varchar(20) DEFAULT NULL,
@@ -1008,19 +1029,21 @@ CREATE TABLE IF NOT EXISTS `eco_user_delete` (
   PRIMARY KEY (`USERID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_user_delete:~1 rows (대략적) 내보내기
-INSERT INTO `eco_user_delete` (`USERID`, `USERPW`, `NAME`, `NICKNAME`, `GENDER`, `PHONE1`, `PHONE2`, `PHONE3`, `EMAIL`, `BIRTH`, `USER_GRADE`, `AUTHYN`, `EVENTYN`, `LOGINCNT`, `POINT`, `TOTALPAY`, `USERTYPE`, `CDATETIME`, `UDATETIME`, `START_DATE`, `END_DATE`, `DELETE_DATE`) VALUES
+-- 테이블 데이터 test.ECO_USER_DELETE:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_USER_DELETE`;
+INSERT INTO `ECO_USER_DELETE` (`USERID`, `USERPW`, `NAME`, `NICKNAME`, `GENDER`, `PHONE1`, `PHONE2`, `PHONE3`, `EMAIL`, `BIRTH`, `USER_GRADE`, `AUTHYN`, `EVENTYN`, `LOGINCNT`, `POINT`, `TOTALPAY`, `USERTYPE`, `CDATETIME`, `UDATETIME`, `START_DATE`, `END_DATE`, `DELETE_DATE`) VALUES
 	('temp123', 'temp123!', '김임시', '임시', '남성', '010', '1010', '1010', 'asdas@gmail.com', '19910101', 'SILVER', 'Y', 'N', 0, 0, 0, 'U', '2024-03-18 09:49:28', '2024-03-18 09:49:28', NULL, NULL, '2024-03-18 12:24:34');
 
--- 테이블 test.eco_user_survey 구조 내보내기
-CREATE TABLE IF NOT EXISTS `eco_user_survey` (
+-- 테이블 test.ECO_USER_SURVEY 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ECO_USER_SURVEY` (
   `USERID` varchar(20) DEFAULT NULL,
   `USERWEIGHT` varchar(20) NOT NULL,
   `USERHEIGHT` varchar(20) NOT NULL,
   `USERKCAL` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_user_survey:~0 rows (대략적) 내보내기
+-- 테이블 데이터 test.ECO_USER_SURVEY:~0 rows (대략적) 내보내기
+DELETE FROM `ECO_USER_SURVEY`;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
