@@ -562,6 +562,17 @@
 						return;
 					}
 				}
+				if(self.selectRequest ==="배송 메모를 선택해 주세요"){
+					alert("배송 메모를 선택해 주세요");
+					return;
+				}
+				if(self.selectRequest==="직접 입력하기"){
+					if(self.addrRequest===""){
+						alert("배송 메모를 입력해 주세요");
+						return;
+					}
+					
+				}
 
 				var IMP = window.IMP;
 
@@ -692,12 +703,14 @@
 			paymentEndHistorySave : function(paymentKey) {
 				var self = this;
 				console.log(self.usePoint);
+				
 				var nparmap = {
 					userId : self.userId,
 					paymentKey : paymentKey,
 					usePoint : self.usePoint,
 					rewardPoint : self.paymentPRatePrice,
-					sumPrice : self.paymentTotalPay
+					sumPrice : self.paymentTotalPay,
+					addrNo : self.selectAddrNum
 				};
 				$.ajax({
 					url : "paymentEndHistorySave.dox",

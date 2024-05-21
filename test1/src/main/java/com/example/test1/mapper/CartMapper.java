@@ -23,7 +23,7 @@ public interface CartMapper {
 	void updateSelectCnt(HashMap<String, Object> map); // 장바구니에서 유저가 입력한 수 만큼의 선택갯수를 증가
 	void paymentEnd(HashMap<String, Object> map); // 결제가 완료된 항목을 카트에서 제거 
 	void updatePaymentEndUser(HashMap<String, Object> map); // eco_user 테이블에서 유저가 사용한 토탈금액 정산
-	void insertProductChart(HashMap<String, Object> map); //차트게 결제금액 인서트
+	void insertProductChart(HashMap<String, Object> map); //차트에 결제금액 인서트
 	int selectChartCheck(HashMap<String, Object> map); // 차트에 데이터를 insert 할지 update 할지 구분해줄 함수
 	void updateProductChart(HashMap<String, Object> map); // 차트에 결제금액 업데이트
 	void insertPaymentHistory(HashMap<String, Object> map); // 결제로그 남기기
