@@ -209,5 +209,9 @@
 		WHERE D.PAYMENT_NO = #{paymentNo}
 	</select>
 	
+	<select id="selectPaymentPost" parameterType="hashmap" resultType="com.example.test1.model.Addr">
+		SELECT * FROM ECO_ADDR WHERE ADDRNO = #{addrNo}
+	</select>
+	
 	
 </mapper>

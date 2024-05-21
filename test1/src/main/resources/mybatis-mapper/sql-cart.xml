@@ -114,7 +114,7 @@
 	
 	<insert id="insertPaymentHistory" parameterType="hashmap" useGeneratedKeys="true" keyProperty="paymentNo" keyColumn="paymentNo">
 		INSERT INTO ECO_PAYMENT
-		VALUES(NULL,#{userId},#{paymentKey},#{usePoint},#{rewardPoint},#{sumPrice},NOW())
+		VALUES(NULL,#{userId},#{paymentKey},#{usePoint},#{rewardPoint},#{sumPrice},NOW(),#{addrNo})
 	</insert>
 	
 	<insert id="insertPaymentHistoryDetail" parameterType="hashmap">

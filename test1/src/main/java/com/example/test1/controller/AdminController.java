@@ -409,4 +409,12 @@ public class AdminController {
 		return new Gson().toJson(resultMap);
 	}
 	
+	@RequestMapping(value = "/PaymentPost.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String PaymentPost(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap = adminService.searchPaymentPost(map);
+		return new Gson().toJson(resultMap);
+	}
+	
 }

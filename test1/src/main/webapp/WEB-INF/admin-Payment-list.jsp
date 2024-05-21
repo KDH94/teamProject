@@ -42,6 +42,15 @@
 
 </head>
 <style>
+@font-face {
+	font-family: 'KOTRA_GOTHIC';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/KOTRA_GOTHIC.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 .dt-search {
 	text-align: right;
 }
@@ -55,6 +64,15 @@
 	left: 0;
 	z-index: 9998;
 }
+.postDetailModal{
+position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+}
 
 .paymentDetailModal-contents {
 	position: fixed;
@@ -67,6 +85,37 @@
 	padding: 20px;
 	border-radius: 5px;
 	z-index: 9999;
+	font-family: 'KOTRA_GOTHIC';
+}
+.postDetailModal-contents{
+position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	width: 30%;
+	height: 500px;
+	padding: 20px;
+	border-radius: 5px;
+	z-index: 10000;
+	text-align: center;
+	font-family: 'KOTRA_GOTHIC';
+	
+}
+
+.exitBtn{
+	cursor: pointer;
+	display: inline-block;
+	font-size: 25px;
+}
+.psotInfoBtn{
+	border-radius: 15px;
+	font-size: 20px;
+	
+}
+.psotInfoBtn:hover{
+	 
+	
 }
 </style>
 <body class="sb-nav-fixed">
@@ -260,7 +309,7 @@
 							</thead>
 							<tbody>
 								<tr v-for="item in list"
-									@click="fnPaymentDetail(item.paymentNo)"
+									@click="fnPaymentDetail(item.paymentNo,item.addrNo)"
 									style="cursor: pointer;">
 									<td>{{item.paymentNo}}</td>
 									<td>{{item.userId}}</td>
@@ -281,15 +330,15 @@
 		<div class="paymentDetailModal-contents"
 			:style="{ display: paymentModalVisible ? 'block' : 'none' }">
 			<div @click="togglePaymentModal" class="exitBtn">&times;</div>
-			<span><h4>상세정보</h4></span>
+			<span><h4>상세정보 <button @click="fnPostInfo" class="psotInfoBtn">배송정보</button></h4> </span>
 
 			<table id="paymentList_table"
 				class="table table-bordered  table-hover" style="width: 100%">
 				<thead>
 					<tr>
-						<th width="20%">구매한 상품</th>
+						<th width="25%">구매한 상품</th>
 						<th width="10%">구매 가격</th>
-						<th width="20%">할인받은 금액</th>
+						<th width="15%">할인받은 금액</th>
 						<th width="20%">적립금</th>
 						<th width="20%">상품 개수</th>
 						<th width="25%">결제일</th>
@@ -298,15 +347,27 @@
 				<tbody>
 					<tr v-for="item in detailList" @click="fnDetailView(item.itemNo)" style="cursor: pointer;" >
 						<td>{{item.itemName}}</td>
-						<td>{{item.price}}</td>
-						<td>{{item.sRate}}</td>
-						<td>{{item.pRate}}</td>
-						<td>{{item.sellCnt}}</td>
+						<td>{{(item.price-(item.price*item.sRate/100)).toLocaleString('ko-KR')}} 원</td>
+						<td>{{(item.price*item.sRate/100*item.sellCnt).toLocaleString('ko-KR')}} 원 /{{item.sRate}}%</td>
+						<td>{{(item.price*item.pRate/100*item.sellCnt).toLocaleString('ko-KR')}} 포인트 /{{item.pRate}}%</td>
+						<td>{{item.sellCnt}}개</td>
 						<td>{{item.paytime}}</td>
 					</tr>
 				</tbody>
 			</table>
 
+		</div>
+		<div class="postDetailModal" @click="togglePostModal"
+			:style="{ display: postModalVisible ? 'block' : 'none' }"></div>
+			
+			<div class="postDetailModal-contents"
+			:style="{ display: postModalVisible ? 'block' : 'none' }">
+			<div @click="togglePostModal" class="exitBtn">&times;</div>
+			<span><h4>배송정보</h4></span>
+			<div>{{selectPost.name}}<span style="color: red;">({{selectPost.addrName}})</span></div>
+			<div>{{selectPost.phone}}</div>
+			<div>{{selectPost.addr}} / {{selectPost.addrDetail}}</div>
+			
 		</div>
 
 
@@ -323,7 +384,10 @@
 			keywordId : "",
 			userType : "${userType}",
 			paymentModalVisible : false,
-			detailList :[]
+			detailList :[],
+			postModalVisible : false,
+			addrNo : "",
+			selectPost : []
 		},
 		methods : {
 			togglePaymentModal :  function() {
@@ -339,6 +403,18 @@
 					setTimeout(()=>{
                 		new DataTable('#paymentList_table');
 		            }  , 10);
+				}
+			},
+			togglePostModal :  function() {
+				var self = this;
+				this.postModalVisible = !this.postModalVisible;
+				console.log(this.postModalVisible);
+				if (this.postModalVisible) {
+					document.body.style.overflow = 'hidden';
+					
+				} else {
+					document.body.style.overflow = ''; // 기본값으로 되돌리기
+					
 				}
 			},
 			fnLogout : function() {
@@ -391,8 +467,9 @@
 		                }
 		            });
 		    },
-			fnPaymentDetail : function(paymentNo) {
+			fnPaymentDetail : function(paymentNo,addrNo) {
        		var self = this;
+       		self.addrNo = addrNo;
        		var nparmap = {
        			 paymentNo: paymentNo
 	            };
@@ -405,14 +482,31 @@
                 	 console.log(data);
                      self.detailList = data.paymentDetailList;
                      self.togglePaymentModal();
+                     
                      setTimeout(()=>{
                     		new DataTable('#paymentList_table');
                     		
 			            }  , 10);
                 }
             });  
-        }
-        ,
+        },
+        fnPostInfo : function() {
+       		var self = this;
+       		var nparmap = {
+       			 addrNo: self.addrNo
+	            };
+				$.ajax({
+                url: "PaymentPost.dox",
+                dataType: "json",
+                type: "POST",
+                data: nparmap,
+                success: function(data) {
+                	 console.log(data);
+                	 self.togglePostModal();
+                	 self.selectPost = data.post;
+                }
+            });  
+        },
 		fnDetailView: function(itemNo) {
 			var self = this;
 			$.pageChange("/productView.do", {itemNo: itemNo, userId: self.userId});
