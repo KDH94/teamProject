@@ -68,6 +68,12 @@
     button:hover {
         background-color: #45a049;
     }
+    .ImgDeleteBtn{
+    width: 50px;
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+    }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
 	<script src="https://unpkg.com/vue2-editor@2.3.11/dist/index.js"></script>
@@ -99,8 +105,8 @@
 		<div>
 		현재 리스트 썸네일 이미지 : 
 		<template v-for="item in mainFile">
-		<img :src="item.filePath+item.fileName" alt="썸네일">
-		<button @click="fnFileDelete(item.fileNo)">◀X</button>
+		<img :src="item.filePath+item.fileName" alt="썸네일" style="width: 150px;height: 150px">
+		<button @click="fnFileDelete(item.fileNo)" class="ImgDeleteBtn">삭제</button>
 		</template>
 		
 		</div>
@@ -112,7 +118,8 @@
 		<div>
 		현재 컨텐츠 썸네일 이미지 : 
 		<template v-for="item in contentsFile">
-		<img :src="item.filePath+item.fileName">
+		<img :src="item.filePath+item.fileName" style="width: 150px;height: 150px">
+		<button @click="fnFileDelete(item.fileNo)" class="ImgDeleteBtn">삭제</button>
 		</template>
 		
 		</div>
@@ -167,8 +174,7 @@ var app = new Vue({
     	sellYN:"",
     	cnt:"",
     	mainFile : [],
-    	contentsFile : []
-    	
+    	contentsFile : [],	
     	
     }
 	, components: {VueEditor}

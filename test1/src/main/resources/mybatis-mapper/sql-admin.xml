@@ -40,7 +40,7 @@
 	<select id="selectProductView" parameterType="hashmap"
 		resultType="com.example.test1.model.Product">
 		SELECT * FROM
-		ECO_PRODUCT
+		ECO_PRODUCT_FAMER
 		WHERE ITEM_NO = #{itemNo}
 	</select>
 

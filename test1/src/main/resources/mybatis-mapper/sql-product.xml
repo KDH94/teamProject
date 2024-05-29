@@ -92,7 +92,7 @@
 	
 	<delete id="deleteProduct" parameterType="hashmap">
 		DELETE
-		FROM ECO_PRODUCT
+		FROM ECO_PRODUCT_FAMER
 		WHERE ITEM_NO = #{itemNo}
 	</delete>
 	
