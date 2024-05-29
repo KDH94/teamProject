@@ -79,9 +79,9 @@ CREATE TABLE IF NOT EXISTS `eco_admin_qa` (
   `SECRETYN` char(1) DEFAULT NULL,
   `ITEM_NO` int DEFAULT NULL,
   PRIMARY KEY (`BOARDNO`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_admin_qa:~15 rows (대략적) 내보내기
+-- 테이블 데이터 test.eco_admin_qa:~16 rows (대략적) 내보내기
 INSERT INTO `eco_admin_qa` (`BOARDNO`, `TITLE`, `QA_CONTENTS`, `USERID`, `DELETEYN`, `DELETEDATE`, `CDATETIME`, `UDATETIME`, `SECRETYN`, `ITEM_NO`) VALUES
 	(1, '지금 서버가 이상한 건가요?', '사이트가 좀 느린 듯합니다.', 'temp123', 'N', NULL, '2024-03-14 14:51:37', '2024-03-14 14:51:38', NULL, 43),
 	(2, '등급을 올리려면 어떻게 해야 하나요?', '알려주세요.', 'hong123', 'N', NULL, '2024-03-14 15:08:08', '2024-03-14 15:08:08', NULL, 43),
@@ -97,7 +97,8 @@ INSERT INTO `eco_admin_qa` (`BOARDNO`, `TITLE`, `QA_CONTENTS`, `USERID`, `DELETE
 	(40, '이거 맛이 안 좋아요', '교환 부탁드립니다.', 'admin', 'N', NULL, '2024-04-16 03:55:36', '2024-04-16 03:55:36', NULL, 68),
 	(41, '유기농 케일인가요?', '유기농 케일인가요???', 'a123123', 'N', NULL, '2024-04-16 03:57:11', '2024-04-16 03:57:11', NULL, 62),
 	(42, '계란 1알 당 단백질 함유량이 어떻게 되나요?', '식단에서 단백질 대체를 닭가슴살에서 계란으로 바꿀 예정이어서 단백질 함유량이 궁금해요', 'a123123', 'N', NULL, '2024-04-16 04:04:55', '2024-04-16 04:04:55', NULL, 68),
-	(43, '진짜 비건인가요?', '제가 잠시 채식 식단을 경험하고 싶은데 진짜 비건 콩불고기인가요?', 'a123123', 'N', NULL, '2024-04-16 04:05:54', '2024-04-16 04:05:54', NULL, 67);
+	(43, '진짜 비건인가요?', '제가 잠시 채식 식단을 경험하고 싶은데 진짜 비건 콩불고기인가요?', 'a123123', 'N', NULL, '2024-04-16 04:05:54', '2024-04-16 04:05:54', NULL, 67),
+	(44, '문의', '문의', 'admin', 'N', NULL, '2024-05-28 08:03:34', '2024-05-28 08:03:34', NULL, 2);
 
 -- 테이블 test.eco_admin_qa_image 구조 내보내기
 CREATE TABLE IF NOT EXISTS `eco_admin_qa_image` (
@@ -256,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `eco_cart` (
   `IS_FAVORITE` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'N',
   `SELECTCNT` int DEFAULT '0',
   PRIMARY KEY (`CART_NO`)
-) ENGINE=InnoDB AUTO_INCREMENT=349 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=367 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- 테이블 데이터 test.eco_cart:~16 rows (대략적) 내보내기
 INSERT INTO `eco_cart` (`CART_NO`, `USERID`, `ITEM_NO`, `CDATETIME`, `IS_FAVORITE`, `SELECTCNT`) VALUES
@@ -401,29 +402,14 @@ CREATE TABLE IF NOT EXISTS `eco_payment` (
   `REWARD_POINT` int NOT NULL DEFAULT '0' COMMENT '적립된 포인트',
   `SUM_PRICE` int NOT NULL COMMENT '실제 결제 가격(할인가+쿠폰가 다 적용된 거)',
   `PAYTIME` datetime DEFAULT NULL COMMENT '결제된 날짜(시간)',
+  `ADDRNO` int NOT NULL,
   PRIMARY KEY (`PAYMENT_NO`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_payment:~18 rows (대략적) 내보내기
-INSERT INTO `eco_payment` (`PAYMENT_NO`, `USER_ID`, `PAYMENT_KEY`, `USE_POINT`, `REWARD_POINT`, `SUM_PRICE`, `PAYTIME`) VALUES
-	(1, 'admin', '8536219906182992721609288121941669395037645537633299453616761738354901123780597392434601633512765214', 10000, 201000, 1889000, '2024-03-15 13:24:06'),
-	(2, 'admin', '1881949510591129093695467089231581931982086739241849197423871978324165719223266946382905597015335345', 9000, 1000, 0, '2024-03-15 14:43:57'),
-	(3, 'admin', '6060821233144573748072339178253531026079539759222618305233287207039216022073475535216988953718245584', 9330, 1555, 0, '2024-03-15 14:45:36'),
-	(4, 'admin', '5603503736919433157184724551790657342284328510843855763181879700918126361466738727811778248111960966', 18660, 3110, 0, '2024-03-15 14:50:55'),
-	(5, 'admin', '1951355590671969658492973214519139261675315672277924829229100104262245412062185713435475968222144141', 522925, 127520, 243125, '2024-03-15 17:43:26'),
-	(6, 'admin', '4096174859060826154279528126062611634931347745686286233362608771078275183937276810540704433849381549', 127520, 2269675, 268960, '2024-03-15 22:57:11'),
-	(7, 'admin', '8618057330476513459086695583733588700569904630337633650991060403067283401216792365024696159015453173', 0, 606950, 3647700, '2024-03-15 22:59:28'),
-	(8, 'admin', '5823200858542121368807638654131140066741686261149517712096244277716901264757811273357078127087217210', 0, 30000, 2850000, '2024-03-18 10:52:29'),
-	(9, 'admin', '1418343168752179987871537931333884242409413840016718054540016574362537762946172582556908823942365542', 0, 10000, 990000, '2024-03-20 10:15:38'),
-	(10, 'admin', '9553497712041784002023890475820978562095307869884205274295145182273371100432579020832969325268013347', 0, 10000, 990000, '2024-03-20 10:20:54'),
-	(11, 'admin', '7916685414707806559801108612528890084286582314916696064544518237833692156712585943612595207827417866', 990000, 10000, 0, '2024-03-20 10:38:33'),
-	(12, 'admin', '5258720197340793253211168833473092692609629383176276947908022452457566783121973467501183822876210469', 990000, 10000, 0, '2024-03-20 10:39:30'),
-	(13, 'admin', '7496351517855886012534363357912346281659883466548801640960057114829743711127041873414018694009270471', 966625, 750000, 5783375, '2024-03-20 10:54:15'),
-	(14, 'test12', '3517374925699125802678906275874915240049316139013149483220434715189913218933115010227996357823731767', 0, 81950, 8113050, '2024-03-21 17:20:55'),
-	(15, 'admin', '4996284925407221251474986658932800945202584844222164593671779658770267111249021235611721708761396326', 0, 2948, 51720, '2024-04-26 11:05:28'),
-	(16, 'admin', '5063061770494116082630031059369783940314695418479501790257634418030209693105864256185629860384629268', 0, 99, 9405, '2024-04-26 11:11:11'),
-	(17, 'admin', '6525577158154581092884899501160728662027937431886166234216797732325231748917981529541773671055103703', 0, 1655, 186465, '2024-04-26 11:20:41'),
-	(18, 'admin', '7739015718193501657824454389465260201427927687947462271633642197202728412409792217777229165198574279', 0, 16100, 1919940, '2024-04-26 17:39:00');
+-- 테이블 데이터 test.eco_payment:~2 rows (대략적) 내보내기
+INSERT INTO `eco_payment` (`PAYMENT_NO`, `USER_ID`, `PAYMENT_KEY`, `USE_POINT`, `REWARD_POINT`, `SUM_PRICE`, `PAYTIME`, `ADDRNO`) VALUES
+	(1, 'admin', '1698395680718051612639732028603988742607160021995563894726776986998251801391108647968944387209344350', 0, 99, 9405, '2024-05-21 16:12:25', 38),
+	(2, 'admin', '5690615939432022385740289738533341413875987304921677916851024756411184362641967334606697489813073058', 0, 2660, 210300, '2024-05-28 08:05:41', 30);
 
 -- 테이블 test.eco_payment_detail 구조 내보내기
 CREATE TABLE IF NOT EXISTS `eco_payment_detail` (
@@ -434,16 +420,16 @@ CREATE TABLE IF NOT EXISTS `eco_payment_detail` (
 
 -- 테이블 데이터 test.eco_payment_detail:~10 rows (대략적) 내보내기
 INSERT INTO `eco_payment_detail` (`PAYMENT_NO`, `ITEM_NO`, `SELLCNT`) VALUES
-	(17, 60, 1),
-	(17, 55, 1),
-	(17, 61, 1),
-	(17, 54, 1),
-	(17, 59, 1),
-	(18, 60, 10),
-	(18, 61, 11),
-	(18, 54, 4),
-	(18, 53, 7),
-	(18, 66, 10);
+	(NULL, 66, 1),
+	(1, 66, 1),
+	(2, 53, 1),
+	(2, 55, 1),
+	(2, 54, 1),
+	(2, 61, 1),
+	(2, 60, 1),
+	(2, 59, 1),
+	(2, 66, 1),
+	(2, 68, 2);
 
 -- 테이블 test.eco_product 구조 내보내기
 CREATE TABLE IF NOT EXISTS `eco_product` (
@@ -461,25 +447,26 @@ CREATE TABLE IF NOT EXISTS `eco_product` (
   `CODE` varchar(50) DEFAULT NULL,
   `SELLCNT` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`ITEM_NO`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_product:~15 rows (대략적) 내보내기
+-- 테이블 데이터 test.eco_product:~16 rows (대략적) 내보내기
 INSERT INTO `eco_product` (`ITEM_NO`, `ITEM_NAME`, `PRICE`, `S_RATE`, `P_RATE`, `CONTENTS`, `TRANS_INFO`, `SELLYN`, `CDATETIME`, `UDATETIME`, `CNT`, `CODE`, `SELLCNT`) VALUES
 	(49, '양배추 3kg', 20000, 35, 10, '<p>테스트지롱</p>', '유료배송', 'N', '2024-03-13 18:17:55', '2024-03-22 10:13:59', 399, 'org', 101),
 	(50, '비건 상품1', 150000, 5, 1, '<p>비건테스트지만 이미지는 채소죠</p>', '유료배송', 'N', '2024-03-14 09:36:37', '2024-03-18 10:51:27', 300, 'vegan', 200),
 	(51, '감자 5kg', 10000, 10, 5, '<p>내요내용</p>', '무료배송', 'N', '2024-03-14 16:21:05', '2024-03-21 09:47:21', 842, 'org', 158),
 	(52, '유기농 브로콜리', 1000, 1, 1, '<p>브로콜리에여</p>', '무료배송', 'N', '2024-03-15 12:34:25', '2024-03-21 09:55:22', 0, 'org', 1500),
-	(53, '양배추', 1000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:34:51', '2024-03-21 09:44:20', 992, 'vegan', 8),
-	(54, '파프리카', 1000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:35:01', '2024-03-21 09:57:21', 994, 'local', 6),
-	(55, '토마토 단품', 1000, 10, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:35:09', '2024-03-21 14:45:03', 986, 'gluten', 14),
-	(59, '[KF365] 친환경 브로콜리', 6750, 10, 2, '<p>무농약으로 재배한 브로콜리입니다.</p><p>건강에도 아주 좋습니다.</p>', '무료배송', 'N', '2024-03-18 11:20:12', '2024-03-21 09:51:31', 1492, 'local', 8),
-	(60, '당근 10kg', 150000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-18 11:31:57', '2024-03-21 09:49:33', 1483, 'gluten', 17),
-	(61, '오이 5kg', 30000, 0, 0, '<p>잘 될까?</p>', '무료배송', 'N', '2024-03-19 14:30:39', '2024-03-21 09:50:41', 1485, 'gluten', 15),
+	(53, '양배추', 1000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:34:51', '2024-03-21 09:44:20', 991, 'vegan', 9),
+	(54, '파프리카', 1000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:35:01', '2024-03-21 09:57:21', 993, 'local', 7),
+	(55, '토마토 단품', 1000, 10, 1, '<p>123</p>', '무료배송', 'N', '2024-03-15 12:35:09', '2024-03-21 14:45:03', 985, 'gluten', 15),
+	(59, '[KF365] 친환경 브로콜리', 6750, 10, 2, '<p>무농약으로 재배한 브로콜리입니다.</p><p>건강에도 아주 좋습니다.</p>', '무료배송', 'N', '2024-03-18 11:20:12', '2024-03-21 09:51:31', 1491, 'local', 9),
+	(60, '당근 10kg', 150000, 1, 1, '<p>123</p>', '무료배송', 'N', '2024-03-18 11:31:57', '2024-03-21 09:49:33', 1482, 'gluten', 18),
+	(61, '오이 5kg', 30000, 0, 0, '<p>잘 될까?</p>', '무료배송', 'N', '2024-03-19 14:30:39', '2024-03-21 09:50:41', 1484, 'gluten', 16),
 	(62, '케일', 15000, 5, 5, '123213123312', '무료배송', 'N', '2024-03-19 14:53:53', '2024-03-21 09:56:14', 0, 'org', 100),
 	(65, '채소묶음', 15000, 1, 1, '<p>테스트합니다.</p>', '무료배송', 'N', '2024-03-20 10:29:46', '2024-03-21 09:50:57', 0, 'gluten', 11),
-	(66, '비건햄 (Vegan Ham) 500g - 무오신채', 9900, 5, 1, '<p>맛있어요</p>', '무료배송', 'N', '2024-03-21 09:52:10', '2024-03-21 09:52:10', 988, 'vegan', 12),
+	(66, '비건햄 (Vegan Ham) 500g - 무오신채', 9900, 5, 1, '<p>맛있어요</p>', '무료배송', 'N', '2024-03-21 09:52:10', '2024-03-21 09:52:10', 985, 'vegan', 15),
 	(67, '비건 콩불구이 250g (Vegan Soy Bulgogi)', 5500, 1, 1, '<p>콩불고기에요</p>', '무료배송', 'N', '2024-03-21 09:53:44', '2024-03-21 09:53:44', 0, 'vegan', 1500),
-	(68, '[무항생제] 신선 계란', 8960, 25, 5, '<p><strong style="background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);">1등급 깨끗한 계란 (국내산) 15입(특란)</strong></p>', '무료배송', 'N', '2024-03-21 10:20:51', '2024-03-21 10:26:06', 136, 'org', 14);
+	(68, '[무항생제] 신선 계란', 8960, 25, 5, '<p><strong style="background-color: rgb(255, 255, 255); color: rgb(51, 51, 51);">1등급 깨끗한 계란 (국내산) 15입(특란)</strong></p>', '무료배송', 'N', '2024-03-21 10:20:51', '2024-03-21 10:26:06', 134, 'org', 16),
+	(78, '유기농TEST', 1, 1, 1, '<p>test</p>', '무료배송', 'N', '2024-05-28 08:10:35', '2024-05-28 08:10:35', 123, 'local', 0);
 
 -- 테이블 test.eco_product_chart 구조 내보내기
 CREATE TABLE IF NOT EXISTS `eco_product_chart` (
@@ -489,7 +476,7 @@ CREATE TABLE IF NOT EXISTS `eco_product_chart` (
   CONSTRAINT `ECO_PRODUCT_CHART_chk_1` CHECK ((`MONTH` between 1 and 12))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_product_chart:~70 rows (대략적) 내보내기
+-- 테이블 데이터 test.eco_product_chart:~75 rows (대략적) 내보내기
 INSERT INTO `eco_product_chart` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
 	(49, 0, 6),
 	(45, 0, 1),
@@ -513,7 +500,7 @@ INSERT INTO `eco_product_chart` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
 	(52, 1400, 1),
 	(53, 0, 2),
 	(53, 8, 4),
-	(53, 1200, 5),
+	(53, 1201, 5),
 	(53, 0, 6),
 	(53, 0, 7),
 	(53, 0, 8),
@@ -524,7 +511,7 @@ INSERT INTO `eco_product_chart` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
 	(53, 30, 12),
 	(54, 0, 2),
 	(54, 1406, 4),
-	(54, 1400, 5),
+	(54, 1401, 5),
 	(54, 0, 6),
 	(54, 0, 7),
 	(54, 30, 8),
@@ -535,7 +522,7 @@ INSERT INTO `eco_product_chart` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
 	(54, 0, 3),
 	(55, 30, 2),
 	(55, 14, 4),
-	(55, 0, 5),
+	(55, 1, 5),
 	(55, 0, 6),
 	(55, 0, 7),
 	(55, 0, 8),
@@ -560,7 +547,12 @@ INSERT INTO `eco_product_chart` (`ITEM_NO`, `VALUE`, `MONTH`) VALUES
 	(51, 8, 4),
 	(49, 1, 4),
 	(61, 15, 4),
-	(60, 17, 4);
+	(60, 17, 4),
+	(66, 3, 5),
+	(60, 1, 5),
+	(59, 1, 5),
+	(61, 1, 5),
+	(68, 2, 5);
 
 -- 테이블 test.eco_product_famer 구조 내보내기
 CREATE TABLE IF NOT EXISTS `eco_product_famer` (
@@ -578,11 +570,11 @@ CREATE TABLE IF NOT EXISTS `eco_product_famer` (
   `CODE` varchar(50) DEFAULT NULL,
   `SELLCNT` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`ITEM_NO`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- 테이블 데이터 test.eco_product_famer:~1 rows (대략적) 내보내기
 INSERT INTO `eco_product_famer` (`ITEM_NO`, `ITEM_NAME`, `PRICE`, `S_RATE`, `P_RATE`, `CONTENTS`, `TRANS_INFO`, `SELLYN`, `CDATETIME`, `UDATETIME`, `CNT`, `CODE`, `SELLCNT`) VALUES
-	(1, '1:1 매칭 테스트', 15000, 10, 10, '<p>123</p>', '무료배송', 'N', '2024-03-21 15:40:43', '2024-03-21 15:40:43', 1500, 'local', 0);
+	(4, '친환경 브로콜리', 1000, 10, 1, '<p>브로콜리입니다.</p>', '무료배송', 'N', '2024-05-29 09:47:01', '2024-05-29 09:47:01', 50000, 'org', 0);
 
 -- 테이블 test.eco_product_famer_image 구조 내보내기
 CREATE TABLE IF NOT EXISTS `eco_product_famer_image` (
@@ -609,9 +601,9 @@ CREATE TABLE IF NOT EXISTS `eco_product_image` (
   `FILEETC` varchar(20) DEFAULT NULL,
   `KIND` int DEFAULT NULL,
   PRIMARY KEY (`FILENO`)
-) ENGINE=InnoDB AUTO_INCREMENT=307 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=319 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 test.eco_product_image:~175 rows (대략적) 내보내기
+-- 테이블 데이터 test.eco_product_image:~187 rows (대략적) 내보내기
 INSERT INTO `eco_product_image` (`FILENO`, `ITEM_NO`, `FILEPATH`, `FILENAME`, `FILEORGNAME`, `FILESIZE`, `FILEETC`, `KIND`) VALUES
 	(116, 43, '..\\img\\', '2024213104725716.gif', 'dog.gif', '58772', '.gif', 1),
 	(117, 43, '..\\img\\adminProduct\\2024313\\', '2024213104725717.jpg', 'cup-2.jpg', '21789', '.jpg', 2),
@@ -787,7 +779,19 @@ INSERT INTO `eco_product_image` (`FILENO`, `ITEM_NO`, `FILEPATH`, `FILENAME`, `F
 	(303, 77, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601529749.jpg', '230105_368.jpg', '83601', '.jpg', 3),
 	(304, 77, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601529750.jpg', '230105_370.jpg', '86791', '.jpg', 3),
 	(305, 77, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601529755.jpg', '230105_371.jpg', '122470', '.jpg', 3),
-	(306, 77, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601529758.jpg', '230105_372-.jpg', '269745', '.jpg', 3);
+	(306, 77, '..\\img\\adminProduct\\2024416\\ContentsDetail\\', '202431601529758.jpg', '230105_372-.jpg', '269745', '.jpg', 3),
+	(307, 2, '..\\img\\adminProduct\\2024528\\ContentsDetail\\', '20244288058489.jpg', 'cup-7.jpg', '16841', '.jpg', 3),
+	(308, 2, '..\\img\\adminProduct\\2024528\\ContentsThumbnail\\', '20244288058489.jpg', 'cup-6.jpg', '12919', '.jpg', 2),
+	(309, 2, '..\\img\\adminProduct\\2024528\\ListThumbnail\\', '20244288058489.jpg', 'bg0.jpg', '528000', '.jpg', 1),
+	(310, 3, '..\\img\\adminProduct\\2024528\\ContentsDetail\\', '2024428811328.jpg', 'cup-7.jpg', '16841', '.jpg', 3),
+	(311, 3, '..\\img\\adminProduct\\2024528\\ContentsThumbnail\\', '2024428811328.jpg', 'cup-6.jpg', '12919', '.jpg', 2),
+	(312, 3, '..\\img\\adminProduct\\2024528\\ListThumbnail\\', '2024428811332.jpg', 'bg0.jpg', '528000', '.jpg', 1),
+	(313, 78, '..\\img\\adminProduct\\2024528\\ContentsThumbnail\\', '202442881035847.jpg', 'cup-5.jpg', '11372', '.jpg', 2),
+	(314, 78, '..\\img\\adminProduct\\2024528\\ListThumbnail\\', '202442881035848.jpg', '300.jpg', '60462', '.jpg', 1),
+	(315, 78, '..\\img\\adminProduct\\2024528\\ContentsDetail\\', '202442881035853.jpg', 'cup-6.jpg', '12919', '.jpg', 3),
+	(316, 4, '..\\img\\adminProduct\\2024529\\ListThumbnail\\', '20244299471816.jpg', 'test 브로콜리.jpg', '5243174', '.jpg', 1),
+	(317, 4, '..\\img\\adminProduct\\2024529\\ContentsDetail\\', '20244299471816.jpg', 'test 브로콜리.jpg', '5243174', '.jpg', 3),
+	(318, 4, '..\\img\\adminProduct\\2024529\\ContentsThumbnail\\', '20244299471816.jpg', 'test 브로콜리.jpg', '5243174', '.jpg', 2);
 
 -- 테이블 test.eco_user 구조 내보내기
 CREATE TABLE IF NOT EXISTS `eco_user` (
@@ -819,7 +823,7 @@ CREATE TABLE IF NOT EXISTS `eco_user` (
 -- 테이블 데이터 test.eco_user:~138 rows (대략적) 내보내기
 INSERT INTO `eco_user` (`USERID`, `USERPW`, `NAME`, `NICKNAME`, `GENDER`, `PHONE1`, `PHONE2`, `PHONE3`, `EMAIL`, `BIRTH`, `USER_GRADE`, `AUTHYN`, `EVENTYN`, `LOGINCNT`, `POINT`, `TOTALPAY`, `USERTYPE`, `CDATETIME`, `UDATETIME`, `START_DATE`, `END_DATE`, `DELETE_DATE`) VALUES
 	('a123123', 'a123123!', '에이', '에이', '남성', '010', '1111', '2222', 'a123123@gmail.com', '19910101', 'SILVER', 'Y', 'N', 0, 0, 0, 'F', '2024-03-15 17:16:45', '2024-04-17 03:57:58', NULL, NULL, NULL),
-	('admin', 'admin', '어드민', '어드민', '남성', '010', '6536', '3310', 'admin@naver.com', '20000706', 'PLATINUM', 'Y', 'Y', 0, 786594, 41400775, 'A', '2024-03-04 11:28:57', '2024-03-18 09:46:34', '2024-03-04 11:28:57', '2024-06-04 11:28:57', NULL),
+	('admin', 'admin', '어드민', '어드민', '남성', '010', '6536', '3310', 'admin@naver.com', '20000706', 'PLATINUM', 'Y', 'Y', 0, 789452, 41629885, 'A', '2024-03-04 11:28:57', '2024-03-18 09:46:34', '2024-03-04 11:28:57', '2024-06-04 11:28:57', NULL),
 	('dong123', 'qjsgh12!', '김동휘', '동휘', '남성', '010', '7208', '2755', 'dong123@gmail.com', '19940418', 'SILVER', 'Y', 'N', 0, 0, 0, 'A', '2024-03-14 15:59:02', '2024-03-14 15:59:02', '2024-03-14 15:59:02', '2024-06-14 15:59:02', '2024-06-16 16:46:27'),
 	('farmer123', 'test123', '박농부', '파머', '남성', '010', '2959', '4125', 'hommefatale01@naver.com', '19960115', 'SILVER', 'Y', 'Y', 0, 0, 0, 'F', '2024-03-18 09:56:32', '2024-03-18 09:56:32', NULL, NULL, NULL),
 	('hommefatale', 'rlatmddls1!', '김승인', 'The bed is my stage', '남성', '010', '2959', '4125', 'hommefatale01@naver.com', '19960115', 'SILVER', 'Y', 'N', 0, 0, 0, 'U', '2024-03-21 10:19:01', '2024-03-21 10:19:01', NULL, NULL, NULL),
