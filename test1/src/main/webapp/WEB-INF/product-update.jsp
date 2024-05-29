@@ -182,7 +182,8 @@ var app = new Vue({
     	fnView: function() {
             var self = this;
             var nparmap = {
-            		itemNo : self.itemNo
+            		itemNo : self.itemNo,
+            		Fcode : 1
             };
             $.ajax({
                 url:"AdminProductView.dox",
