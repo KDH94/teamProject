@@ -1026,6 +1026,24 @@ CREATE TABLE IF NOT EXISTS `eco_user_survey` (
 
 -- 테이블 데이터 test.eco_user_survey:~0 rows (대략적) 내보내기
 
+-- 테이블 test.tbl_board 구조 내보내기
+CREATE TABLE IF NOT EXISTS `tbl_board` (
+  `boardNo` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `contents` varchar(50) DEFAULT NULL,
+  `userId` varchar(50) DEFAULT NULL,
+  `cdateTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`boardNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- 테이블 데이터 test.tbl_board:~5 rows (대략적) 내보내기
+INSERT INTO `tbl_board` (`boardNo`, `title`, `contents`, `userId`, `cdateTime`) VALUES
+	(1, '제목', '내용', '작성자', '2024-05-08 15:03:09'),
+	(2, '제목', '내용', '작성자', '2024-05-08 15:03:12'),
+	(3, '제목', '내용', '작성자', '2024-05-08 15:03:12'),
+	(4, '제목', '내용', '작성자', '2024-05-08 15:03:12'),
+	(5, '제목', '내용', '작성자', '2024-05-08 15:03:12');
+
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
