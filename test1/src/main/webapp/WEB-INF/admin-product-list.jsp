@@ -473,7 +473,7 @@
 								</a>
 							</div>
 							<div class="sb-sidenav-menu-heading">차트분석</div>
-							<a class="nav-link" href="tables.html">
+							<a class="nav-link" href="/AdminProductChart.do">
 								<div class="sb-nav-link-icon">
 									<i class="fas fa-chart-area"></i>
 								</div> 월 매출 차트
@@ -550,7 +550,7 @@
 		    <div class="product-list">
 		        <div class="product-item" v-for="item in list" :key="item.id">
 		            <template v-for="item2 in fileList" v-if="item.itemNo == item2.itemNo">
-		                <img class="product-img" :src="item2.filePath+item2.fileName" alt="" @click="fnDetailView(item.itemNo, userId)">
+		                <img class="product-img" :src="item2.filePath+item2.fileName" alt="" @click="fnDetailView(item.itemNo)">
 		                <div class="product-info" @click="fnDetailView(item.itemNo)">
 		                    <div class="product-name">{{item.itemName}}</div>
 		                    <div class="product-price">
@@ -754,7 +754,7 @@
 					code : self.code
 				});
 			},
-			 fnDetailView: function(itemNo, userId) {
+			 fnDetailView: function(itemNo) {
 					var self = this;
 					$.pageChange("/productView.do", {itemNo: itemNo, userId: self.userId});
 				},

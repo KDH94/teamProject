@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.test1.mapper.AdminMapper;
+import com.example.test1.model.Addr;
+import com.example.test1.model.PaymentDetail;
 import com.example.test1.model.Product;
 import com.example.test1.model.ProductFile;
 import com.example.test1.model.User;
@@ -278,6 +280,38 @@ public class AdminServiceinpl implements AdminService {
 			System.out.println(e.getMessage());
 			resultMap.put("result", "fail");
 		}
+		return resultMap;
+	}
+
+	@Override
+	public HashMap<String, Object> searchPaymentListDetail(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		try {
+			List<PaymentDetail> paymentDetailList = adminMapper.selectPaymentDetailList(map);
+			resultMap.put("paymentDetailList", paymentDetailList);
+			resultMap.put("result", "success");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			resultMap.put("result", "fail");
+		}
+		return resultMap;
+	}
+
+	@Override
+	public HashMap<String, Object> searchPaymentPost(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		try {
+			Addr post = adminMapper.selectPaymentPost(map);
+			resultMap.put("post", post);
+			resultMap.put("result", "success");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			resultMap.put("result", "fail");
+		}
+		
 		return resultMap;
 	}
 

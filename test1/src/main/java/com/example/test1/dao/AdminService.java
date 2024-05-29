@@ -35,5 +35,6 @@ public interface AdminService {
 	HashMap<String, Object> searchUserListAll(HashMap<String, Object> map);
 	
 	HashMap<String, Object> searchPaymentListAll(HashMap<String, Object> map);
-
+	HashMap<String, Object> searchPaymentListDetail(HashMap<String, Object> map);
+	HashMap<String, Object> searchPaymentPost(HashMap<String, Object> map);
 }

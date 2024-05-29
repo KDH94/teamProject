@@ -170,7 +170,22 @@ public class CartServiceImpl implements CartService{
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		try {
 			cartMapper.insertPaymentHistory(map);
+			resultMap.put("paymentNo", map.get("paymentNo"));
 			resultMap.put("result", "success");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+	
+	@Override
+	public HashMap<String, Object> paymentFinishHistoryDetail(HashMap<String, Object> map) {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		try {
+			cartMapper.insertPaymentHistoryDetail(map);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
@@ -200,6 +215,8 @@ public class CartServiceImpl implements CartService{
 		
 		return resultMap;
 	}
+
+	
     
 	
 

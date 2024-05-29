@@ -2,9 +2,12 @@ package com.example.test1.mapper;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.Phaser;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.test1.model.Addr;
+import com.example.test1.model.PaymentDetail;
 import com.example.test1.model.Product;
 import com.example.test1.model.ProductFile;
 import com.example.test1.model.User;
@@ -50,4 +53,8 @@ public interface AdminMapper {
 	List<User> selectUserListALL(HashMap<String, Object> map);
 	
 	List<Payment> selectPaymentList(HashMap<String, Object> map);
+	
+	List<PaymentDetail> selectPaymentDetailList(HashMap<String, Object> map);
+	
+	Addr selectPaymentPost(HashMap<String, Object> map);
 }

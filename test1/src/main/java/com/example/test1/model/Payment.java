@@ -9,6 +9,7 @@ public class Payment {
 	private int rewardPoint;
 	private int sumPrice;
 	private String payTime;
+	private String addrNo;
 	//ProductFile
 	private String fileNo;
 	private String filePath;

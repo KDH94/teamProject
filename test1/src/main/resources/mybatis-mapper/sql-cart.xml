@@ -112,9 +112,14 @@
 		WHERE ITEM_NO = #{itemNo} AND MONTH = MONTH(NOW())
 	</update>
 	
-	<insert id="insertPaymentHistory" parameterType="hashmap">
+	<insert id="insertPaymentHistory" parameterType="hashmap" useGeneratedKeys="true" keyProperty="paymentNo" keyColumn="paymentNo">
 		INSERT INTO ECO_PAYMENT
-		VALUES(NULL,#{userId},#{paymentKey},#{usePoint},#{rewardPoint},#{sumPrice},NOW())
+		VALUES(NULL,#{userId},#{paymentKey},#{usePoint},#{rewardPoint},#{sumPrice},NOW(),#{addrNo})
+	</insert>
+	
+	<insert id="insertPaymentHistoryDetail" parameterType="hashmap">
+		INSERT INTO ECO_PAYMENT_DETAIL
+		VALUES(#{paymentNo},#{itemNo},#{selectCnt})
 	</insert>
 	
 	<select id="selectAddrList" parameterType="hashmap" resultType="com.example.test1.model.Addr">
