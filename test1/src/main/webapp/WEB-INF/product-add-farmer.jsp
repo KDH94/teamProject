@@ -156,8 +156,7 @@ var app = new Vue({
     	trans:"무료배송",
     	sellYN:"N",
     	cnt:"",
-    	
-    	
+
     }
 	, components: {VueEditor}
     , methods: {
@@ -178,8 +177,6 @@ var app = new Vue({
             		sellYN : self.sellYN,
             		cnt : self.cnt,
             		kind : 2
-            		
-            		
             };
             $.ajax({
                 url:"productAdd.dox",
@@ -189,7 +186,6 @@ var app = new Vue({
                 success: function(data) {
                 	if(data.result=="success"){
                 		alert("등록완료");
-                		
                 		var files = $("#file1")[0].files;
                 		for(var i =0 ; i<files.length;i++){
                 			var formMain = new FormData();

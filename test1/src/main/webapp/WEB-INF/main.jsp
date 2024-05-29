@@ -213,7 +213,7 @@
 					type: "POST",
 					data: nparmap,
 					success: function(data) {
-						console.log(data);
+						
 						self.list = data.listMain;
 	                	self.listLatest = data.listLatest; // 최근 등록순
 	                	self.listMax = data.listMax; // 최다 판매순
@@ -287,7 +287,6 @@
 		                type: "POST",
 		                data: nparmap,
 		                success: function(data) {
-		                	console.log(data);
 		                	if(data.result == "insert") {
 		                		alert("찜 목록에 담았습니다.");
 		                		appHeader.fnLogin();
@@ -332,7 +331,6 @@
             handleSlideChange() {
                 // 현재 활성화된 슬라이드의 인덱스 가져오기
                 if(this.swiper != null){
-                	console.log("swiper", this.swiper.realIndex);
                 	var activeIndex = this.swiper.realIndex;
                     // 활성화된 슬라이드의 배경색을 설정
                     var heroElement = document.querySelector('.hero');

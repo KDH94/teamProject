@@ -141,6 +141,7 @@
 		</div>
 		<div>
 			재고 갯수 : <input type="text" v-model="cnt">
+			<button @click="gogo"> 버튼</button>
 		</div>
 
 		<button @click="fnAdd">등록하기</button>
@@ -163,6 +164,9 @@
 
 		},
 		methods : {
+			gogo : function(){
+				console.log(this.code);
+			},
 			fnAdd : function() {
 				var self = this;
 				if (self.code == "All") {
@@ -217,6 +221,9 @@
 								self.uploadDetailFile(formContents);
 							}
 							alert("등록완료");
+							 setTimeout(()=>{
+					            	location.href="/main.do";
+					            }  , 50); 
 
 							/*    location.href="AdminProductList.do"; */
 
