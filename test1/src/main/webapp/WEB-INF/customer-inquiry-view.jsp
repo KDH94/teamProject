@@ -97,7 +97,7 @@
     
     .adminAnswer textarea{
     	width: 100%; 
-        height: 50px; 
+        height: 200px; 
         padding: 10px; 
         box-sizing: border-box; 
         border: 1px solid #ccc; 
